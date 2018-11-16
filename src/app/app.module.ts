@@ -9,6 +9,9 @@ import { BoletoComponent } from './view/boleto/boleto.component';
 import { NotFoundComponent } from './view/not-found/not-found.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
 import { NavComponent } from './shared/nav/nav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessageComponent } from './shared/message/message.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +21,13 @@ import { NavComponent } from './shared/nav/nav.component';
     BoletoComponent,
     NotFoundComponent,
     DashboardComponent,
-    NavComponent
+    NavComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],

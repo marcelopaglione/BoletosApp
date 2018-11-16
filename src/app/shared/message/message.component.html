@@ -1,0 +1,14 @@
+<div *ngIf="messages.messages.length">
+  <hr>
+  <h1>
+    Messages
+  </h1>
+  <button (click)="messages.clear()">
+    clear
+  </button>
+  <hr>
+
+  <div *ngFor="let message of messages.messages">
+    <code> {{ message }} </code>
+  </div>
+</div>

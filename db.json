@@ -1,17 +1,17 @@
 {
   "emissor": {
-    "id": "1",
-    "nome": "Marcelo Ortiz Paglione",
-    "email": "marcelopaglione@gmail.com",
-    "telefone": "(43) 99917-6373",
+    "id": null,
+    "nome": null,
+    "email": null,
+    "telefone": null,
     "endereco": {
-      "cep": "86280000",
-      "numero": "480A",
-      "complemento": "Centro",
-      "rua": "José de Oliveira Borges",
-      "bairro": "Centro",
-      "cidade": "Uraí",
-      "estado": "PR"
+      "cep": null,
+      "numero": null,
+      "complemento": null,
+      "rua": null,
+      "bairro": null,
+      "cidade": null,
+      "estado": null
     }
   },
   "cliente": [
@@ -63,8 +63,5 @@
         "estado": "ES"
       }
     }
-  ],
-  "boleto": [
-
   ]
 }
