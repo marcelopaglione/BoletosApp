@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from '../../service/message.service';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { ClienteService } from '../../service/cliente.service';
+import { Cliente } from '../../entity/Cliente';
+import { Boleto } from '../../entity/Boleto';
+import { BoletoService } from '../../service/boleto.service';
+import { Emissor } from 'src/app/entity/Emissor';
+import { EmissorService } from '../../service/emissor.service';
 
 @Component({
   selector: 'app-boleto',
@@ -7,9 +17,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoletoComponent implements OnInit {
 
-  constructor() { }
+  boletos$: Observable<Boleto[]>;
+
+  clientes$: Observable<Cliente[]>;
+  emissor$: Observable<Emissor>;
+
+  headElements: string[];
+  fg: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private boletoService: BoletoService,
+    private clienteService: ClienteService,
+    private emissorService: EmissorService,
+    private messages: MessageService
+  ) { }
 
   ngOnInit() {
+    this.headElements = this.boletoService.getTabelaHeaders();
+    this.boletos$ = this.boletoService.getBoletoList();
+    this.clientes$ = this.clienteService.getClienteList();
+    this.emissor$ = this.emissorService.getEmissor();
+
+    this.fg = this.formBuilder.group({
+      id: [null],
+      cliente: [null, [Validators.required]],
+      emissor: [null, [Validators.required]],
+      parcela: [null, [Validators.required]]
+    });
+  }
+
+  editar(c: Cliente) {
+    this.fg.patchValue(c);
+  }
+
+  onSubmit () {
+    if (this.fg.valid) {
+      this.boletoService.setBoleto(this.fg.value);
+    } else {
+      this.messages.add('Invalid boleto form: ' + JSON.stringify(this.fg.value));
+    }
   }
 
 }

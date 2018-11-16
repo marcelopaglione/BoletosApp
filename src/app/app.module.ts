@@ -12,6 +12,7 @@ import { NavComponent } from './shared/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageComponent } from './shared/message/message.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MessageComponent } from './shared/message/message.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],

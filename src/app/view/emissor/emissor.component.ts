@@ -5,6 +5,8 @@ import { Emissor } from '../../entity/Emissor';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { MessageService } from '../../service/message.service';
+import { DropdownService } from '../../service/dropdown.service';
+import { Estado } from '../../entity/Estado';
 
 @Component({
   selector: 'app-emissor',
@@ -16,13 +18,17 @@ export class EmissorComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private emissorService: EmissorService,
-    private messages: MessageService
+    private messages: MessageService,
+    private dropdownService: DropdownService
   ) { }
 
   fg: FormGroup;
   emissor$: Observable<Emissor>;
+  estados$: Observable<Estado[]>;
 
   ngOnInit() {
+
+    this.estados$ = this.dropdownService.getEstadosBr();
 
     this.getEmissor();
 

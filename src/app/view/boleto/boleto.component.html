@@ -1,3 +1,46 @@
-<p>
-  boleto works!
-</p>
+<h1>Boletos</h1>
+<hr>
+<h3>Administrar Boletos</h3>
+<hr>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+
+  <label for="cliente">cliente</label><br />
+  <select id="cliente" formControlName="cliente">
+    <option *ngFor="let cliente of clientes$ | async" [value]="cliente"> {{cliente.nome}} </option>
+  </select>
+  <br>
+  <div *ngIf="emissor$ | async as emissor">
+    <label for="emissor">emissor</label><br />
+    <select id="emissor" formControlName="emissor">
+      <option [value]="emissor"> {{emissor.nome}} </option>
+    </select>
+  </div>
+  <label for="parcela">parcela</label><br />
+  <input type="text" id="parcela" placeholder="parcela" formControlName="parcela"><br />
+  <button type="submit" ng-disabled="fg.$invalid">Submit</button>
+</form>
+<hr>
+<h3>Lista Boletoss</h3>
+<hr>
+<table *ngIf="boletos$ | async as boletos; else loading">
+  <thead>
+    <tr>
+      <th *ngFor="let headItem of headElements"> {{headItem}} </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of boletos">
+      <td> {{c.id}} </td>
+      <td> {{c.cliente.nome}} </td>
+      <td> {{c.emissor.nome}} </td>
+      <td> {{c.valor}} </td>
+      <td> {{c.parcelas}} </td>
+      <td> <a>deletar</a> | <button (click)="editar(c)"> editar</button></td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #loading>
+  <span> Carregando...</span>
+</ng-template>
+
+<hr>

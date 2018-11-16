@@ -32,7 +32,9 @@
     <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br />
     <!-- estado -->
     <label for="estado">estado</label><br />
-    <input type="text" id="estado" placeholder="estado" formControlName="estado"><br />
+    <select id="estado" formControlName="estado">
+      <option *ngFor="let estado of estados$ | async" [value]="estado.sigla"> {{estado.nome}} </option>
+    </select>
 
     <button type="submit" ng-disabled="fg.$invalid">Submit</button>
   </div>
