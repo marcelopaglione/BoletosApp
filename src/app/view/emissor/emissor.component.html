@@ -1,42 +1,46 @@
 <h1>Emissor</h1>
 <hr>
-<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+<form [formGroup]="fg" (ngSubmit)="onSubmit()" *ngIf="emissor$ | async as emissor; else loading">
 
-  <label for="Name">Nome</label><br/>
-  <input type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br/>
+  <label for="Name">Nome</label><br />
+  <input type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
   <!-- Email -->
-  <label for="Email">Email</label><br/>
-  <input type="email" id="Email" placeholder="E-mail" formControlName="email"><br/>
+  <label for="Email">Email</label><br />
+  <input type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
   <!-- Telefone -->
-  <label for="Telefone">Telefone</label><br/>
-  <input type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br/>
+  <label for="Telefone">Telefone</label><br />
+  <input type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
 
   <div formGroupName="endereco">
     <!-- cep -->
-    <label for="cep">cep</label><br/>
-    <input type="text" id="cep" placeholder="cep" formControlName="cep"><br/>
+    <label for="cep">cep</label><br />
+    <input type="text" id="cep" placeholder="cep" formControlName="cep"><br />
     <!-- rua -->
-    <label for="rua">rua</label><br/>
-    <input type="text" id="rua" placeholder="rua" formControlName="rua"><br/>
+    <label for="rua">rua</label><br />
+    <input type="text" id="rua" placeholder="rua" formControlName="rua"><br />
     <!-- numero -->
-    <label for="numero">Número</label><br/>
-    <input type="text" id="numero" placeholder="numero" formControlName="numero"><br/>
+    <label for="numero">Número</label><br />
+    <input type="text" id="numero" placeholder="numero" formControlName="numero"><br />
     <!-- bairro -->
-    <label for="bairro">bairro</label><br/>
-    <input type="text" id="bairro" placeholder="bairro" formControlName="bairro"><br/>
+    <label for="bairro">bairro</label><br />
+    <input type="text" id="bairro" placeholder="bairro" formControlName="bairro"><br />
     <!-- complemento -->
-    <label for="complemento">complemento</label><br/>
-    <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br/>
+    <label for="complemento">complemento</label><br />
+    <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
     <!-- cidade -->
-    <label for="cidade">cidade</label><br/>
-    <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br/>
+    <label for="cidade">cidade</label><br />
+    <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br />
     <!-- estado -->
-    <label for="estado">estado</label><br/>
-    <input type="text" id="estado" placeholder="estado" formControlName="estado"><br/>
+    <label for="estado">estado</label><br />
+    <input type="text" id="estado" placeholder="estado" formControlName="estado"><br />
 
     <button type="submit" ng-disabled="fg.$invalid">Submit</button>
   </div>
 
 </form>
+
+<ng-template #loading>
+  <span> Carregando...</span>
+</ng-template>
 
 <hr>

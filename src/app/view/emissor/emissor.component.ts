@@ -4,6 +4,7 @@ import { EmissorService } from '../../service/emissor.service';
 import { Emissor } from '../../entity/Emissor';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-emissor',
@@ -14,7 +15,8 @@ export class EmissorComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private emissorService: EmissorService
+    private emissorService: EmissorService,
+    private messages: MessageService
   ) { }
 
   fg: FormGroup;
@@ -54,7 +56,12 @@ export class EmissorComponent implements OnInit {
   }
 
   onSubmit() {
-    this.emissorService.setEmissor(this.fg.value);
+    if (this.fg.valid) {
+      this.messages.add('PUT emissor: ' + JSON.stringify(this.fg.value));
+      this.emissorService.setEmissor(this.fg.value);
+    } else {
+      this.messages.add('Invalid emissor form: ' + JSON.stringify(this.fg.value));
+    }
   }
 
   verificaValidacoesForm(form: FormGroup) {

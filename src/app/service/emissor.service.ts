@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { tap, take } from 'rxjs/operators';
 import { Emissor } from '../entity/Emissor';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,12 @@ export class EmissorService {
   private readonly API = environment.API + '/emissor';
 
   public getEmissor() {
+    this.messages.add('API - GET Emissor');
     return this.http.get<Emissor>(this.API);
   }
 
   public setEmissor(emissor: Emissor) {
+    this.messages.add('API - SET Emissor');
     this.http.put(this.API, emissor).subscribe(
       r => {
         return r;
@@ -24,6 +27,7 @@ export class EmissorService {
   }
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private messages: MessageService
   ) { }
 }

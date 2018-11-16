@@ -1,13 +1,8 @@
 <div *ngIf="messages.messages.length">
-  <hr>
   <h1>
-    Messages
+    Messages - <button (click)="messages.clear()"> clear </button>
   </h1>
-  <button (click)="messages.clear()">
-    clear
-  </button>
   <hr>
-
   <div *ngFor="let message of messages.messages">
     <code> {{ message }} </code>
   </div>
