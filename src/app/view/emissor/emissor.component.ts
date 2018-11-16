@@ -57,7 +57,6 @@ export class EmissorComponent implements OnInit {
 
   onSubmit() {
     if (this.fg.valid) {
-      this.messages.add('PUT emissor: ' + JSON.stringify(this.fg.value));
       this.emissorService.setEmissor(this.fg.value);
     } else {
       this.messages.add('Invalid emissor form: ' + JSON.stringify(this.fg.value));

@@ -20,13 +20,12 @@
       "nome": "Giusefina dos Esmérios",
       "email": "giusefinaesmerios@gmail.com",
       "telefone": "(44) 84848-1414",
-      "valor": "R$ 1800,00",
       "endereco": {
         "cep": "55789000",
-        "rua": "Rua Alberto Silva Costa",
         "numero": "A40X",
-        "bairro": "Centro",
         "complemento": "",
+        "rua": "Rua Alberto Silva Costa",
+        "bairro": "Centro",
         "cidade": "Faxinal da Cruz",
         "estado": "ES"
       }
@@ -50,15 +49,14 @@
     {
       "id": "3",
       "nome": "Produto do Amor Conjugal De Marichá E Maribel",
-      "email": "amor@conjugal.com",
+      "email": "amor@conjugal.coms",
       "telefone": "(44) 33223-4444",
-      "valor": "R$ 2500,00",
       "endereco": {
         "cep": "55789000",
-        "rua": "Rua Alberto Silva Costa",
         "numero": "AA31",
-        "bairro": "Centro",
         "complemento": "",
+        "rua": "Rua Alberto Silva Costa",
+        "bairro": "Centro",
         "cidade": "Faxinal da Cruz",
         "estado": "ES"
       }

@@ -1,3 +1,71 @@
-<p>
-  cliente works!
-</p>
+<h1>Cliente</h1>
+<hr>
+<h3>Administrar Cliente</h3>
+<hr>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+
+  <label for="Name">Nome</label><br />
+  <input type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
+  <!-- Email -->
+  <label for="Email">Email</label><br />
+  <input type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
+  <!-- Telefone -->
+  <label for="Telefone">Telefone</label><br />
+  <input type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
+
+  <div formGroupName="endereco">
+    <!-- cep -->
+    <label for="cep">cep</label><br />
+    <input type="text" id="cep" placeholder="cep" formControlName="cep"><br />
+    <!-- rua -->
+    <label for="rua">rua</label><br />
+    <input type="text" id="rua" placeholder="rua" formControlName="rua"><br />
+    <!-- numero -->
+    <label for="numero">Número</label><br />
+    <input type="text" id="numero" placeholder="numero" formControlName="numero"><br />
+    <!-- bairro -->
+    <label for="bairro">bairro</label><br />
+    <input type="text" id="bairro" placeholder="bairro" formControlName="bairro"><br />
+    <!-- complemento -->
+    <label for="complemento">complemento</label><br />
+    <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
+    <!-- cidade -->
+    <label for="cidade">cidade</label><br />
+    <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br />
+    <!-- estado -->
+    <label for="estado">estado</label><br />
+    <input type="text" id="estado" placeholder="estado" formControlName="estado"><br />
+
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
+<hr>
+<h3>Lista Clientes</h3>
+<hr>
+<table *ngIf="clientes$ | async as clientes; else loading">
+  <thead>
+    <tr>
+      <th *ngFor="let headItem of headElements"> {{headItem}} </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of clientes">
+      <td> {{c.id}} </td>
+      <td> {{c.nome}} </td>
+      <td> {{c.email}} </td>
+      <td> {{c.telefone}} </td>
+      <td> {{c.endereco.cep}} </td>
+      <td> {{c.endereco.rua}} </td>
+      <td> {{c.endereco.numero}} </td>
+      <td> {{c.endereco.cidade}} </td>
+      <td> {{c.valor}} </td>
+      <td> <a>deletar</a> | <button (click)="editar(c)"> editar</button></td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #loading>
+  <span> Carregando...</span>
+</ng-template>
+
+<hr>

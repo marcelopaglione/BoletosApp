@@ -13,12 +13,12 @@ export class EmissorService {
   private readonly API = environment.API + '/emissor';
 
   public getEmissor() {
-    this.messages.add('API - GET Emissor');
+    this.messages.add(`API: ${this.API} - GET`);
     return this.http.get<Emissor>(this.API);
   }
 
   public setEmissor(emissor: Emissor) {
-    this.messages.add('API - SET Emissor');
+    this.messages.add(`API: ${this.API} - PUT: ' + ${JSON.stringify(emissor)}`);
     this.http.put(this.API, emissor).subscribe(
       r => {
         return r;
