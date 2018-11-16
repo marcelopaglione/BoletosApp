@@ -1,0 +1,67 @@
+{
+  "emissor": {
+    "id": "1",
+    "nome": "Marcelo Ortiz Paglione",
+    "email": "marcelopaglione@gmail.com",
+    "telefone": "(43) 99917-6373",
+    "endereco": {
+      "cep": "86280000",
+      "numero": "480A",
+      "complemento": "Centro",
+      "rua": "José de Oliveira Borges",
+      "bairro": "Centro",
+      "cidade": "Uraí",
+      "estado": "PR"
+    }
+  },
+  "cliente": [
+    {
+      "id": "1",
+      "nome": "Giusefina dos Esmérios",
+      "email": "giusefinaesmerios@gmail.com",
+      "telefone": "(44) 84848-1414",
+      "valor": "R$ 1800,00",
+      "endereco": {
+        "cep": "55789000",
+        "rua": "Rua Alberto Silva Costa",
+        "numero": "A40X",
+        "bairro": "Centro",
+        "complemento": "",
+        "cidade": "Faxinal da Cruz",
+        "estado": "ES"
+      }
+    },
+    {
+      "id": "2",
+      "nome": "Aberta Demais De Oliveira",
+      "email": "Aberta@demais.com",
+      "telefone": "(22) 41424-1122",
+      "valor": "R$ 1900,00",
+      "endereco": {
+        "cep": "55789000",
+        "rua": "Rua Alberto Silva Costa",
+        "numero": "A40X",
+        "bairro": "Centro",
+        "complemento": "Fundos",
+        "cidade": "Faxinal da Cruz",
+        "estado": "ES"
+      }
+    },
+    {
+      "id": "3",
+      "nome": "Produto do Amor Conjugal De Marichá E Maribel",
+      "email": "amor@conjugal.com",
+      "telefone": "(44) 33223-4444",
+      "valor": "R$ 2500,00",
+      "endereco": {
+        "cep": "55789000",
+        "rua": "Rua Alberto Silva Costa",
+        "numero": "AA31",
+        "bairro": "Centro",
+        "complemento": "",
+        "cidade": "Faxinal da Cruz",
+        "estado": "ES"
+      }
+    }
+  ]
+}
