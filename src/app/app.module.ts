@@ -16,6 +16,12 @@ import { HttpModule } from '@angular/http';
 import { FormDebugComponent } from './shared/form-debug/form-debug.component';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 import { ErrorControlComponent } from './shared/error-control/error-control.component';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeBr from '@angular/common/locales/pt';
+import { PhonePipe } from './shared/phone.pipe';
+
+registerLocaleData(localeBr);
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import { ErrorControlComponent } from './shared/error-control/error-control.comp
     MessageComponent,
     FormDebugComponent,
     ConfiguracoesComponent,
-    ErrorControlComponent
+    ErrorControlComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,7 @@ import { ErrorControlComponent } from './shared/error-control/error-control.comp
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

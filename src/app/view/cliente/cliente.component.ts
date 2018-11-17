@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '../../service/message.service';
 import { Observable, of } from 'rxjs';
@@ -153,6 +153,7 @@ export class ClienteComponent implements OnInit {
       ).subscribe();
     } else {
       this.messages.add('Invalid cliente form: ' + JSON.stringify(this.fg.value));
+      this.verificaValidacoesForm(this.fg);
     }
   }
 
@@ -168,6 +169,16 @@ export class ClienteComponent implements OnInit {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  verificaValidacoesForm(form: FormGroup) {
+    Object.keys(form.controls).forEach(campo => {
+      const controle = form.get(campo);
+      controle.markAsTouched();
+      if (controle instanceof FormGroup) {
+        this.verificaValidacoesForm(controle);
+      }
+    });
   }
 
   verificaValidTouched(campo: string) {

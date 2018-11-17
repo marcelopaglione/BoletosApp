@@ -21,7 +21,7 @@
 
       <!-- valor -->
       <label for="valor">valor</label><br />
-      <input type="text" id="vavalorlor" placeholder="valor" formControlName="valor">
+      <input type="text" id="vavalorlor" placeholder="valor" formControlName="valor" >
       <app-error-control [mostrarErro]="verificaValidTouched('valor')" msgErro="valor é obrigatório."></app-error-control><br />
 
       <div formGroupName="endereco">
@@ -82,8 +82,8 @@
       <td> {{c.id}} </td>
       <td> {{c.nome}} </td>
       <td> {{c.email}} </td>
-      <td> {{c.telefone}} </td>
-      <td> {{c.valor}} </td>
+      <td> {{c.telefone | phone}} </td>
+      <td> {{c.valor | currency:'BRL'}} </td>
       <td> {{c.endereco.cep}} </td>
       <td> {{c.endereco.rua}} </td>
       <td> {{c.endereco.numero}} </td>
