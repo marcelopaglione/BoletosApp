@@ -15,6 +15,7 @@ import { MessageComponent } from './shared/message/message.component';
 import { HttpModule } from '@angular/http';
 import { FormDebugComponent } from './shared/form-debug/form-debug.component';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
+import { ErrorControlComponent } from './shared/error-control/error-control.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.com
     NavComponent,
     MessageComponent,
     FormDebugComponent,
-    ConfiguracoesComponent
+    ConfiguracoesComponent,
+    ErrorControlComponent
   ],
   imports: [
     BrowserModule,

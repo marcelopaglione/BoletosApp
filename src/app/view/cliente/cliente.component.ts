@@ -170,6 +170,17 @@ export class ClienteComponent implements OnInit {
     };
   }
 
+  verificaValidTouched(campo: string) {
+    return !this.fg.get(campo).valid && this.fg.get(campo).touched;
+  }
+
+  verificaEmailInvalid() {
+    const campoEmail = this.fg.get('email');
+    if (campoEmail.errors) {
+      return campoEmail.errors['email'];
+    }
+  }
+
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }

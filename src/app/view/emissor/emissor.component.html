@@ -6,9 +6,11 @@
 
       <label for="Name">Nome</label><br />
       <input type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
+      <app-error-control [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório."></app-error-control><br />
       <!-- Email -->
       <label for="Email">Email</label><br />
       <input type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
+      <app-error-control class="invalid-feedback" [mostrarErro]="verificaEmailInvalid('email')" msgErro="Email inválido."></app-error-control><br />
       <!-- Telefone -->
       <label for="Telefone">Telefone</label><br />
       <input type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
@@ -16,16 +18,20 @@
       <div formGroupName="endereco">
         <!-- cep -->
         <label for="cep">cep</label><br />
-        <input type="text" id="cep" placeholder="cep" formControlName="cep" (blur)="consultaCEP()"><br />
+        <input type="text" id="cep" placeholder="cep" formControlName="cep" (blur)="consultaCEP()">
+        <app-error-control [mostrarErro]="verificaValidTouched('endereco.cep')" msgErro="cep é obrigatório."></app-error-control><br />
         <!-- rua -->
         <label for="rua">rua</label><br />
-        <input type="text" id="rua" placeholder="rua" formControlName="rua"><br />
+        <input type="text" id="rua" placeholder="rua" formControlName="rua">
+        <app-error-control [mostrarErro]="verificaValidTouched('endereco.rua')" msgErro="rua é obrigatório."></app-error-control><br />
         <!-- numero -->
         <label for="numero">Número</label><br />
-        <input type="text" id="numero" placeholder="numero" formControlName="numero"><br />
+        <input type="text" id="numero" placeholder="numero" formControlName="numero">
+        <app-error-control [mostrarErro]="verificaValidTouched('endereco.numero')" msgErro="numero é obrigatório."></app-error-control><br />
         <!-- bairro -->
         <label for="bairro">bairro</label><br />
-        <input type="text" id="bairro" placeholder="bairro" formControlName="bairro"><br />
+        <input type="text" id="bairro" placeholder="bairro" formControlName="bairro">
+        <app-error-control [mostrarErro]="verificaValidTouched('endereco.bairro')" msgErro="bairro é obrigatório."></app-error-control><br />
         <!-- complemento -->
         <label for="complemento">complemento</label><br />
         <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
@@ -34,15 +40,18 @@
         <select id="estado" formControlName="estado" (change)="loadCidades()" [compareWith]="compareFn">
           <option *ngFor="let estado of estados$ | async" [ngValue]="estado"> {{estado.nome}} </option>
         </select>
-        <br>
+        <app-error-control [mostrarErro]="verificaValidTouched('endereco.estado')" msgErro="estado é obrigatório."></app-error-control><br />
+
         <!-- cidade -->
         <label for="cidade">cidade</label><br />
         <select id="cidade" formControlName="cidade" [compareWith]="compareFn">
           <option *ngFor="let cidade of cidades$ | async" [ngValue]="cidade"> {{cidade.nome}} </option>
         </select>
+        <app-error-control [mostrarErro]="verificaValidTouched('endereco.cidade')" msgErro="cidade é obrigatório."></app-error-control><br />
 
 
         <button type="submit" ng-disabled="fg.$invalid">Submit</button>
+        <button type="text" (click)="limparForm()"> Cancelar </button>
       </div>
 
     </form>
