@@ -3,28 +3,34 @@
 <h3>Administrar Boletos</h3>
 <hr>
 
-<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+<div class="container">
+  <div class="container-inside">
+    <form [formGroup]="fg" (ngSubmit)="onSubmit()">
 
-  <label for="id">id</label><br />
-  <input type="text" id="id" formControlName="id" disabled="true"><br />
+      <label for="id">id</label><br />
+      <input type="text" id="id" formControlName="id" disabled="true"><br />
 
-  <label for="cliente">cliente</label><br />
-  <select id="cliente" formControlName="cliente">
-    <option *ngFor="let cliente of clientes$ | async" [ngValue]="cliente"> {{cliente.nome}} </option>
-  </select>
-  <br>
-  <div *ngIf="emissor$ | async as emissor">
-    <label for="emissor">emissor</label><br />
-    <select id="emissor" formControlName="emissor">
-      <option [(ngValue)]="emissor" > {{emissor.nome}} </option>
-    </select>
+      <label for="cliente">cliente</label><br />
+      <select id="cliente" formControlName="cliente" [compareWith]="compareFn">
+        <option *ngFor="let cliente of clientes$ | async" [ngValue]="cliente"> {{cliente.nome}} </option>
+      </select>
+      <br>
+      <div *ngIf="emissor$ | async as emissor">
+        <label for="emissor">emissor</label><br />
+        <select id="emissor" formControlName="emissor" [compareWith]="compareFn">
+          <option [(ngValue)]="emissor"> {{emissor.nome}} </option>
+        </select>
+      </div>
+      <label for="parcela">parcela</label><br />
+      <input type="text" id="parcela" placeholder="parcela" formControlName="parcela"><br />
+      <button type="submit" disabled="fg.invalid">Submit</button>
+      <button type="text" (click)="limparForm()"> Cancelar </button>
+    </form>
   </div>
-  <label for="parcela">parcela</label><br />
-  <input type="text" id="parcela" placeholder="parcela" formControlName="parcela"><br />
-  <button type="submit" disabled="fg.invalid">Submit</button>
-  <button type="text" (click)="limparForm()"> Cancelar </button>
-</form>
-
+  <div class="container-inside">
+    <app-form-debug [form]="fg"></app-form-debug>
+  </div>
+</div>
 
 <hr>
 <h3>Lista Boletoss</h3>

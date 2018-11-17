@@ -51,6 +51,17 @@ export class BoletoComponent implements OnInit {
     });
   }
 
+  setdefaultValues() {
+    this.fg = this.formBuilder.group({
+      cliente: [this.clientes$[0]],
+      emissor: [this.emissor$]
+    });
+  }
+
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+}
+
   editar(c: Cliente) {
     this.limparForm();
     this.fg.patchValue(c);

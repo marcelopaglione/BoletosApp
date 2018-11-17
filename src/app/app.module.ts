@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageComponent } from './shared/message/message.component';
 import { HttpModule } from '@angular/http';
+import { FormDebugComponent } from './shared/form-debug/form-debug.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpModule } from '@angular/http';
     NotFoundComponent,
     DashboardComponent,
     NavComponent,
-    MessageComponent
+    MessageComponent,
+    FormDebugComponent
   ],
   imports: [
     BrowserModule,
