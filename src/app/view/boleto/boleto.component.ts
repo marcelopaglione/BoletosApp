@@ -33,6 +33,8 @@ export class BoletoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.messages.add('*** Página Boleto.Componenet aberta ***');
+
     this.fg = this.formBuilder.group({
       id: [null],
       cliente: [null, [Validators.required]],
@@ -71,10 +73,10 @@ export class BoletoComponent implements OnInit {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      this.messages.add(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
+      this.messages.add(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

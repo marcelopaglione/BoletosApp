@@ -1,3 +1,5 @@
+import { Cidade } from './Cidade';
+import { Estado } from './Estado';
 export class Cliente {
   id: string;
   nome: string;
@@ -10,7 +12,7 @@ export class Cliente {
     complemento: string;
     rua: string;
     bairro: string;
-    cidade: string;
-    estado: string;
+    cidade: Cidade;
+    estado: Estado;
   };
 }

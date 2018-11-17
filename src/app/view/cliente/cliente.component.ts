@@ -32,6 +32,8 @@ export class ClienteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.messages.add('*** Página Cliente.Componenet aberta ***');
+
     this.estados$ = this.dropdownService.getEstadosBr();
 
     this.fg = this.formBuilder.group({
@@ -53,8 +55,8 @@ export class ClienteComponent implements OnInit {
     this.initializePageData();
   }
 
-  loadCidades(evento) {
-    this.cidades$ = this.dropdownService.getCidadesByEstadoId(evento.target.value);
+  loadCidades() {
+    this.cidades$ = this.dropdownService.getCidadesByEstadoId(this.fg.get('endereco.estado').value.id);
   }
 
   initializePageData(): any {
@@ -87,18 +89,20 @@ export class ClienteComponent implements OnInit {
   populaDadosEndereco(dados) {
     this.dropdownService.getEstadosByUf(dados.uf).subscribe(
       estadoEscolhido => {
+        this.messages.add('estado escolhida ' + JSON.stringify(estadoEscolhido));
         this.fg.patchValue({
           endereco: {
             rua: dados.logradouro,
             complemento: dados.complemento,
             bairro: dados.bairro,
-            estado: estadoEscolhido[0].id
+            estado: estadoEscolhido[0]
           }
         });
         this.dropdownService.getCidadesByName(dados.localidade).subscribe(
           cidadeEscolhida => {
+            this.messages.add('cidade escolhida ' + JSON.stringify(cidadeEscolhida));
             this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
-            this.fg.patchValue({endereco : {cidade: cidadeEscolhida[0].id}});
+            this.fg.patchValue({ endereco: { cidade: cidadeEscolhida[0] } });
           }
         );
       }
@@ -133,7 +137,7 @@ export class ClienteComponent implements OnInit {
     ).subscribe();
   }
 
-  onSubmit () {
+  onSubmit() {
     if (this.fg.valid) {
       this.clienteService.setCliente(this.fg.value).pipe(
         tap(_ => {
@@ -151,14 +155,18 @@ export class ClienteComponent implements OnInit {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      this.messages.add(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
+      this.messages.add(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
 }

@@ -5,13 +5,21 @@
     "email": "marcelo.paglione@gmail.com",
     "telefone": "(43) 999176376",
     "endereco": {
-      "cep": "868280000",
+      "cep": "86280000",
       "numero": "480",
-      "complemento": "Centro",
-      "rua": "Jose de Oliveira Borges",
+      "complemento": "",
+      "rua": "José de Oliveira Borges",
       "bairro": "Centro",
-      "cidade": "Uraí",
-      "estado": "PR"
+      "cidade": {
+        "id": "3175",
+        "nome": "Uraí",
+        "estado": "18"
+      },
+      "estado": {
+        "id": "18",
+        "sigla": "PR",
+        "nome": "Paraná"
+      }
     }
   },
   "boleto": [

@@ -53,14 +53,19 @@ export class EmissorComponent implements OnInit {
     });
   }
 
-  loadCidades(evento) {
-    this.cidades$ = this.dropdownService.getCidadesByEstadoId(evento.target.value);
+  loadCidades() {
+    this.cidades$ = this.dropdownService.getCidadesByEstadoId(this.fg.get('endereco.estado').value.id);
   }
 
   getEmissor() {
     this.emissor$ = this.emissorService.getEmissor().pipe(
       tap(dados => {
         this.updateValues(dados);
+        const estadoDoEmissor: Estado = this.fg.get('endereco.estado').value;
+        if (estadoDoEmissor) {
+          this.messages.add('Carregar Cidades para o estado do emissor: ' + JSON.stringify(estadoDoEmissor));
+          this.loadCidades();
+        }
       })
     );
   }
@@ -89,18 +94,20 @@ export class EmissorComponent implements OnInit {
   populaDadosEndereco(dados) {
     this.dropdownService.getEstadosByUf(dados.uf).subscribe(
       estadoEscolhido => {
+        this.messages.add('estado escolhida ' + JSON.stringify(estadoEscolhido));
         this.fg.patchValue({
           endereco: {
             rua: dados.logradouro,
             complemento: dados.complemento,
             bairro: dados.bairro,
-            estado: estadoEscolhido[0].id
+            estado: estadoEscolhido[0]
           }
         });
         this.dropdownService.getCidadesByName(dados.localidade).subscribe(
           cidadeEscolhida => {
+            this.messages.add('cidade escolhida ' + JSON.stringify(cidadeEscolhida));
             this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
-            this.fg.patchValue({endereco : {cidade: cidadeEscolhida[0].id}});
+            this.fg.patchValue({endereco : {cidade: cidadeEscolhida[0]}});
           }
         );
       }
@@ -138,4 +145,7 @@ export class EmissorComponent implements OnInit {
     });
   }
 
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
 }

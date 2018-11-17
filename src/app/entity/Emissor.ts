@@ -1,3 +1,5 @@
+import { Cidade } from './Cidade';
+import { Estado } from './Estado';
 export class Emissor {
   id: string;
   nome: string;
@@ -9,7 +11,7 @@ export class Emissor {
     complemento: string;
     rua: string;
     bairro: string;
-    cidade: string;
-    estado: string;
+    cidade: Cidade;
+    estado: Estado;
   };
 }

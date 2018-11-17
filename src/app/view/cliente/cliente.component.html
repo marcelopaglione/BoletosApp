@@ -37,17 +37,16 @@
         <label for="complemento">complemento</label><br />
         <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
         <!-- estado -->
-        <label for="estado">estado</label><br />
-        <select id="estado" formControlName="estado" (change)="loadCidades($event)">
-          <option *ngFor="let estado of estados$ | async" [value]="estado.id"> {{estado.nome}} </option>
+        <label for="sigla">estado</label><br />
+        <select id="sigla" formControlName="estado" (change)="loadCidades()" [compareWith]="compareFn">
+          <option *ngFor="let estado of estados$ | async" [ngValue]="estado"> {{estado.nome}} </option>
         </select>
         <!-- cidade -->
         <br>
         <label for="cidade">cidade</label><br />
-        <select id="cidade" formControlName="cidade">
-          <option *ngFor="let cidade of cidades$ | async" [value]="cidade.id"> {{cidade.nome}} </option>
+        <select id="cidade" formControlName="cidade" [compareWith]="compareFn">
+          <option *ngFor="let cidade of cidades$ | async" [ngValue]="cidade"> {{cidade.nome}} </option>
         </select>
-
 
         <button type="submit">Submit</button>
         <button type="text" (click)="limparForm()"> Cancelar </button>
