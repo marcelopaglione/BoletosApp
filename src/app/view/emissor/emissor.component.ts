@@ -8,6 +8,7 @@ import { MessageService } from '../../service/message.service';
 import { DropdownService } from '../../service/dropdown.service';
 import { Estado } from '../../entity/Estado';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
+import { Cidade } from '../../entity/Cidade';
 
 @Component({
   selector: 'app-emissor',
@@ -26,6 +27,7 @@ export class EmissorComponent implements OnInit {
 
   fg: FormGroup;
   emissor$: Observable<Emissor>;
+  cidades$: Observable<Cidade[]>;
   estados$: Observable<Estado[]>;
 
   ngOnInit() {
@@ -51,6 +53,10 @@ export class EmissorComponent implements OnInit {
     });
   }
 
+  loadCidades(evento) {
+    this.cidades$ = this.dropdownService.getCidadesByEstadoId(evento.target.value);
+  }
+
   getEmissor() {
     this.emissor$ = this.emissorService.getEmissor().pipe(
       tap(dados => {
@@ -70,21 +76,35 @@ export class EmissorComponent implements OnInit {
       this.resetaFormularioEndereco();
       this.cepService.consultaCEP(cep)
         .subscribe(dados => {
-          this.populaDadosEndereco(dados);
+          if (dados.erro) {
+            this.messages.add(`CEP ${cep} NOT Found`);
+          } else {
+            this.populaDadosEndereco(dados);
+          }
         });
     }
   }
 
+  // sorry for this ugly method, but it is working so far =(
   populaDadosEndereco(dados) {
-    this.fg.patchValue({
-      endereco: {
-        rua: dados.logradouro,
-        complemento: dados.complemento,
-        bairro: dados.bairro,
-        cidade: dados.localidade,
-        estado: dados.uf
+    this.dropdownService.getEstadosByUf(dados.uf).subscribe(
+      estadoEscolhido => {
+        this.fg.patchValue({
+          endereco: {
+            rua: dados.logradouro,
+            complemento: dados.complemento,
+            bairro: dados.bairro,
+            estado: estadoEscolhido[0].id
+          }
+        });
+        this.dropdownService.getCidadesByName(dados.localidade).subscribe(
+          cidadeEscolhida => {
+            this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
+            this.fg.patchValue({endereco : {cidade: cidadeEscolhida[0].id}});
+          }
+        );
       }
-    });
+    );
   }
 
   resetaFormularioEndereco() {
@@ -94,7 +114,8 @@ export class EmissorComponent implements OnInit {
         complemento: null,
         bairro: null,
         cidade: null,
-        estado: null
+        estado: null,
+        numero: null
       }
     });
   }

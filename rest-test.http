@@ -1,4 +1,8 @@
-GET http://localhost:3000/boleto/1
+
+GET http://localhost:3002/cidades?nome=São Paulo
+#GET http://localhost:3001/estados?sigla=SP
+
+#GET http://localhost:3000/boleto/1
 
 #DELETE http://localhost:3000/boleto/1
 

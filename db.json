@@ -83,6 +83,44 @@
         "cidade": "Uraí",
         "estado": "AM"
       }
+    },
+    {
+      "id": 7,
+      "nome": "Simplício Simplório Da Simplicidade Simples",
+      "email": "simples.assim@gmail.com",
+      "telefone": "(43)8585-6699",
+      "valor": "R$ 180,00",
+      "endereco": {
+        "cep": "86025000",
+        "numero": "587",
+        "complemento": "de 495/496 ao fim",
+        "rua": "Rua Guaporé",
+        "bairro": "Jardim Palmares",
+        "cidade": "2976",
+        "estado": "18"
+      }
+    }
+  ],
+  "cidade": [
+    {
+      "id": "2782",
+      "nome": "Vista Serrana",
+      "estado": "15"
+    },
+    {
+      "id": "2783",
+      "nome": "Zabelê",
+      "estado": "15"
+    },
+    {
+      "id": "2784",
+      "nome": "Abatiá",
+      "estado": "18"
+    },
+    {
+      "id": "2785",
+      "nome": "Adrianópolis",
+      "estado": "18"
     }
   ]
 }

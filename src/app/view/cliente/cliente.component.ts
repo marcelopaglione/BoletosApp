@@ -8,6 +8,7 @@ import { Cliente } from '../../entity/Cliente';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { Estado } from '../../entity/Estado';
 import { DropdownService } from '../../service/dropdown.service';
+import { Cidade } from '../../entity/Cidade';
 
 @Component({
   selector: 'app-cliente',
@@ -18,6 +19,7 @@ export class ClienteComponent implements OnInit {
 
   clientes$: Observable<Cliente[]>;
   estados$: Observable<Estado[]>;
+  cidades$: Observable<Cidade[]>;
   headElements;
   fg: FormGroup;
 
@@ -51,6 +53,10 @@ export class ClienteComponent implements OnInit {
     this.initializePageData();
   }
 
+  loadCidades(evento) {
+    this.cidades$ = this.dropdownService.getCidadesByEstadoId(evento.target.value);
+  }
+
   initializePageData(): any {
     this.limparForm();
     this.headElements = this.clienteService.getTabelaHeaders();
@@ -68,21 +74,35 @@ export class ClienteComponent implements OnInit {
       this.resetaFormularioEndereco();
       this.cepService.consultaCEP(cep)
         .subscribe(dados => {
-          this.populaDadosEndereco(dados);
+          if (dados.erro) {
+            this.messages.add(`CEP ${cep} NOT Found`);
+          } else {
+            this.populaDadosEndereco(dados);
+          }
         });
     }
   }
 
+  // sorry for this ugly method, but it is working so far =(
   populaDadosEndereco(dados) {
-    this.fg.patchValue({
-      endereco: {
-        rua: dados.logradouro,
-        complemento: dados.complemento,
-        bairro: dados.bairro,
-        cidade: dados.localidade,
-        estado: dados.uf
+    this.dropdownService.getEstadosByUf(dados.uf).subscribe(
+      estadoEscolhido => {
+        this.fg.patchValue({
+          endereco: {
+            rua: dados.logradouro,
+            complemento: dados.complemento,
+            bairro: dados.bairro,
+            estado: estadoEscolhido[0].id
+          }
+        });
+        this.dropdownService.getCidadesByName(dados.localidade).subscribe(
+          cidadeEscolhida => {
+            this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
+            this.fg.patchValue({endereco : {cidade: cidadeEscolhida[0].id}});
+          }
+        );
       }
-    });
+    );
   }
 
   resetaFormularioEndereco() {
@@ -92,7 +112,8 @@ export class ClienteComponent implements OnInit {
         complemento: null,
         bairro: null,
         cidade: null,
-        estado: null
+        estado: null,
+        numero: null
       }
     });
   }

@@ -27,14 +27,18 @@
     <!-- complemento -->
     <label for="complemento">complemento</label><br />
     <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
-    <!-- cidade -->
-    <label for="cidade">cidade</label><br />
-    <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br />
     <!-- estado -->
     <label for="estado">estado</label><br />
-    <select id="estado" formControlName="estado">
-      <option *ngFor="let estado of estados$ | async" [value]="estado.sigla"> {{estado.nome}} </option>
+    <select id="estado" formControlName="estado" (change)="loadCidades($event)">
+      <option *ngFor="let estado of estados$ | async" [value]="estado.id"> {{estado.nome}} </option>
     </select>
+    <br>
+    <!-- cidade -->
+    <label for="cidade">cidade</label><br />
+    <select id="cidade" formControlName="cidade">
+      <option *ngFor="let cidade of cidades$ | async" [value]="cidade.id"> {{cidade.nome}} </option>
+    </select>
+
 
     <button type="submit" ng-disabled="fg.$invalid">Submit</button>
   </div>
