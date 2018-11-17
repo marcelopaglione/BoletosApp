@@ -20,6 +20,7 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
 import { PhonePipe } from './shared/phone.pipe';
+import { BoletoDetalComponent } from './view/boleto-detal/boleto-detal.component';
 
 registerLocaleData(localeBr);
 
@@ -36,7 +37,8 @@ registerLocaleData(localeBr);
     FormDebugComponent,
     ConfiguracoesComponent,
     ErrorControlComponent,
-    PhonePipe
+    PhonePipe,
+    BoletoDetalComponent
   ],
   imports: [
     BrowserModule,

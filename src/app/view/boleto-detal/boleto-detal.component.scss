@@ -1,0 +1,82 @@
+@page {
+  size: auto;
+  /* auto is the initial value */
+  /* this affects the margin in the printer settings */
+  margin: 25mm 25mm 25mm 25mm;
+}
+.printOnly {
+   display : none;
+}
+
+@media print {
+    .impressao {
+        margin: 25mm 25mm !important;
+        padding: 0px !important;
+        transition: none;
+    }
+    .printOnly {
+       display : block;
+    }
+}
+
+body {
+  /* this affects the margin on the content before sending to printer */
+  margin: 0px;
+}
+
+.mainbg::after{
+    opacity: 0.9;
+    width:230mm;
+    background-size: 230mm;
+}
+
+.capa{
+  width: 23cm;
+  height: 90mm;
+  border: 1px dashed black;
+}
+
+.capa h3{
+    font-size: 60px;
+    text-align: center;
+}
+.canhoto {
+  width: 5cm;
+  height: 90mm;
+  border: 1px dashed black;
+}
+
+.recibo {
+  width: 18cm;
+  height: 90mm;
+  border: 1px dashed black;
+}
+
+.folha {
+  width: 230mm;
+  height: 100mm;
+  border: 1px dashed black;
+}
+
+.a4 {
+  width: 297mm;
+  height: 210mm;
+  border: 1px dashed black;
+}
+
+.section {
+  padding-top: 4mm;
+  padding-bottom: 4mm;
+}
+
+.text-primary {
+    color:black;
+}
+
+.text-info{
+    color:black;
+}
+
+.realce{
+    font-weight: 500;
+}

@@ -53,7 +53,8 @@
       <td> {{b.cliente.valor}} </td>
       <td> {{b.dataPrimeiraParcela}} </td>
       <td> {{b.parcela | currency:'BRL'}} </td>
-      <td> <button (click)="delete(b.id)">deletar</button> | <button (click)="editar(b)"> editar</button></td>
+      <td> <button (click)="delete(b.id)">deletar</button> | <button (click)="editar(b)"> editar</button> | <button
+          (click)="viewBoleto(b)"> ver </button></td>
     </tr>
   </tbody>
 </table>

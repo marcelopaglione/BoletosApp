@@ -12,6 +12,7 @@ import { EmissorService } from '../../service/emissor.service';
 import { ConfigService } from '../../service/config.service';
 import { Config } from 'src/app/entity/Config';
 import { format } from 'libphonenumber-js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boleto',
@@ -34,7 +35,8 @@ export class BoletoComponent implements OnInit {
     private clienteService: ClienteService,
     private emissorService: EmissorService,
     private messages: MessageService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -139,6 +141,10 @@ export class BoletoComponent implements OnInit {
     } else {
       this.messages.add('Invalid boleto form: ' + JSON.stringify(this.fg.value));
     }
+  }
+
+  viewBoleto(boleto) {
+    this.router.navigate(['/boleto/' + boleto.id]);
   }
 
 }

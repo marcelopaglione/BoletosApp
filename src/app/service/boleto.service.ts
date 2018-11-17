@@ -19,6 +19,11 @@ export class BoletoService {
     return this.http.get<Boleto[]>(this.API);
   }
 
+  public getBoletoById(id) {
+    this.messages.add(`API: ${this.API}/i${id} - GET`);
+    return this.http.get<Boleto>(`${this.API}/${id}`);
+  }
+
   public deleteById(id){
     this.messages.add(`API: ${this.API}/${id} - DELETE`);
     return this.http.delete(`${this.API}/${id}`);
