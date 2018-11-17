@@ -36,12 +36,15 @@
         <!-- complemento -->
         <label for="complemento">complemento</label><br />
         <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
+        <!-- estado -->
+        <label for="estado">estado</label><br />
+        <select id="estado" formControlName="estado">
+          <option *ngFor="let estado of estados$ | async" [value]="estado.sigla"> {{estado.nome}} </option>
+        </select>
         <!-- cidade -->
         <label for="cidade">cidade</label><br />
         <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br />
-        <!-- estado -->
-        <label for="estado">estado</label><br />
-        <input type="text" id="estado" placeholder="estado" formControlName="estado"><br />
+
 
         <button type="submit">Submit</button>
         <button type="text" (click)="limparForm()"> Cancelar </button>

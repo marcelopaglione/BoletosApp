@@ -6,6 +6,8 @@ import { tap, map, catchError } from 'rxjs/operators';
 import { ClienteService } from '../../service/cliente.service';
 import { Cliente } from '../../entity/Cliente';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
+import { Estado } from '../../entity/Estado';
+import { DropdownService } from '../../service/dropdown.service';
 
 @Component({
   selector: 'app-cliente',
@@ -15,6 +17,7 @@ import { ConsultaCepService } from '../../service/consulta-cep.service';
 export class ClienteComponent implements OnInit {
 
   clientes$: Observable<Cliente[]>;
+  estados$: Observable<Estado[]>;
   headElements;
   fg: FormGroup;
 
@@ -22,10 +25,13 @@ export class ClienteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private clienteService: ClienteService,
     private messages: MessageService,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private dropdownService: DropdownService
   ) { }
 
   ngOnInit() {
+    this.estados$ = this.dropdownService.getEstadosBr();
+
     this.fg = this.formBuilder.group({
       id: [null],
       nome: [null, [Validators.required, Validators.min(3), Validators.max(25)]],
