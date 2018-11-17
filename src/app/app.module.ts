@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MessageComponent } from './shared/message/message.component';
 import { HttpModule } from '@angular/http';
 import { FormDebugComponent } from './shared/form-debug/form-debug.component';
+import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormDebugComponent } from './shared/form-debug/form-debug.component';
     DashboardComponent,
     NavComponent,
     MessageComponent,
-    FormDebugComponent
+    FormDebugComponent,
+    ConfiguracoesComponent
   ],
   imports: [
     BrowserModule,

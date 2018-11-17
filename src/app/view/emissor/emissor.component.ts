@@ -31,6 +31,7 @@ export class EmissorComponent implements OnInit {
   estados$: Observable<Estado[]>;
 
   ngOnInit() {
+    this.messages.add('*** Página Emissor.Componenet aberta ***');
 
     this.estados$ = this.dropdownService.getEstadosBr();
 

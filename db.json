@@ -1,4 +1,7 @@
 {
+  "config": {
+    "parcelas": "10"
+  },
   "emissor": {
     "id": 1,
     "nome": "Marcelo Ortiz Paglionee",

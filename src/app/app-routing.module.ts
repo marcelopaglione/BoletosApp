@@ -5,6 +5,7 @@ import { BoletoComponent } from './view/boleto/boleto.component';
 import { EmissorComponent } from './view/emissor/emissor.component';
 import { NotFoundComponent } from './view/not-found/not-found.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
+import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'emissor', component: EmissorComponent},
   { path: 'cliente', component: ClienteComponent},
   { path: 'boleto', component: BoletoComponent},
+  { path: 'configuracoes', component: ConfiguracoesComponent},
   { path: '**', component: NotFoundComponent },
 ];
 
