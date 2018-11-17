@@ -2,23 +2,30 @@
 <hr>
 <h3>Administrar Boletos</h3>
 <hr>
+
 <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+
+  <label for="id">id</label><br />
+  <input type="text" id="id" formControlName="id" disabled="true"><br />
 
   <label for="cliente">cliente</label><br />
   <select id="cliente" formControlName="cliente">
-    <option *ngFor="let cliente of clientes$ | async" [value]="cliente"> {{cliente.nome}} </option>
+    <option *ngFor="let cliente of clientes$ | async" [ngValue]="cliente"> {{cliente.nome}} </option>
   </select>
   <br>
   <div *ngIf="emissor$ | async as emissor">
     <label for="emissor">emissor</label><br />
     <select id="emissor" formControlName="emissor">
-      <option [value]="emissor"> {{emissor.nome}} </option>
+      <option [(ngValue)]="emissor" > {{emissor.nome}} </option>
     </select>
   </div>
   <label for="parcela">parcela</label><br />
   <input type="text" id="parcela" placeholder="parcela" formControlName="parcela"><br />
-  <button type="submit" ng-disabled="fg.$invalid">Submit</button>
+  <button type="submit" disabled="fg.invalid">Submit</button>
+  <button type="text" (click)="limparForm()"> Cancelar </button>
 </form>
+
+
 <hr>
 <h3>Lista Boletoss</h3>
 <hr>
@@ -33,7 +40,7 @@
       <td> {{c.id}} </td>
       <td> {{c.cliente.nome}} </td>
       <td> {{c.emissor.nome}} </td>
-      <td> {{c.valor}} </td>
+      <td> {{c.id}} </td>
       <td> {{c.parcelas}} </td>
       <td> <a>deletar</a> | <button (click)="editar(c)"> editar</button></td>
     </tr>

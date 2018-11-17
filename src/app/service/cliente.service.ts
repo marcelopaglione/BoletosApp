@@ -17,12 +17,21 @@ export class ClienteService {
   }
 
   public setCliente(cliente: Cliente) {
-    this.messages.add(`${this.API}/${cliente.id} - PUT: ' + ${JSON.stringify(cliente)}`);
-    this.http.put(`${this.API}/${cliente.id}`, cliente).subscribe(
-      r => {
-        return r;
-      }
-    );
+    if (cliente.id == null) {
+      this.messages.add(`${this.API}- POST: ' + ${JSON.stringify(cliente)}`);
+      this.http.post(`${this.API}`, cliente).subscribe(
+        r => {
+          return r;
+        }
+      );
+    } else {
+      this.messages.add(`${this.API}/${cliente.id} - PUT: ' + ${JSON.stringify(cliente)}`);
+      this.http.put(`${this.API}/${cliente.id}`, cliente).subscribe(
+        r => {
+          return r;
+        }
+      );
+    }
   }
 
   getTabelaHeaders() {

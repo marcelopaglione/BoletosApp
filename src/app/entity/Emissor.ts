@@ -1,5 +1,5 @@
 export class Emissor {
-  id: number;
+  id: string;
   nome: string;
   email: string;
   telefone: string;

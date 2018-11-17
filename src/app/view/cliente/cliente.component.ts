@@ -35,6 +35,7 @@ export class ClienteComponent implements OnInit {
       nome: [null, [Validators.required, Validators.min(3), Validators.max(25)]],
       email: [null, [Validators.email]],
       telefone: [null],
+      valor: [null, Validators.required],
       endereco: this.formBuilder.group({
         cep: [null, Validators.required],
         numero: [null, Validators.required],
@@ -48,6 +49,7 @@ export class ClienteComponent implements OnInit {
   }
 
   editar(c: Cliente) {
+    this.fg.reset();
     this.fg.patchValue(c);
   }
 

@@ -2,7 +2,7 @@ import { Cliente } from './Cliente';
 import { Emissor } from './Emissor';
 
 export class Boleto {
-  id: number;
+  id: string;
   cliente: Cliente;
   emissor: Emissor;
   parcelas: number;
