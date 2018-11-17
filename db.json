@@ -48,6 +48,76 @@
         }
       },
       "parcela": "12"
+    },
+    {
+      "id": 2,
+      "cliente": {
+        "id": 3,
+        "nome": "Produto do Amor Conjugal De Marichá E Maribel",
+        "email": "amor@conjugal.coms",
+        "telefone": "(44) 33223-4444",
+        "valor": "R$ 2400,00",
+        "endereco": {
+          "cep": "55789000",
+          "numero": "AA31",
+          "complemento": "",
+          "rua": "Rua Alberto Silva Costa",
+          "bairro": "Centro",
+          "cidade": "Faxinal da Cruz",
+          "estado": "ES"
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglionee",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "868280000",
+          "numero": "480",
+          "complemento": "Centro",
+          "rua": "Jose de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": "Uraí",
+          "estado": "PR"
+        }
+      },
+      "parcela": "12"
+    },
+    {
+      "id": 3,
+      "cliente": {
+        "id": 1,
+        "nome": "Giusefina dos Esmériosos",
+        "email": "giusefinaesmerios@gmail.com",
+        "telefone": "(44) 84848-1414",
+        "valor": "R$ 2500,00",
+        "endereco": {
+          "cep": "55789000",
+          "numero": "A40C",
+          "complemento": "",
+          "rua": "Rua Alberto Silva Costa",
+          "bairro": "Centro",
+          "cidade": "Faxinal da Cruz",
+          "estado": "ES"
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglionee",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "868280000",
+          "numero": "480",
+          "complemento": "Centro",
+          "rua": "Jose de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": "Uraí",
+          "estado": "PR"
+        }
+      },
+      "parcela": "12"
     }
   ],
   "cliente": [
@@ -56,6 +126,7 @@
       "nome": "Giusefina dos Esmériosos",
       "email": "giusefinaesmerios@gmail.com",
       "telefone": "(44) 84848-1414",
+      "valor": "R$ 2500,00",
       "endereco": {
         "cep": "55789000",
         "numero": "A40C",
@@ -87,6 +158,7 @@
       "nome": "Produto do Amor Conjugal De Marichá E Maribel",
       "email": "amor@conjugal.coms",
       "telefone": "(44) 33223-4444",
+      "valor": "R$ 2400,00",
       "endereco": {
         "cep": "55789000",
         "numero": "AA31",
@@ -102,6 +174,7 @@
       "nome": "Brunete Da Silva",
       "email": "brunete@silva.com",
       "telefone": "(43) 58585-9988",
+      "valor": "R$ 2422,00",
       "endereco": {
         "cep": "86825000",
         "numero": "ASJ2",
@@ -117,6 +190,7 @@
       "nome": "Brunete Da Silvaa",
       "email": "brunete@silva.com",
       "telefone": "(43) 58585-9988",
+      "valor": "R$ 2100,00",
       "endereco": {
         "cep": "86825000",
         "numero": "ASJ2",

@@ -17,10 +17,9 @@ import { EmissorService } from '../../service/emissor.service';
 })
 export class BoletoComponent implements OnInit {
 
-  boletos$: Observable<Boleto[]>;
-
-  clientes$: Observable<Cliente[]>;
-  emissor$: Observable<Emissor>;
+  boletos: Boleto[];
+  clientes: Cliente[] = [];
+  emissor: Emissor;
 
   headElements: string[];
   fg: FormGroup;
@@ -33,45 +32,43 @@ export class BoletoComponent implements OnInit {
     private messages: MessageService
   ) { }
 
-  findClienteById(id) {
-    // return this.clientes$.map(cliente => id === cliente.id);
-  }
-
   ngOnInit() {
-    this.headElements = this.boletoService.getTabelaHeaders();
-    this.boletos$ = this.boletoService.getBoletoList();
-    this.clientes$ = this.clienteService.getClienteList();
-    this.emissor$ = this.emissorService.getEmissor();
-
     this.fg = this.formBuilder.group({
       id: [null],
       cliente: [null, [Validators.required]],
       emissor: [null, [Validators.required]],
       parcela: [null, [Validators.required]]
     });
-  }
 
-  setdefaultValues() {
-    this.fg = this.formBuilder.group({
-      cliente: [this.clientes$[0]],
-      emissor: [this.emissor$]
+    this.headElements = this.boletoService.getTabelaHeaders();
+    this.boletoService.getBoletoList().subscribe(data => {
+      this.boletos = data;
+    });
+    this.clienteService.getClienteList().subscribe(data => {
+      this.clientes = data;
+      this.fg.patchValue({ cliente: this.clientes[0] });
+    });
+    this.emissorService.getEmissor().subscribe(data => {
+      this.emissor = data;
+      this.fg.patchValue({ emissor: data });
     });
   }
 
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
-}
+  }
 
-  editar(c: Cliente) {
+  editar(c: Boleto) {
     this.limparForm();
     this.fg.patchValue(c);
   }
 
   limparForm() {
     this.fg.reset();
+    this.fg.patchValue({ cliente: this.clientes[0], emissor: this.emissor });
   }
 
-  onSubmit () {
+  onSubmit() {
     if (this.fg.valid) {
       this.boletoService.setBoleto(this.fg.value);
       this.limparForm();
