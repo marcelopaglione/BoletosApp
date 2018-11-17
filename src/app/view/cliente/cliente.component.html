@@ -23,7 +23,7 @@
       <div formGroupName="endereco">
         <!-- cep -->
         <label for="cep">cep</label><br />
-        <input type="text" id="cep" placeholder="cep" formControlName="cep"><br />
+        <input type="text" id="cep" placeholder="cep" formControlName="cep" (blur)="consultaCEP()"><br />
         <!-- rua -->
         <label for="rua">rua</label><br />
         <input type="text" id="rua" placeholder="rua" formControlName="rua"><br />

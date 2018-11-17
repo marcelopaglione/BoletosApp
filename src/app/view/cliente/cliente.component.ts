@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { ClienteService } from '../../service/cliente.service';
 import { Cliente } from '../../entity/Cliente';
+import { ConsultaCepService } from '../../service/consulta-cep.service';
 
 @Component({
   selector: 'app-cliente',
@@ -20,7 +21,8 @@ export class ClienteComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private clienteService: ClienteService,
-    private messages: MessageService
+    private messages: MessageService,
+    private cepService: ConsultaCepService
   ) { }
 
   ngOnInit() {
@@ -51,6 +53,42 @@ export class ClienteComponent implements OnInit {
 
   limparForm() {
     this.fg.reset();
+  }
+
+  consultaCEP() {
+    const cep = this.fg.get('endereco.cep').value;
+
+    if (cep != null && cep !== '') {
+      this.resetaFormularioEndereco();
+      this.cepService.consultaCEP(cep)
+        .subscribe(dados => {
+          this.populaDadosEndereco(dados);
+        });
+    }
+  }
+
+  populaDadosEndereco(dados) {
+    this.fg.patchValue({
+      endereco: {
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    });
+  }
+
+  resetaFormularioEndereco() {
+    this.fg.patchValue({
+      endereco: {
+        rua: null,
+        complemento: null,
+        bairro: null,
+        cidade: null,
+        estado: null
+      }
+    });
   }
 
   editar(c: Cliente) {

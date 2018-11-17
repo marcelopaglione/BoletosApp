@@ -7,6 +7,7 @@ import { tap, map } from 'rxjs/operators';
 import { MessageService } from '../../service/message.service';
 import { DropdownService } from '../../service/dropdown.service';
 import { Estado } from '../../entity/Estado';
+import { ConsultaCepService } from '../../service/consulta-cep.service';
 
 @Component({
   selector: 'app-emissor',
@@ -19,7 +20,8 @@ export class EmissorComponent implements OnInit {
     private formBuilder: FormBuilder,
     private emissorService: EmissorService,
     private messages: MessageService,
-    private dropdownService: DropdownService
+    private dropdownService: DropdownService,
+    private cepService: ConsultaCepService
   ) { }
 
   fg: FormGroup;
@@ -59,6 +61,42 @@ export class EmissorComponent implements OnInit {
 
   updateValues(emissor: Emissor) {
     this.fg.patchValue(emissor);
+  }
+
+  consultaCEP() {
+    const cep = this.fg.get('endereco.cep').value;
+
+    if (cep != null && cep !== '') {
+      this.resetaFormularioEndereco();
+      this.cepService.consultaCEP(cep)
+        .subscribe(dados => {
+          this.populaDadosEndereco(dados);
+        });
+    }
+  }
+
+  populaDadosEndereco(dados) {
+    this.fg.patchValue({
+      endereco: {
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    });
+  }
+
+  resetaFormularioEndereco() {
+    this.fg.patchValue({
+      endereco: {
+        rua: null,
+        complemento: null,
+        bairro: null,
+        cidade: null,
+        estado: null
+      }
+    });
   }
 
   onSubmit() {
