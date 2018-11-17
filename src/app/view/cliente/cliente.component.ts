@@ -125,6 +125,11 @@ export class ClienteComponent implements OnInit {
   editar(c: Cliente) {
     this.fg.reset();
     this.fg.patchValue(c);
+    const estadoDoCliente: Estado = this.fg.get('endereco.estado').value;
+    if (estadoDoCliente) {
+      this.messages.add('Carregar Cidades para o estado do emissor: ' + JSON.stringify(estadoDoCliente));
+      this.loadCidades();
+    }
   }
 
   delete(id) {

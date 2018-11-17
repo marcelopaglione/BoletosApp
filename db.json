@@ -24,21 +24,29 @@
   },
   "boleto": [
     {
-      "id": 3,
+      "id": 2,
       "cliente": {
-        "id": 1,
-        "nome": "Giusefina dos Esmériosos",
-        "email": "giusefinaesmerios@gmail.com",
-        "telefone": "(44) 84848-1414",
-        "valor": "R$ 2500,00",
+        "id": 6,
+        "nome": "Céu Azul Do Sol Poente",
+        "email": "ceu.azul@gmail.com",
+        "telefone": "(55)41415-1355",
+        "valor": "R$ 1800,00",
         "endereco": {
-          "cep": "55789000",
-          "numero": "A40C",
+          "cep": "86280000",
+          "numero": "123",
           "complemento": "",
-          "rua": "Rua Alberto Silva Costa",
+          "rua": "Rua A",
           "bairro": "Centro",
-          "cidade": "Faxinal da Cruz",
-          "estado": "ES"
+          "cidade": {
+            "id": "703",
+            "nome": "Alcântaras",
+            "estado": "6"
+          },
+          "estado": {
+            "id": "6",
+            "sigla": "CE",
+            "nome": "Ceará"
+          }
         }
       },
       "emissor": {
@@ -47,35 +55,78 @@
         "email": "marcelo.paglione@gmail.com",
         "telefone": "(43) 999176376",
         "endereco": {
-          "cep": "868280000",
+          "cep": "86280000",
           "numero": "480",
-          "complemento": "Centro",
-          "rua": "Jose de Oliveira Borges",
+          "complemento": "",
+          "rua": "José de Oliveira Borges",
           "bairro": "Centro",
-          "cidade": "Uraí",
-          "estado": "PR"
+          "cidade": {
+            "id": "3175",
+            "nome": "Uraí",
+            "estado": "18"
+          },
+          "estado": {
+            "id": "18",
+            "sigla": "PR",
+            "nome": "Paraná"
+          }
+        }
+      },
+      "parcela": "12"
+    },
+    {
+      "id": 3,
+      "cliente": {
+        "id": 7,
+        "nome": "Simplício Simplório Da Simplicidade Simples",
+        "email": "simples.assim@gmail.com",
+        "telefone": "(43)8585-6699",
+        "valor": "R$ 180,00",
+        "endereco": {
+          "cep": "86025000",
+          "numero": "587",
+          "complemento": "de 495/496 ao fim",
+          "rua": "Rua Guaporé",
+          "bairro": "Jardim Palmares",
+          "cidade": {
+            "id": "2423",
+            "nome": "Alenquer",
+            "estado": "14"
+          },
+          "estado": {
+            "id": "14",
+            "sigla": "PA",
+            "nome": "Pará"
+          }
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglionee",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "86280000",
+          "numero": "480",
+          "complemento": "",
+          "rua": "José de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": {
+            "id": "3175",
+            "nome": "Uraí",
+            "estado": "18"
+          },
+          "estado": {
+            "id": "18",
+            "sigla": "PR",
+            "nome": "Paraná"
+          }
         }
       },
       "parcela": "12"
     }
   ],
   "cliente": [
-    {
-      "id": 5,
-      "nome": "Brunete Da Silvaa",
-      "email": "brunete@silva.com",
-      "telefone": "(43) 58585-9988",
-      "valor": "R$ 2100,00",
-      "endereco": {
-        "cep": "86825000",
-        "numero": "ASJ2",
-        "complemento": "",
-        "rua": "Rua A",
-        "bairro": "Centro",
-        "cidade": "Urai",
-        "estado": "PR"
-      }
-    },
     {
       "id": 6,
       "nome": "Céu Azul Do Sol Poente",
@@ -88,8 +139,16 @@
         "complemento": "",
         "rua": "Rua A",
         "bairro": "Centro",
-        "cidade": "Uraí",
-        "estado": "AM"
+        "cidade": {
+          "id": "703",
+          "nome": "Alcântaras",
+          "estado": "6"
+        },
+        "estado": {
+          "id": "6",
+          "sigla": "CE",
+          "nome": "Ceará"
+        }
       }
     },
     {
@@ -104,8 +163,16 @@
         "complemento": "de 495/496 ao fim",
         "rua": "Rua Guaporé",
         "bairro": "Jardim Palmares",
-        "cidade": "2976",
-        "estado": "18"
+        "cidade": {
+          "id": "2423",
+          "nome": "Alenquer",
+          "estado": "14"
+        },
+        "estado": {
+          "id": "14",
+          "sigla": "PA",
+          "nome": "Pará"
+        }
       }
     }
   ],

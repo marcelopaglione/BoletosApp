@@ -73,11 +73,11 @@
       <td> {{c.nome}} </td>
       <td> {{c.email}} </td>
       <td> {{c.telefone}} </td>
+      <td> {{c.valor}} </td>
       <td> {{c.endereco.cep}} </td>
       <td> {{c.endereco.rua}} </td>
       <td> {{c.endereco.numero}} </td>
-      <td> {{c.endereco.cidade}} </td>
-      <td> {{c.valor}} </td>
+      <td> {{c.endereco.cidade.nome}} - {{c.endereco.estado.sigla}}</td>
       <td> <button (click)="delete(c.id)">deletar</button> | <button (click)="editar(c)"> editar</button></td>
     </tr>
   </tbody>

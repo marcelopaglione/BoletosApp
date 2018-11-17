@@ -37,11 +37,11 @@ export class ClienteService {
       'Nome',
       'Email',
       'Telefone',
+      'Valor do Aluguel',
       'Cep',
       'Rua',
-      'Numero',
+      'Número',
       'Cidade',
-      'Valor',
       'Ações'
     ];
   }
