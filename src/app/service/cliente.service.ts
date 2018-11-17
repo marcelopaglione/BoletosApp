@@ -16,21 +16,18 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.API);
   }
 
+  public deleteById(id){
+    this.messages.add(`API: ${this.API}/${id} - DELETE`);
+    return this.http.delete(`${this.API}/${id}`);
+  }
+
   public setCliente(cliente: Cliente) {
     if (cliente.id == null) {
       this.messages.add(`${this.API}- POST: ' + ${JSON.stringify(cliente)}`);
-      this.http.post(`${this.API}`, cliente).subscribe(
-        r => {
-          return r;
-        }
-      );
+      return this.http.post(`${this.API}`, cliente);
     } else {
       this.messages.add(`${this.API}/${cliente.id} - PUT: ' + ${JSON.stringify(cliente)}`);
-      this.http.put(`${this.API}/${cliente.id}`, cliente).subscribe(
-        r => {
-          return r;
-        }
-      );
+      return this.http.put(`${this.API}/${cliente.id}`, cliente);
     }
   }
 

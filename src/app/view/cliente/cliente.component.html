@@ -2,48 +2,57 @@
 <hr>
 <h3>Administrar Cliente</h3>
 <hr>
-<form [formGroup]="fg" (ngSubmit)="onSubmit()">
 
-  <label for="Name">Nome</label><br />
-  <input type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
-  <!-- Email -->
-  <label for="Email">Email</label><br />
-  <input type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
-  <!-- Telefone -->
-  <label for="Telefone">Telefone</label><br />
-  <input type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
+<div class="container">
+  <div class="container-inside">
+    <form [formGroup]="fg" (ngSubmit)="onSubmit()">
 
-  <!-- Telefone -->
-  <label for="valor">Valor</label><br />
-  <input type="text" id="valor" placeholder="valor" formControlName="valor"><br />
+      <label for="Name">Nome</label><br />
+      <input type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
+      <!-- Email -->
+      <label for="Email">Email</label><br />
+      <input type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
+      <!-- Telefone -->
+      <label for="Telefone">Telefone</label><br />
+      <input type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
 
-  <div formGroupName="endereco">
-    <!-- cep -->
-    <label for="cep">cep</label><br />
-    <input type="text" id="cep" placeholder="cep" formControlName="cep"><br />
-    <!-- rua -->
-    <label for="rua">rua</label><br />
-    <input type="text" id="rua" placeholder="rua" formControlName="rua"><br />
-    <!-- numero -->
-    <label for="numero">Número</label><br />
-    <input type="text" id="numero" placeholder="numero" formControlName="numero"><br />
-    <!-- bairro -->
-    <label for="bairro">bairro</label><br />
-    <input type="text" id="bairro" placeholder="bairro" formControlName="bairro"><br />
-    <!-- complemento -->
-    <label for="complemento">complemento</label><br />
-    <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
-    <!-- cidade -->
-    <label for="cidade">cidade</label><br />
-    <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br />
-    <!-- estado -->
-    <label for="estado">estado</label><br />
-    <input type="text" id="estado" placeholder="estado" formControlName="estado"><br />
+      <!-- Telefone -->
+      <label for="valor">Valor</label><br />
+      <input type="text" id="valor" placeholder="valor" formControlName="valor"><br />
 
-    <button type="submit">Submit</button>
+      <div formGroupName="endereco">
+        <!-- cep -->
+        <label for="cep">cep</label><br />
+        <input type="text" id="cep" placeholder="cep" formControlName="cep"><br />
+        <!-- rua -->
+        <label for="rua">rua</label><br />
+        <input type="text" id="rua" placeholder="rua" formControlName="rua"><br />
+        <!-- numero -->
+        <label for="numero">Número</label><br />
+        <input type="text" id="numero" placeholder="numero" formControlName="numero"><br />
+        <!-- bairro -->
+        <label for="bairro">bairro</label><br />
+        <input type="text" id="bairro" placeholder="bairro" formControlName="bairro"><br />
+        <!-- complemento -->
+        <label for="complemento">complemento</label><br />
+        <input type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
+        <!-- cidade -->
+        <label for="cidade">cidade</label><br />
+        <input type="text" id="cidade" placeholder="cidade" formControlName="cidade"><br />
+        <!-- estado -->
+        <label for="estado">estado</label><br />
+        <input type="text" id="estado" placeholder="estado" formControlName="estado"><br />
+
+        <button type="submit">Submit</button>
+        <button type="text" (click)="limparForm()"> Cancelar </button>
+      </div>
+
+    </form>
   </div>
-
-</form>
+  <div class="container-inside">
+    <app-form-debug [form]="fg"></app-form-debug>
+  </div>
+</div>
 <hr>
 <h3>Lista Clientes</h3>
 <hr>
@@ -64,7 +73,7 @@
       <td> {{c.endereco.numero}} </td>
       <td> {{c.endereco.cidade}} </td>
       <td> {{c.valor}} </td>
-      <td> <a>deletar</a> | <button (click)="editar(c)"> editar</button></td>
+      <td> <button (click)="delete(c.id)">deletar</button> | <button (click)="editar(c)"> editar</button></td>
     </tr>
   </tbody>
 </table>

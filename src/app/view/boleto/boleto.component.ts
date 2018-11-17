@@ -51,7 +51,6 @@ export class BoletoComponent implements OnInit {
     });
     this.clienteService.getClienteList().subscribe(data => {
       this.clientes = data;
-      this.fg.patchValue({ cliente: this.clientes[0] });
     });
     this.emissorService.getEmissor().subscribe(data => {
       this.emissor = data;
@@ -66,16 +65,6 @@ export class BoletoComponent implements OnInit {
   editar(c: Boleto) {
     this.limparForm();
     this.fg.patchValue(c);
-  }
-
-  delete(id) {
-    this.boletoService.deleteById(id).pipe(
-      tap(_ => {
-        console.log(`deleted product id=${id}`);
-        this.initializePageData();
-      }),
-      catchError(this.handleError<any>('deleteProduct'))
-    ).subscribe();
   }
 
   handleError<T>(operation = 'operation', result?: T) {
@@ -94,19 +83,28 @@ export class BoletoComponent implements OnInit {
 
   limparForm() {
     this.fg.reset();
-    this.fg.patchValue({ cliente: this.clientes[0], emissor: this.emissor });
+    this.fg.patchValue({ emissor: this.emissor });
+  }
+
+  delete(id) {
+    this.boletoService.deleteById(id).pipe(
+      tap(_ => {
+        this.messages.add(`deleted id=${id}`);
+        this.initializePageData();
+      }),
+      catchError(this.handleError<any>('delete'))
+    ).subscribe();
   }
 
   onSubmit() {
     if (this.fg.valid) {
       this.boletoService.setBoleto(this.fg.value).pipe(
         tap(_ => {
-          console.log(`updated ${this.fg.value}`);
+          this.messages.add(`updated ${JSON.stringify(this.fg.value)}`);
           this.initializePageData();
         }),
-        catchError(this.handleError<any>('updateProduct'))
+        catchError(this.handleError<any>('update'))
       ).subscribe();
-
     } else {
       this.messages.add('Invalid boleto form: ' + JSON.stringify(this.fg.value));
     }
