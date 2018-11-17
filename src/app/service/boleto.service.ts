@@ -19,22 +19,19 @@ export class BoletoService {
     return this.http.get<Boleto[]>(this.API);
   }
 
+  public deleteById(id){
+    this.messages.add(`API: ${this.API}/${id} - DELETE`);
+    return this.http.delete(`${this.API}/${id}`);
+  }
+
   public setBoleto(boleto: Boleto) {
     if (boleto.id == null) {
       console.log(boleto);
       this.messages.add(`${this.API} - POST: ' + ${JSON.stringify(boleto)}`);
-      this.http.post(`${this.API}`, boleto).subscribe(
-        r => {
-          return r;
-        }
-      );
+      return this.http.post(`${this.API}`, boleto);
     } else {
       this.messages.add(`${this.API}/${boleto.id} - PUT: ' + ${JSON.stringify(boleto)}`);
-      this.http.put(`${this.API}/${boleto.id}`, boleto).subscribe(
-        r => {
-          return r;
-        }
-      );
+      return this.http.put(`${this.API}/${boleto.id}`, boleto);
     }
   }
 

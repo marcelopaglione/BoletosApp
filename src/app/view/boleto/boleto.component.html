@@ -32,6 +32,7 @@
 <hr>
 <h3>Lista Boletoss</h3>
 <hr>
+
 <table *ngIf="boletos; else loading">
   <thead>
     <tr>
@@ -43,9 +44,9 @@
       <td> {{b.id}} </td>
       <td> {{b.cliente.nome}} </td>
       <td> {{b.emissor.nome}} </td>
-      <td> {{b.id}} </td>
+      <td> {{b.cliente.valor}} </td>
       <td> {{b.parcelas}} </td>
-      <td> <a>deletar</a> | <button (click)="editar(b)"> editar</button></td>
+      <td> <button (click)="delete(b.id)">deletar</button> | <button (click)="editar(b)"> editar</button></td>
     </tr>
   </tbody>
 </table>

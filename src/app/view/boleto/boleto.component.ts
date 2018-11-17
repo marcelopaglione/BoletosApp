@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '../../service/message.service';
-import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { tap, map, catchError } from 'rxjs/operators';
 import { ClienteService } from '../../service/cliente.service';
 import { Cliente } from '../../entity/Cliente';
 import { Boleto } from '../../entity/Boleto';
@@ -40,6 +40,11 @@ export class BoletoComponent implements OnInit {
       parcela: [null, [Validators.required]]
     });
 
+    this.initializePageData();
+  }
+
+  initializePageData() {
+    this.limparForm();
     this.headElements = this.boletoService.getTabelaHeaders();
     this.boletoService.getBoletoList().subscribe(data => {
       this.boletos = data;
@@ -63,6 +68,30 @@ export class BoletoComponent implements OnInit {
     this.fg.patchValue(c);
   }
 
+  delete(id) {
+    this.boletoService.deleteById(id).pipe(
+      tap(_ => {
+        console.log(`deleted product id=${id}`);
+        this.initializePageData();
+      }),
+      catchError(this.handleError<any>('deleteProduct'))
+    ).subscribe();
+  }
+
+  handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
   limparForm() {
     this.fg.reset();
     this.fg.patchValue({ cliente: this.clientes[0], emissor: this.emissor });
@@ -70,8 +99,14 @@ export class BoletoComponent implements OnInit {
 
   onSubmit() {
     if (this.fg.valid) {
-      this.boletoService.setBoleto(this.fg.value);
-      this.limparForm();
+      this.boletoService.setBoleto(this.fg.value).pipe(
+        tap(_ => {
+          console.log(`updated ${this.fg.value}`);
+          this.initializePageData();
+        }),
+        catchError(this.handleError<any>('updateProduct'))
+      ).subscribe();
+
     } else {
       this.messages.add('Invalid boleto form: ' + JSON.stringify(this.fg.value));
     }

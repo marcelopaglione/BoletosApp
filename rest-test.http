@@ -1,5 +1,6 @@
-http://localhost:3000/boleto/1
+GET http://localhost:3000/boleto/1
 
+#DELETE http://localhost:3000/boleto/1
 
 #POST http://localhost:3000/emissor HTTP/1.1
 #content-type: application/json
