@@ -11,6 +11,7 @@ import { Emissor } from 'src/app/entity/Emissor';
 import { EmissorService } from '../../service/emissor.service';
 import { ConfigService } from '../../service/config.service';
 import { Config } from 'src/app/entity/Config';
+import { format } from 'libphonenumber-js';
 
 @Component({
   selector: 'app-boleto',
@@ -46,7 +47,8 @@ export class BoletoComponent implements OnInit {
       id: [null],
       cliente: [null, [Validators.required]],
       emissor: [null, [Validators.required]],
-      parcela: [null, [Validators.required]]
+      parcela: [null, [Validators.required]],
+      dataPrimeiraParcela: [null, Validators.required]
     });
 
     this.initializePageData();
@@ -93,7 +95,12 @@ export class BoletoComponent implements OnInit {
   limparForm() {
     this.fg.reset();
     this.fg.patchValue({ emissor: this.emissor });
-    this.configService.getConfig().subscribe(data => this.fg.patchValue({ parcela: data.parcelas }));
+    this.configService.getConfig().subscribe(data => {
+      this.fg.patchValue({ parcela: data.parcelas });
+      if (data.currentdate) {
+        this.fg.patchValue({ dataPrimeiraParcela: new Date().toLocaleString().slice(0, 10) });
+      }
+    });
   }
 
   delete(id) {
@@ -104,6 +111,20 @@ export class BoletoComponent implements OnInit {
       }),
       catchError(this.handleError<any>('delete'))
     ).subscribe();
+  }
+
+  verificaValidacoesForm(form: FormGroup) {
+    Object.keys(form.controls).forEach(campo => {
+      const controle = form.get(campo);
+      controle.markAsTouched();
+      if (controle instanceof FormGroup) {
+        this.verificaValidacoesForm(controle);
+      }
+    });
+  }
+
+  verificaValidTouched(campo: string) {
+    return !this.fg.get(campo).valid && this.fg.get(campo).touched;
   }
 
   onSubmit() {

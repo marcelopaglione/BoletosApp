@@ -42,6 +42,7 @@ export class BoletoService {
       'Emissor',
       'Valor',
       'Parcelas',
+      'Data Primeira Parcela',
       'Ações'
     ];
   }

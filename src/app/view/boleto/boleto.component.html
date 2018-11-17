@@ -16,9 +16,15 @@
           <option *ngFor="let cliente of clientes" [(ngValue)]="cliente"> {{cliente.nome}} </option>
         </select>
       </div>
+      <app-error-control [mostrarErro]="verificaValidTouched('cliente')" msgErro="cliente é obrigatório."></app-error-control>
+
+      <label for="dataPrimeiraParcela">Data Primeira Parcela</label><br />
+      <input type="text" id="dataPrimeiraParcela" placeholder="15/04/2020" formControlName="dataPrimeiraParcela"><br />
+      <app-error-control [mostrarErro]="verificaValidTouched('dataPrimeiraParcela')" msgErro="Data da primeira parcela é obrigatório."></app-error-control>
 
       <label for="parcela">quantidade de parcelas</label><br />
       <input type="text" id="parcela" placeholder="parcela" formControlName="parcela"><br />
+      <app-error-control [mostrarErro]="verificaValidTouched('parcela')" msgErro="Quantidade de parcelas é obrigatório."></app-error-control>
 
       <button type="submit">Submit</button>
       <button type="text" (click)="limparForm()"> Cancelar </button>
@@ -45,7 +51,8 @@
       <td> {{b.cliente.nome}} </td>
       <td> {{b.emissor.nome}} </td>
       <td> {{b.cliente.valor}} </td>
-      <td> {{b.parcelas}} </td>
+      <td> {{b.dataPrimeiraParcela}} </td>
+      <td> {{b.parcela | currency:'BRL'}} </td>
       <td> <button (click)="delete(b.id)">deletar</button> | <button (click)="editar(b)"> editar</button></td>
     </tr>
   </tbody>

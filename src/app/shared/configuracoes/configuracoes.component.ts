@@ -24,7 +24,8 @@ export class ConfiguracoesComponent implements OnInit {
     this.messages.add('*** Página Config.Componenet aberta ***');
 
     this.fg = this.formBuilder.group({
-      parcelas: [null, [Validators.required]]
+      parcelas: [null, [Validators.required]],
+      currentdate: [null, [Validators.required]]
     });
 
     this.configService.getConfig().subscribe(data => {

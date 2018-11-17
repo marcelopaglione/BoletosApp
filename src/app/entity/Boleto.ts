@@ -5,5 +5,6 @@ export class Boleto {
   id: string;
   cliente: Cliente;
   emissor: Emissor;
-  parcelas: number;
+  parcela: number;
+  dataPrimeiraParcela: string;
 }
