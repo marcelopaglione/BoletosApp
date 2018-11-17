@@ -9,6 +9,8 @@ import { Boleto } from '../../entity/Boleto';
 import { BoletoService } from '../../service/boleto.service';
 import { Emissor } from 'src/app/entity/Emissor';
 import { EmissorService } from '../../service/emissor.service';
+import { ConfigService } from '../../service/config.service';
+import { Config } from 'src/app/entity/Config';
 
 @Component({
   selector: 'app-boleto',
@@ -20,6 +22,7 @@ export class BoletoComponent implements OnInit {
   boletos: Boleto[];
   clientes: Cliente[] = [];
   emissor: Emissor;
+  prefferedConfig: Config;
 
   headElements: string[];
   fg: FormGroup;
@@ -29,12 +32,16 @@ export class BoletoComponent implements OnInit {
     private boletoService: BoletoService,
     private clienteService: ClienteService,
     private emissorService: EmissorService,
-    private messages: MessageService
+    private messages: MessageService,
+    private configService: ConfigService
   ) { }
 
   ngOnInit() {
     this.messages.add('*** Página Boleto.Componenet aberta ***');
-
+    this.configService.getConfig().subscribe(data => {
+      this.prefferedConfig = data;
+      this.fg.patchValue({ parcela: data.parcelas });
+    });
     this.fg = this.formBuilder.group({
       id: [null],
       cliente: [null, [Validators.required]],
@@ -65,7 +72,7 @@ export class BoletoComponent implements OnInit {
   }
 
   editar(c: Boleto) {
-    this.limparForm();
+    this.messages.add('Editar: ' + JSON.stringify(c));
     this.fg.patchValue(c);
   }
 
@@ -86,6 +93,7 @@ export class BoletoComponent implements OnInit {
   limparForm() {
     this.fg.reset();
     this.fg.patchValue({ emissor: this.emissor });
+    this.configService.getConfig().subscribe(data => this.fg.patchValue({ parcela: data.parcelas }));
   }
 
   delete(id) {

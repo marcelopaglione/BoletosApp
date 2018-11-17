@@ -1,3 +1,3 @@
 export class Config {
-  Parcelas: number;
+  parcelas: number;
 }
