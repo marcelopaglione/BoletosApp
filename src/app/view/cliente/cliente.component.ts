@@ -1,15 +1,11 @@
 import { Component, OnInit, PipeTransform } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '../../service/message.service';
 import { Observable, of } from 'rxjs';
-import { tap, map, catchError } from 'rxjs/operators';
+import { tap, catchError, map } from 'rxjs/operators';
 import { ClienteService } from '../../service/cliente.service';
 import { Cliente } from '../../entity/Cliente';
-import { ConsultaCepService } from '../../service/consulta-cep.service';
-import { Estado } from '../../entity/Estado';
-import { DropdownService } from '../../service/dropdown.service';
-import { Cidade } from '../../entity/Cidade';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { ClienteDetailComponent } from '../cliente-detail/cliente-detail.component';
 
 @Component({
   selector: 'app-cliente',
@@ -18,127 +14,52 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ClienteComponent implements OnInit {
 
-  clientes$: Observable<Cliente[]>;
-  estados$: Observable<Estado[]>;
-  cidades$: Observable<Cidade[]>;
+  clientes$: Cliente[];
   headElements: string[] = this.clienteService.getTabelaHeaders();
-  fg: FormGroup;
+
   panelOpenState = false;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private clienteService: ClienteService,
     private messages: MessageService,
-    private cepService: ConsultaCepService,
-    private dropdownService: DropdownService,
-    public snackBar: MatSnackBar
+    private clienteService: ClienteService,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
   ngOnInit() {
     this.messages.add('*** Página Cliente.Componenet aberta ***');
-
-    this.estados$ = this.dropdownService.getEstadosBr();
-
-    this.fg = this.formBuilder.group({
-      id: [null],
-      nome: [null, [Validators.required, Validators.min(3), Validators.max(25)]],
-      email: [null, [Validators.email]],
-      telefone: [null],
-      valor: [null, Validators.required],
-      endereco: this.formBuilder.group({
-        cep: [null, Validators.required],
-        numero: [null, Validators.required],
-        complemento: [null],
-        rua: [null, Validators.required],
-        bairro: [null, Validators.required],
-        cidade: [null, Validators.required],
-        estado: [null, Validators.required]
-      })
-    });
-    this.initializePageData();
+    this.setClientList();
   }
 
-  loadCidades() {
-    this.messages.add('Load Cidades triggerd');
-    this.cidades$ = this.dropdownService.getCidadesByEstadoId(this.fg.get('endereco.estado').value.id);
-  }
-
-  initializePageData(): any {
-    this.limparForm();
-    this.clientes$ = this.clienteService.getClienteList();
-  }
-
-  limparForm() {
-    this.fg.reset();
-  }
-
-  consultaCEP() {
-    const cep = this.fg.get('endereco.cep').value;
-
-    if (cep != null && cep !== '') {
-      this.resetaFormularioEndereco();
-      this.cepService.consultaCEP(cep)
-        .subscribe(dados => {
-          const cepfound: any = dados;
-          if (cepfound.erro) {
-            this.messages.add(`CEP ${cep} NOT Found`);
-          } else {
-            this.populaDadosEndereco(cepfound);
-          }
-        });
-    }
-  }
-
-  // sorry for this ugly method, but it is working so far =(
-  populaDadosEndereco(dados) {
-    this.dropdownService.getEstadosByUf(dados.uf).subscribe(
-      estadoEscolhido => {
-        this.messages.add('estado escolhida ' + JSON.stringify(estadoEscolhido));
-        this.fg.patchValue({
-          endereco: {
-            rua: dados.logradouro,
-            complemento: dados.complemento,
-            bairro: dados.bairro,
-            estado: estadoEscolhido[0]
-          }
-        });
-        this.dropdownService.getCidadesByName(dados.localidade).subscribe(
-          cidadeEscolhida => {
-            this.messages.add('cidade escolhida ' + JSON.stringify(cidadeEscolhida));
-            this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
-            this.fg.patchValue({ endereco: { cidade: cidadeEscolhida[0] } });
-          }
-        );
-      }
-    );
-  }
-
-  resetaFormularioEndereco() {
-    this.fg.patchValue({
-      endereco: {
-        rua: null,
-        complemento: null,
-        bairro: null,
-        cidade: null,
-        estado: null,
-        numero: null
-      }
+  setClientList() {
+    this.clienteService.getClienteList().subscribe(data => {
+      this.clientes$ = data;
     });
   }
 
   editar(c: Cliente) {
-    this.fg.reset();
+    /*this.fg.reset();
     this.fg.patchValue(c);
     const estadoDoCliente: Estado = this.fg.get('endereco.estado').value;
     if (estadoDoCliente) {
       this.messages.add('Carregar Cidades para o estado do emissor: ' + JSON.stringify(estadoDoCliente));
       this.loadCidades();
-    }
+    }*/
   }
 
-  delete(id) {
+  openDetails(clientEscolhido) {
+    const dialogRef = this.dialog.open(ClienteDetailComponent, {
+      width: '720px',
+      data: clientEscolhido
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.clienteService.getClienteList();
+      console.log('The dialog was closed');
+    });
+  }
+
+  delete(id, event) {
     this.messages.add('Perguntando para o user se ele tem certeza da besteira que ele está prestes a fazer: deletar cliente id ' + id);
     this.snackBar.open(`Você realmente deseja deletar cliente com ID ${id} ?`, 'SIM Eu quero!', {
       duration: 5000
@@ -147,26 +68,18 @@ export class ClienteComponent implements OnInit {
       this.clienteService.deleteById(id).pipe(
         tap(_ => {
           this.messages.add(`deleted id=${id}`);
-          this.initializePageData();
+          this.setClientList();
+          event.preventDefault();
+          event.stopPropagation();
         }),
         catchError(this.handleError<any>('delete'))
-      ).subscribe();
+      ).subscribe(data => {
+        event.preventDefault();
+        event.stopPropagation();
+      });
     });
-  }
-
-  onSubmit() {
-    if (this.fg.valid) {
-      this.clienteService.setCliente(this.fg.value).pipe(
-        tap(_ => {
-          this.messages.add(`updated ${JSON.stringify(this.fg.value)}`);
-          this.initializePageData();
-        }),
-        catchError(this.handleError<any>('update'))
-      ).subscribe();
-    } else {
-      this.messages.add('Invalid cliente form: ' + JSON.stringify(this.fg.value));
-      this.verificaValidacoesForm(this.fg);
-    }
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   handleError<T>(operation = 'operation', result?: T) {
@@ -181,31 +94,6 @@ export class ClienteComponent implements OnInit {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  verificaValidacoesForm(form: FormGroup) {
-    Object.keys(form.controls).forEach(campo => {
-      const controle = form.get(campo);
-      controle.markAsTouched();
-      if (controle instanceof FormGroup) {
-        this.verificaValidacoesForm(controle);
-      }
-    });
-  }
-
-  verificaValidTouched(campo: string) {
-    return !this.fg.get(campo).valid && this.fg.get(campo).touched;
-  }
-
-  verificaEmailInvalid() {
-    const campoEmail = this.fg.get('email');
-    if (campoEmail.errors) {
-      return campoEmail.errors['email'];
-    }
-  }
-
-  compareFn(c1: any, c2: any): boolean {
-    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
 }
