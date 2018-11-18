@@ -31,6 +31,7 @@ export class ClienteDetailComponent implements OnInit {
   cidades$: Observable<Cidade[]>;
 
   ngOnInit() {
+    this.messages.add('Load Client-detail-component');
 
     this.estados$ = this.dropdownService.getEstadosBr();
     this.fg = this.formBuilder.group({
@@ -51,6 +52,17 @@ export class ClienteDetailComponent implements OnInit {
     });
 
     this.limparForm();
+
+    if (this.data) {
+      this.messages.add('Income data: ' + JSON.stringify(this.data));
+      const cliente = this.data;
+      this.fg.patchValue(cliente);
+      const estadoDoCliente: Estado = this.fg.get('endereco.estado').value;
+      if (estadoDoCliente) {
+        this.messages.add('Carregar Cidades para o estado do emissor: ' + JSON.stringify(estadoDoCliente));
+        this.loadCidades();
+      }
+    }
   }
 
   onSubmit(event: Event) {

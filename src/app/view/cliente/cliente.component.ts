@@ -38,13 +38,17 @@ export class ClienteComponent implements OnInit {
   }
 
   editar(c: Cliente) {
-    /*this.fg.reset();
-    this.fg.patchValue(c);
-    const estadoDoCliente: Estado = this.fg.get('endereco.estado').value;
-    if (estadoDoCliente) {
-      this.messages.add('Carregar Cidades para o estado do emissor: ' + JSON.stringify(estadoDoCliente));
-      this.loadCidades();
-    }*/
+    const dialogRef = this.dialog.open(ClienteDetailComponent, {
+      width: '720px',
+      data: c
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.clienteService.getClienteList().subscribe(data => {
+        this.clientes$ = data;
+      });
+      console.log('The dialog was closed');
+    });
   }
 
   openDetails(clientEscolhido) {
@@ -54,7 +58,9 @@ export class ClienteComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.clienteService.getClienteList();
+      this.clienteService.getClienteList().subscribe(data => {
+        this.clientes$ = data;
+      });
       console.log('The dialog was closed');
     });
   }
