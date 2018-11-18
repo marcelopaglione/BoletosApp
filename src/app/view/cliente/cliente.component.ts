@@ -54,7 +54,6 @@ export class ClienteComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.clienteService.getClienteList();
       console.log('The dialog was closed');
     });
   }
