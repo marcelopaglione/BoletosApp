@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { of } from 'rxjs';
 export class ConsultaCepService {
 
   consultaCEP(cep: string) {
-    console.log('Consulta CEP: ' + cep);
+    this.messages.add('ConsultaCepService - Consulta CEP: ' + cep);
     // Remove o que não é dígito
     cep = cep.replace(/\D/g, '');
 
@@ -22,10 +23,11 @@ export class ConsultaCepService {
       }
 
     }
-    return of ({});
+    return of({});
   }
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private messages: MessageService
   ) { }
 }

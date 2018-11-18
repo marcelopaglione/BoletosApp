@@ -81,10 +81,11 @@ export class ClienteComponent implements OnInit {
       this.resetaFormularioEndereco();
       this.cepService.consultaCEP(cep)
         .subscribe(dados => {
-          if (dados.erro) {
+          const cepfound: any = dados;
+          if (cepfound.erro) {
             this.messages.add(`CEP ${cep} NOT Found`);
           } else {
-            this.populaDadosEndereco(dados);
+            this.populaDadosEndereco(cepfound);
           }
         });
     }

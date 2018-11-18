@@ -9,6 +9,7 @@ import { DropdownService } from '../../service/dropdown.service';
 import { Estado } from '../../entity/Estado';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { Cidade } from '../../entity/Cidade';
+import { Cep } from '../../entity/Cep';
 
 @Component({
   selector: 'app-emissor',
@@ -82,10 +83,11 @@ export class EmissorComponent implements OnInit {
       this.resetaFormularioEndereco();
       this.cepService.consultaCEP(cep)
         .subscribe(dados => {
-          if (dados.erro) {
+          const cepfound: any = dados;
+          if (cepfound.erro) {
             this.messages.add(`CEP ${cep} NOT Found`);
           } else {
-            this.populaDadosEndereco(dados);
+            this.populaDadosEndereco(cepfound);
           }
         });
     }
