@@ -9,6 +9,7 @@ import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { Estado } from '../../entity/Estado';
 import { DropdownService } from '../../service/dropdown.service';
 import { Cidade } from '../../entity/Cidade';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-cliente',
@@ -20,16 +21,20 @@ export class ClienteComponent implements OnInit {
   clientes$: Observable<Cliente[]>;
   estados$: Observable<Estado[]>;
   cidades$: Observable<Cidade[]>;
-  headElements;
+  headElements: string[] = this.clienteService.getTabelaHeaders();
   fg: FormGroup;
+  panelOpenState = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private clienteService: ClienteService,
     private messages: MessageService,
     private cepService: ConsultaCepService,
-    private dropdownService: DropdownService
+    private dropdownService: DropdownService,
+    public snackBar: MatSnackBar
   ) { }
+
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
   ngOnInit() {
     this.messages.add('*** Página Cliente.Componenet aberta ***');
@@ -56,12 +61,12 @@ export class ClienteComponent implements OnInit {
   }
 
   loadCidades() {
+    this.messages.add('Load Cidades triggerd');
     this.cidades$ = this.dropdownService.getCidadesByEstadoId(this.fg.get('endereco.estado').value.id);
   }
 
   initializePageData(): any {
     this.limparForm();
-    this.headElements = this.clienteService.getTabelaHeaders();
     this.clientes$ = this.clienteService.getClienteList();
   }
 
@@ -133,13 +138,19 @@ export class ClienteComponent implements OnInit {
   }
 
   delete(id) {
-    this.clienteService.deleteById(id).pipe(
-      tap(_ => {
-        this.messages.add(`deleted id=${id}`);
-        this.initializePageData();
-      }),
-      catchError(this.handleError<any>('delete'))
-    ).subscribe();
+    this.messages.add('Perguntando para o user se ele tem certeza da besteira que ele está prestes a fazer: deletar cliente id ' + id);
+    this.snackBar.open(`Você realmente deseja deletar cliente com ID ${id} ?`, 'SIM Eu quero!', {
+      duration: 5000
+    }).onAction().subscribe(data => {
+      this.messages.add('Já era!, cliente confirmou deletar cliente id ' + id);
+      this.clienteService.deleteById(id).pipe(
+        tap(_ => {
+          this.messages.add(`deleted id=${id}`);
+          this.initializePageData();
+        }),
+        catchError(this.handleError<any>('delete'))
+      ).subscribe();
+    });
   }
 
   onSubmit() {

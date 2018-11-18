@@ -238,30 +238,6 @@
   ],
   "cliente": [
     {
-      "id": 1,
-      "nome": "Himineu Casamenticio Das Dores Conjugais",
-      "email": "asdas@mail.com",
-      "telefone": "43999176376",
-      "valor": "500.85",
-      "endereco": {
-        "cep": "01001000",
-        "numero": "12",
-        "complemento": "lado ímpar",
-        "rua": "Praça da Sé",
-        "bairro": "Sé",
-        "cidade": {
-          "id": "5270",
-          "nome": "São Paulo",
-          "estado": "26"
-        },
-        "estado": {
-          "id": "26",
-          "sigla": "SP",
-          "nome": "São Paulo"
-        }
-      }
-    },
-    {
       "id": 2,
       "nome": "Jean Claude Van Dame Da Silva",
       "email": "jea@daime.com",
@@ -282,30 +258,6 @@
           "id": "2",
           "sigla": "AL",
           "nome": "Alagoas"
-        }
-      }
-    },
-    {
-      "id": 3,
-      "nome": "Oceano Atlântico Da Silveira E Souza",
-      "email": "oceano@indico.com",
-      "telefone": "12341122",
-      "valor": "9000",
-      "endereco": {
-        "cep": "40025-390",
-        "numero": "131",
-        "complemento": "",
-        "rua": "Avenida Presidente Castelo Branco",
-        "bairro": "Baixa dos Sapateiros",
-        "cidade": {
-          "id": "616",
-          "nome": "Salvador",
-          "estado": "5"
-        },
-        "estado": {
-          "id": "5",
-          "sigla": "BA",
-          "nome": "Bahia"
         }
       }
     },
@@ -358,30 +310,6 @@
       }
     },
     {
-      "id": 6,
-      "nome": "Um Dois Três de Oliveira Quatro",
-      "email": "123@4.com",
-      "telefone": "1548556699",
-      "valor": "5784",
-      "endereco": {
-        "cep": "05353-090",
-        "numero": "1r3",
-        "complemento": "",
-        "rua": "Rua Radamés Gonçalves de Freitas",
-        "bairro": "Cidade São Francisco",
-        "cidade": {
-          "id": "5270",
-          "nome": "São Paulo",
-          "estado": "26"
-        },
-        "estado": {
-          "id": "26",
-          "sigla": "SP",
-          "nome": "São Paulo"
-        }
-      }
-    },
-    {
       "id": 7,
       "nome": "Márciano Verdinho Das Antenas Longas",
       "email": "as@b.com",
@@ -402,6 +330,30 @@
           "id": "5",
           "sigla": "BA",
           "nome": "Bahia"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "nome": "Janeiro Fevereiro de Março Abril",
+      "email": "1@2.com",
+      "telefone": "157844889",
+      "valor": "5800",
+      "endereco": {
+        "cep": "86025600",
+        "numero": "42",
+        "complemento": "",
+        "rua": "Rua Chuí",
+        "bairro": "Jardim Agari",
+        "cidade": {
+          "id": "2976",
+          "nome": "Londrina",
+          "estado": "18"
+        },
+        "estado": {
+          "id": "18",
+          "sigla": "PR",
+          "nome": "Paraná"
         }
       }
     }

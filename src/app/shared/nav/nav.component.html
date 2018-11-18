@@ -1,7 +1,16 @@
-<hr>
-<a routerLink="dashboard" routerLinkActive="active" >dashboard</a> <br>
-<a routerLink="emissor" routerLinkActive="active" >emissor</a><br>
-<a routerLink="cliente" routerLinkActive="active" >cliente</a><br>
-<a routerLink="boleto" routerLinkActive="active" >boleto</a><br>
-<a routerLink="configuracoes" routerLinkActive="active" >configuracoes</a><br>
-<hr>
+<mat-toolbar color="primary">
+  <span>Boletos</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <div class="example-fill-remaining-space">
+    <div class="example-button-row">
+      <a mat-flat-button color="primary" routerLink="dashboard" routerLinkActive="active">dashboard</a>
+      <a mat-flat-button color="primary" routerLink="emissor" routerLinkActive="active">emissor</a>
+      <a mat-flat-button color="primary" routerLink="cliente" routerLinkActive="active">cliente</a>
+      <a mat-flat-button color="primary" routerLink="boleto" routerLinkActive="active">boleto</a>
+      <a mat-flat-button color="primary" routerLink="configuracoes" routerLinkActive="active">configuracoes</a>
+    </div>
+  </div>
+
+  <span>@</span>
+</mat-toolbar>

@@ -21,7 +21,13 @@ import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
 import { PhonePipe } from './shared/phone.pipe';
 import { BoletoDetalComponent } from './view/boleto-detal/boleto-detal.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule,
+  MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule,
+  MatGridListModule, MatTableModule, MatFormFieldModule,
+  MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule } from '@angular/material';
+import { FormInputComponent } from './shared/form-input/form-input.component';
+import { FooterComponent } from './shared/footer/footer.component';
 registerLocaleData(localeBr);
 
 @NgModule({
@@ -38,16 +44,28 @@ registerLocaleData(localeBr);
     ConfiguracoesComponent,
     ErrorControlComponent,
     PhonePipe,
-    BoletoDetalComponent
+    BoletoDetalComponent,
+    FormInputComponent,
+    FooterComponent
   ],
   imports: [
+    BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
+    MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
+    MatSortModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
     BrowserModule,
     HttpClientModule,
     HttpModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,20 @@
-.container{
-  display: flex;
+table {
+  width: 100%;
 }
-.container-inside{
-  flex: 1;
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.form-size-field{
+  width: 600px;
+}
+
+.form-input-content{
+  text-align: center;
+    padding: 20px;
 }

@@ -33,16 +33,16 @@ export class ClienteService {
 
   getTabelaHeaders() {
     return [
-      'ID',
-      'Nome',
-      'Email',
-      'Telefone',
-      'Valor do Aluguel',
-      'Cep',
-      'Rua',
-      'Número',
-      'Cidade',
-      'Ações'
+      'id',
+      'nome',
+      'email',
+      'telefone',
+      'valor',
+      'cep',
+      'rua',
+      'numero',
+      'cidade',
+      'acoes'
     ];
   }
 
