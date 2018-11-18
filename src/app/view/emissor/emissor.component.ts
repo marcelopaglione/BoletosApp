@@ -9,7 +9,6 @@ import { DropdownService } from '../../service/dropdown.service';
 import { Estado } from '../../entity/Estado';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { Cidade } from '../../entity/Cidade';
-import { Cep } from '../../entity/Cep';
 
 @Component({
   selector: 'app-emissor',
