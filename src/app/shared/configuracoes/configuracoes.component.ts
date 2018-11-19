@@ -4,6 +4,7 @@ import { ConfigService } from 'src/app/service/config.service';
 import { MessageService } from '../../service/message.service';
 import { tap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { Config } from '../../entity/Config';
 
 @Component({
   selector: 'app-configuracoes',
@@ -13,6 +14,7 @@ import { Observable, of } from 'rxjs';
 export class ConfiguracoesComponent implements OnInit {
 
   fg: FormGroup;
+  config: Config;
 
   constructor(
     private configService: ConfigService,
@@ -22,15 +24,19 @@ export class ConfiguracoesComponent implements OnInit {
 
   ngOnInit() {
     this.messages.add('*** Página Config.Componenet aberta ***');
-
     this.fg = this.formBuilder.group({
       parcelas: [null, [Validators.required]],
-      currentdate: [null, [Validators.required]]
+      currentdate: [null, [Validators.required]],
+      logMessages: [null, [Validators.required]],
+      showFormDebug: [null, [Validators.required]]
     });
 
     this.configService.getConfig().subscribe(data => {
       this.fg.patchValue(data);
+      this.config = data;
+      this.messages.add('Patch Value on Init');
     });
+    this.messages.add('*** Página Config.Componenet aberta - Init completed ***');
   }
 
   onSubmit() {
@@ -48,14 +54,8 @@ export class ConfiguracoesComponent implements OnInit {
 
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       this.messages.add(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.messages.add(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }

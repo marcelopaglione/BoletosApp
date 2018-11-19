@@ -1,9 +1,17 @@
-<div *ngIf="messages.messages.length">
-  <h1>
-    Messages - <button (click)="messages.clear()"> clear </button>
-  </h1>
+<mat-card *ngIf="messages.messages.length" class="form-width">
+  <mat-card-header>
+    <mat-card-title>Messages</mat-card-title>
+    <mat-card-subtitle><button mat-flat-button color="warn" (click)="messages.clear()">
+        Zerar Mensages </button></mat-card-subtitle>
+  </mat-card-header>
   <hr>
-  <div *ngFor="let message of messages.messages">
-    <code> {{ message }} </code>
-  </div>
-</div>
+  <mat-card-content>
+    <div *ngFor="let message of messages.messages">
+      <code> {{ message }} </code>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <hr>
+  </mat-card-actions>
+</mat-card>

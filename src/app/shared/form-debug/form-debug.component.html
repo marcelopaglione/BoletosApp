@@ -1,11 +1,20 @@
-<div class="jumbotron" style="margin-top: 20px" *ngIf="form">
-  <h5>Detalhes do Form</h5>
-  <code>
-    Formulário válido: {{ form.valid }}
-  </code>
-  <br>
-  <code>
-    Formulário Valores
-    <pre>{{ form.value | json }}</pre>
-  </code>
-</div>
+<mat-card *ngIf="form" class="form-width">
+  <mat-card-header>
+    <mat-card-title>Detalhes do Form</mat-card-title>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <code>
+            Formulário válido: {{ form.valid }}
+          </code>
+    <br>
+    <code>
+            Formulário Valores
+            <pre>{{ form.value | json }}</pre>
+          </code>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <hr>
+  </mat-card-actions>
+</mat-card>

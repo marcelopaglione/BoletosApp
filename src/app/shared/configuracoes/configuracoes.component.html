@@ -1,17 +1,49 @@
-<div class="container">
-  <div class="container-inside">
-    <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+<mat-card>
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <mat-card-header>
+      <mat-card-title>Configurações</mat-card-title>
+      <mat-card-subtitle>Configurar Preferências de Usuário</mat-card-subtitle>
+    </mat-card-header>
+    <hr>
+    <mat-card-content>
+      <p>
+        <mat-checkbox appearance="standard" class="form-size-field" formControlName="currentdate">
+          <mat-label>Data de Hoje</mat-label>
+          <br>
+          <mat-hint>Ao criar um novo boleto é configurado automaticamente a data de hoje commo padrão</mat-hint>
+        </mat-checkbox>
+      </p>
+      <p>
+        <mat-checkbox appearance="standard" class="form-size-field" formControlName="logMessages">
+          <mat-label>Log Messages</mat-label>
+          <br>
+          <mat-hint>Mostrar log de todas as ações clicadas</mat-hint>
+        </mat-checkbox>
+      </p>
+      <p>
+        <mat-checkbox appearance="standard" class="form-size-field" formControlName="showFormDebug">
+          <mat-label>Form Debug</mat-label>
+          <br>
+          <mat-hint>Mostrar Formulário que será submetido</mat-hint>
+        </mat-checkbox>
+      </p>
+      <p>
+        <mat-form-field appearance="standard" class="form-size-field">
+          <mat-label>Parcelas</mat-label>
+          <input matInput placeholder="parcelas" formControlName="parcelas">
+          <mat-hint>Total de parcelas para a ser criada por boleto</mat-hint>
+        </mat-form-field>
+      </p>
 
-      <label for="parcelas">Parcelas - <small>Total de parcelas para a ser criada por boleto</small></label>
-      <input type="text" id="parcelas" formControlName="parcelas"><br />
 
-      <label for="currentdate">CurrentDate - <small>Ao criar um novo boleto é configurado automaticamente a data de hoje commo padrão</small></label>
-      <input type="checkbox" formControlName="currentdate">
 
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-  <div class="container-inside">
-    <app-form-debug [form]="fg"></app-form-debug>
-  </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit">Salvar</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+
+<div *ngIf="config">
+  <app-form-debug *ngIf="config.showFormDebug" [form]="fg"></app-form-debug>
 </div>

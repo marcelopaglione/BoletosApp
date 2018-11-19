@@ -41,6 +41,7 @@ export class BoletoComponent implements OnInit {
 
   ngOnInit() {
     this.messages.add('*** Página Boleto.Componenet aberta ***');
+
     this.configService.getConfig().subscribe(data => {
       this.prefferedConfig = data;
       this.fg.patchValue({ parcela: data.parcelas });

@@ -113,3 +113,6 @@
     </button>
   </div>
 </form>
+<div *ngIf="config">
+  <app-form-debug *ngIf="config.showFormDebug" [form]="fg"></app-form-debug>
+</div>

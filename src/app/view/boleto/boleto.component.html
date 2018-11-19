@@ -31,7 +31,9 @@
     </form>
   </div>
   <div class="container-inside">
-    <app-form-debug [form]="fg"></app-form-debug>
+    <div *ngIf="prefferedConfig">
+      <app-form-debug *ngIf="prefferedConfig.showFormDebug" [form]="fg"></app-form-debug>
+    </div>
   </div>
 </div>
 

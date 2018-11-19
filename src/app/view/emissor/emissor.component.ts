@@ -9,6 +9,8 @@ import { DropdownService } from '../../service/dropdown.service';
 import { Estado } from '../../entity/Estado';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { Cidade } from '../../entity/Cidade';
+import { Config } from '../../entity/Config';
+import { ConfigService } from '../../service/config.service';
 
 @Component({
   selector: 'app-emissor',
@@ -22,16 +24,22 @@ export class EmissorComponent implements OnInit {
     private emissorService: EmissorService,
     private messages: MessageService,
     private dropdownService: DropdownService,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private configService: ConfigService
   ) { }
 
   fg: FormGroup;
   emissor$: Observable<Emissor>;
   cidades$: Observable<Cidade[]>;
   estados$: Observable<Estado[]>;
+  config: Config;
 
   ngOnInit() {
     this.messages.add('*** Página Emissor.Componenet aberta ***');
+
+    this.configService.getConfig().subscribe(data => {
+      this.config = data;
+    });
 
     this.estados$ = this.dropdownService.getEstadosBr();
 

@@ -1,7 +1,9 @@
 {
   "config": {
     "parcelas": "12",
-    "currentdate": true
+    "currentdate": true,
+    "logMessages": true,
+    "showFormDebug": true
   },
   "emissor": {
     "id": 1,
@@ -11,8 +13,8 @@
     "endereco": {
       "cep": "86280000",
       "numero": "480",
-      "complemento": "",
-      "rua": "José de Oliveira Borges",
+      "complemento": "Centro",
+      "rua": "Jose de Oliveira Borges",
       "bairro": "Centro",
       "cidade": {
         "id": "3175",
@@ -182,6 +184,162 @@
       },
       "parcela": "12",
       "dataPrimeiraParcela": "17/13/2018"
+    },
+    {
+      "id": 6,
+      "cliente": {
+        "id": 2,
+        "nome": "Jean Claude Van Dame Da Silva",
+        "email": "jea@daime.com",
+        "telefone": "34909176376",
+        "valor": "4700",
+        "endereco": {
+          "cep": "57015-581",
+          "numero": "1313",
+          "complemento": "(Cj Virgem dos Pobres I)",
+          "rua": "Rua N",
+          "bairro": "Vergel do Lago",
+          "cidade": {
+            "id": "147",
+            "nome": "Maceió",
+            "estado": "2"
+          },
+          "estado": {
+            "id": "2",
+            "sigla": "AL",
+            "nome": "Alagoas"
+          }
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglione",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "86280000",
+          "numero": "480",
+          "complemento": "",
+          "rua": "José de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": {
+            "id": "3175",
+            "nome": "Uraí",
+            "estado": "18"
+          },
+          "estado": {
+            "id": "18",
+            "sigla": "PR",
+            "nome": "Paraná"
+          }
+        }
+      },
+      "parcela": "12",
+      "dataPrimeiraParcela": "18/11/2018"
+    },
+    {
+      "id": 7,
+      "cliente": {
+        "id": 2,
+        "nome": "Jean Claude Van Dame Da Silva",
+        "email": "jea@daime.com",
+        "telefone": "34909176376",
+        "valor": "4700",
+        "endereco": {
+          "cep": "57015-581",
+          "numero": "1313",
+          "complemento": "(Cj Virgem dos Pobres I)",
+          "rua": "Rua N",
+          "bairro": "Vergel do Lago",
+          "cidade": {
+            "id": "147",
+            "nome": "Maceió",
+            "estado": "2"
+          },
+          "estado": {
+            "id": "2",
+            "sigla": "AL",
+            "nome": "Alagoas"
+          }
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglione",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "86280000",
+          "numero": "480",
+          "complemento": "Centro",
+          "rua": "Jose de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": {
+            "id": "3175",
+            "nome": "Uraí",
+            "estado": "18"
+          },
+          "estado": {
+            "id": "18",
+            "sigla": "PR",
+            "nome": "Paraná"
+          }
+        }
+      },
+      "parcela": "12",
+      "dataPrimeiraParcela": "18/11/2018"
+    },
+    {
+      "id": 8,
+      "cliente": {
+        "id": 7,
+        "nome": "Márciano Verdinho Das Antenas Longas",
+        "email": "as@b.com",
+        "telefone": "157844998",
+        "valor": "5826",
+        "endereco": {
+          "cep": "41710-890",
+          "numero": "123",
+          "complemento": "",
+          "rua": "2ª Travessa Orlando Moscoso",
+          "bairro": "Boca do Rio",
+          "cidade": {
+            "id": "616",
+            "nome": "Salvador",
+            "estado": "5"
+          },
+          "estado": {
+            "id": "5",
+            "sigla": "BA",
+            "nome": "Bahia"
+          }
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglione",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "86280000",
+          "numero": "480",
+          "complemento": "Centro",
+          "rua": "Jose de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": {
+            "id": "3175",
+            "nome": "Uraí",
+            "estado": "18"
+          },
+          "estado": {
+            "id": "18",
+            "sigla": "PR",
+            "nome": "Paraná"
+          }
+        }
+      },
+      "parcela": "12",
+      "dataPrimeiraParcela": "18/11/2018"
     }
   ],
   "cliente": [
@@ -293,54 +451,6 @@
         "complemento": "",
         "rua": "Rua Chuí",
         "bairro": "Jardim Agari",
-        "cidade": {
-          "id": "2976",
-          "nome": "Londrina",
-          "estado": "18"
-        },
-        "estado": {
-          "id": "18",
-          "sigla": "PR",
-          "nome": "Paraná"
-        }
-      }
-    },
-    {
-      "id": 9,
-      "nome": "Meu Primeiro cliente no modal",
-      "email": "modal@modal.com",
-      "telefone": "4355889988",
-      "valor": "582.58",
-      "endereco": {
-        "cep": "86025000",
-        "numero": "125",
-        "complemento": "de 495/496 ao fim",
-        "rua": "Rua Guaporé",
-        "bairro": "Jardim Palmares",
-        "cidade": {
-          "id": "2976",
-          "nome": "Londrina",
-          "estado": "18"
-        },
-        "estado": {
-          "id": "18",
-          "sigla": "PR",
-          "nome": "Paraná"
-        }
-      }
-    },
-    {
-      "id": 10,
-      "nome": "Arlindo",
-      "email": null,
-      "telefone": null,
-      "valor": "580",
-      "endereco": {
-        "cep": "86025000",
-        "numero": "d12r",
-        "complemento": "de 495/496 ao fim",
-        "rua": "Rua Guaporé",
-        "bairro": "Jardim Palmares",
         "cidade": {
           "id": "2976",
           "nome": "Londrina",

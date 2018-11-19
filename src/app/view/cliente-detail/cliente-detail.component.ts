@@ -9,6 +9,8 @@ import { Estado } from '../../entity/Estado';
 import { Cidade } from '../../entity/Cidade';
 import { catchError, tap } from 'rxjs/operators';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { Config } from '../../entity/Config';
+import { ConfigService } from '../../service/config.service';
 
 @Component({
   selector: 'app-cliente-detail',
@@ -24,14 +26,20 @@ export class ClienteDetailComponent implements OnInit {
     private messages: MessageService,
     private cepService: ConsultaCepService,
     private dropdownService: DropdownService,
+    private configService: ConfigService
   ) { }
 
   fg: FormGroup;
   estados$: Observable<Estado[]>;
   cidades$: Observable<Cidade[]>;
+  config: Config;
 
   ngOnInit() {
     this.messages.add('Load Client-detail-component');
+
+    this.configService.getConfig().subscribe(data => {
+      this.config = data;
+    });
 
     this.estados$ = this.dropdownService.getEstadosBr();
     this.fg = this.formBuilder.group({

@@ -1,7 +1,9 @@
 {
   "config": {
     "parcelas": "12",
-    "currentdate": true
+    "currentdate": true,
+    "logMessages": true,
+    "showFormDebug": true
   },
   "emissor": {
     "id": 1,
