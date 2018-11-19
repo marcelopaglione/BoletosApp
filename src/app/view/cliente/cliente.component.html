@@ -63,7 +63,7 @@
 
         <ng-container matColumnDef="acoes">
           <th mat-header-cell *matHeaderCellDef> Ações </th>
-          <td mat-cell *matCellDef="let element"> <button mat-flat-button color="warn" (click)="delete(element.id, $event)">deletar</button>
+          <td mat-cell *matCellDef="let element"> <button mat-flat-button color="warn" (click)="delete(element, $event)">deletar</button>
             <button mat-flat-button color="primary" (click)="editar(element);panel2.expanded = true;"> editar</button>
           </td>
         </ng-container>
@@ -73,7 +73,7 @@
       </table>
       <br><br>
       <mat-card-footer>
-        você está na área admisnitrar clientes!
+        você está na área administrar clientes!
       </mat-card-footer>
     </div>
   </mat-expansion-panel>

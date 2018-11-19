@@ -65,20 +65,20 @@ export class ClienteComponent implements OnInit {
     });
   }
 
-  delete(id, event) {
-    this.messages.add('Perguntando para o user se ele tem certeza da besteira que ele está prestes a fazer: deletar cliente id ' + id);
-    this.snackBar.open(`Você realmente deseja deletar cliente com ID ${id} ?`, 'SIM Eu quero!', {
+  delete(cliente, event) {
+    this.messages.add('Perguntando para o usuário se ele tem certeza da besteira que ele está prestes a fazer: deletar cliente '
+      + JSON.stringify(cliente));
+    this.snackBar.open(`Deseja deletar cliente ${cliente.nome} ?`, 'SIM Eu quero!', {
       duration: 5000
     }).onAction().subscribe(data => {
-      this.messages.add('Já era!, cliente confirmou deletar cliente id ' + id);
-      this.clienteService.deleteById(id).pipe(
+      this.messages.add('Já era!, usuário confirmou deletar cliente ' + JSON.stringify(cliente));
+      this.clienteService.deleteById(cliente.id).pipe(
         tap(_ => {
-          this.messages.add(`deleted id=${id}`);
+          this.messages.add(`deleted id=${cliente.id}`);
           this.setClientList();
         }),
         catchError(this.handleError<any>('delete'))
-      ).subscribe(data => {
-      });
+      ).subscribe();
     });
     event.preventDefault();
     event.stopPropagation();
