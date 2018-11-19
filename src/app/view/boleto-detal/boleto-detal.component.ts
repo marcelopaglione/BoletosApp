@@ -13,6 +13,7 @@ export class BoletoDetalComponent implements OnInit {
 
   boletoId;
   boleto: Boleto;
+  boletovector: number[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,10 @@ export class BoletoDetalComponent implements OnInit {
     this.boletoService.getBoletoById(this.boletoId).subscribe(data => {
       this.boleto = data;
       this.messages.add('View Boleto: ' + JSON.stringify(this.boleto));
+      this.boletovector = [];
+      for (let index = 0; index < this.boleto.parcela; index++) {
+        this.boletovector.push(index);
+      }
     });
   }
 

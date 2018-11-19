@@ -1,28 +1,33 @@
-<div class="container impressao">
-    <div class="row" style="width:230mm;background-image: url(assets/shared/bgazul.jpg) !important;"
-      *ngIf="boleto">
+<div class="container impressao" id="printThis">
+
+  <div *ngIf="boleto">
+    <div class="boleto" style="width:230mm;background-image: url(assets/shared/bgazul.jpg) !important;" *ngFor="let b of boletovector">
       <div class="canhoto">
 
         <div class="container margin-sections">
-          <h4 contenteditable="true" class="text-color">Canhoto N° {{boleto.id}} </h4>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-              <h5 contenteditable="true" class="text-color-destaque">{{boleto.cliente.nome}}</h5>
+          <div class="content">
+            <div class="item">
+              <h4>Canhoto N° {{b + 1}} </h4>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-              <h5 contenteditable="true" class="text-color-destaque">{{boleto.cliente.endereco.rua}}
+          <div class="content">
+            <div class="item">
+              <h5>{{boleto.cliente.nome}}</h5>
+            </div>
+          </div>
+          <div class="content">
+            <div class="item">
+              <h5>{{boleto.cliente.endereco.rua}}
                 {{boleto.cliente.endereco.numero}} {{boleto.cliente.endereco.bairro}}</h5>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-              <h4 contenteditable="true" class="text-color-destaque">R$ {{boleto.cliente.valor}}</h4>
+          <div class="content">
+            <div class="item">
+              <h4>R$ {{boleto.cliente.valor}}</h4>
             </div>
           </div>
-          <div class="row text-center">
-            <h4 class="text-color">____/____/______</h4>
+          <div class="content text-center">
+            <h4>____/____/______</h4>
           </div>
         </div>
 
@@ -30,56 +35,54 @@
       <div class="recibo">
 
         <div class="container margin-sections">
-          <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4">
-              <h3 class="text-color">RECIBO</h3>
+          <div class="content">
+            <div class="item center">
+              <h3>RECIBO N° {{b + 1}}</h3>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 text-center">
-              <h3 contenteditable="true" class="text-color">N° {{boleto.id + 1}}</h3>
-            </div>
-            <div class="col-xs-5 col-sm-5 col-md-5 text-center">
-              <h3 contenteditable="true">*** R$ {{boleto.cliente.valor}} ***</h3>
+            <div class="item center">
+              <h3>*** R$ {{boleto.cliente.valor}} ***</h3>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12 col-xs-12">
-              <h3 contenteditable="true" class="text-center">{{boleto.emissor.nome}} - {{boleto.emissor.telefone}}</h3>
+          <div class="content">
+            <div class="item center">
+              <h3>{{boleto.emissor.nome}} - {{boleto.emissor.telefone}}</h3>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 text-right">
-              <h4 contenteditable="true" class="text-color realce">Recebemos de:</h4>
+          <div class="content">
+            <div class="item right">
+              <h4>Recebemos de:</h4>
             </div>
-            <div class="col-xs-8 col-sm-8 col-md-8">
-              <h4 contenteditable="true" class="text-color-destaque">{{boleto.cliente.nome}}</h4>
+            <div class="item left">
+              <h4>{{boleto.cliente.nome}}</h4>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 text-right">
-              <h4 contenteditable="true" class="text-color realce">Endereço:</h4>
+          <div class="content">
+            <div class="item right">
+              <h4>Endereço:</h4>
             </div>
-            <div class="col-xs-8 col-sm-8 col-md-8">
-              <h4 contenteditable="true" class="text-color-destaque">{{boleto.cliente.endereco.rua}}
+            <div class="item left">
+              <h4>{{boleto.cliente.endereco.rua}}
                 {{boleto.cliente.endereco.numero}} {{boleto.cliente.endereco.bairro}} </h4>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 text-right">
-              <h4 class="text-color realce">A importância de:</h4>
+          <div class="content">
+            <div class="item right">
+              <h4>A importância de:</h4>
             </div>
-            <div class="col-xs-8 col-sm-8 col-md-8">
-              <h4 class="text-color-destaque">R$ {{boleto.cliente.valor}}</h4>
+            <div class="item left">
+              <h4>R$ {{boleto.cliente.valor}}</h4>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <h4 class="text-color" contenteditable="true"> {{boleto.emissor.endereco.cidade}} , </h4>
+          <br>
+          <div class="content">
+            <div class="item center">
+              <h4 class="text-color"> {{boleto.emissor.endereco.cidade.nome}},</h4>
             </div>
           </div>
           <br />
-          <div class="row" style="    margin-top: -15px;">
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <h4 contenteditable="true" class="text-color">____________________________________________________
+          <div class="content">
+            <div class="item center">
+              <h4>____________________________________________________
                 <br />
                 <small>Assinatura</small>
               </h4>
@@ -90,3 +93,4 @@
       </div>
     </div>
   </div>
+</div>

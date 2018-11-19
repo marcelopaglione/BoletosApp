@@ -40,16 +40,43 @@ body {
     font-size: 60px;
     text-align: center;
 }
+
+.boleto {
+  display: flex;
+}
+
 .canhoto {
   width: 5cm;
   height: 90mm;
   border: 1px dashed black;
+  flex-grow: 1;
 }
 
 .recibo {
   width: 18cm;
   height: 90mm;
   border: 1px dashed black;
+  flex-grow: 1;
+}
+
+.recibo .content {
+  display: flex;
+}
+
+.recibo .content .item {
+  flex-grow: 1;
+}
+h4 {
+  margin: 5px 5px;
+}
+.recibo .content .center {
+  text-align: center;
+}
+.recibo .content .left {
+  text-align: left;
+}
+.recibo .content .right {
+  text-align: right;
 }
 
 .folha {
@@ -79,4 +106,23 @@ body {
 
 .realce{
     font-weight: 500;
+}
+
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+@media print {
+  body * {
+      visibility:hidden;
+  }
+  #printSection, #printSection * {
+      visibility:visible;
+  }
+  #printSection {
+      position:absolute;
+      left:0;
+      top:0;
+  }
 }
