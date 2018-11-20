@@ -1,90 +1,73 @@
 <mat-card>
   <form [formGroup]="fg" (ngSubmit)="onSubmit()" *ngIf="emissor$ | async as emissor; else loading">
     <mat-card-header>
-      <mat-card-title>Emissor</mat-card-title>
+      <mat-card-title>Administrar Emissor</mat-card-title>
       <mat-card-subtitle>Configurar Emissor Principal de Boletos</mat-card-subtitle>
     </mat-card-header>
     <hr>
     <mat-card-content>
+      <div class="container">
 
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field formsize" >
+        <mat-form-field appearance="fill">
           <mat-label> Nome</mat-label>
           <input matInput type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
         </mat-form-field>
-      </p>
-      <!-- Email -->
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field formsize">
+
+        <mat-form-field appearance="fill">
           <mat-label> Email</mat-label>
           <input matInput type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
         </mat-form-field>
-      </p>
-      <!-- Telefone -->
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field formsize formsize">
+
+        <mat-form-field appearance="fill" class=" formsize">
           <mat-label> Telefone</mat-label>
           <input matInput type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
         </mat-form-field>
-      </p>
 
-      <div formGroupName="endereco">
-        <!-- cep -->
-        <p>
-          <mat-form-field appearance="standard" class="form-size-field formsize">
+        <div formGroupName="endereco" class="container">
+
+          <mat-form-field appearance="fill">
             <mat-label> cep</mat-label>
             <input matInput type="text" id="cep" placeholder="cep" formControlName="cep" (blur)="consultaCEP()">
           </mat-form-field>
-        </p>
-        <!-- rua -->
-        <p>
-          <mat-form-field appearance="standard" class="form-size-field formsize">
+
+          <mat-form-field appearance="fill">
             <mat-label> rua</mat-label>
             <input matInput type="text" id="rua" placeholder="rua" formControlName="rua">
           </mat-form-field>
-        </p>
-        <!-- numero -->
-        <p>
-          <mat-form-field appearance="standard" class="form-size-field formsize">
+
+          <mat-form-field appearance="fill">
             <mat-label> Número</mat-label>
             <input matInput type="text" id="numero" placeholder="numero" formControlName="numero">
           </mat-form-field>
-        </p>
-        <!-- bairro -->
-        <p>
-          <mat-form-field appearance="standard" class="form-size-field formsize">
+
+          <mat-form-field appearance="fill">
             <mat-label> bairro</mat-label>
             <input matInput type="text" id="bairro" placeholder="bairro" formControlName="bairro">
           </mat-form-field>
-        </p>
-        <!-- complemento -->
-        <p>
-          <mat-form-field appearance="standard" class="form-size-field formsize">
+
+          <mat-form-field appearance="fill">
             <mat-label> complemento</mat-label>
             <input matInput type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
           </mat-form-field>
-        </p>
-        <!-- estado -->
-        <p>
-          <mat-form-field class="form-size-field formsize">
+
+          <mat-form-field appearance="fill">
             <mat-label> estado</mat-label>
-            <mat-select id="estado" formControlName="estado" (blur)="loadCidades()" (change)="loadCidades()" [compareWith]="compareFn">
+            <mat-select id="estado" formControlName="estado" (blur)="loadCidades()" (change)="loadCidades()"
+              [compareWith]="compareFn">
               <mat-option *ngFor="let estado of estados$ | async" [value]="estado"> {{estado.nome}} </mat-option>
             </mat-select>
           </mat-form-field>
-        </p>
 
-        <!-- cidade -->
-        <p>
-          <mat-form-field class="form-size-field formsize">
+          <mat-form-field appearance="fill">
             <mat-label> cidade</mat-label>
             <mat-select id="cidade" formControlName="cidade" [compareWith]="compareFn">
               <mat-option *ngFor="let cidade of cidades$ | async" [value]="cidade"> {{cidade.nome}} </mat-option>
             </mat-select>
           </mat-form-field>
-        </p>
-      </div>
 
+        </div>
+
+      </div>
     </mat-card-content>
     <mat-card-actions>
       <button mat-flat-button color="primary" type="submit" ng-disabled="fg.$invalid">Salvar</button>

@@ -25,7 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule,
   MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule,
-  MatGridListModule, MatTableModule, MatFormFieldModule, MatDialogModule,
+  MatGridListModule, MatTableModule, MatFormFieldModule, MatDialogModule, MatProgressBarModule,
   MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule
 } from '@angular/material';
 import { FormInputComponent } from './shared/form-input/form-input.component';
@@ -55,7 +55,7 @@ registerLocaleData(localeBr);
   imports: [
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
-    MatDialogModule,
+    MatDialogModule, MatProgressBarModule,
     MatSortModule,
     MatButtonModule,
     MatMenuModule,

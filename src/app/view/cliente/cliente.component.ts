@@ -78,7 +78,11 @@ export class ClienteComponent implements OnInit {
           this.setClientList();
         }),
         catchError(this.handleError<any>('delete'))
-      ).subscribe();
+      ).subscribe(_ => {
+        this.snackBar.open(`Cliente ${cliente.nome} deletado!`, 'Fechar', {
+          duration: 5000
+        });
+      });
     });
     event.preventDefault();
     event.stopPropagation();

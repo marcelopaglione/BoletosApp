@@ -10,3 +10,12 @@
 h1 {
   text-align: center;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > * {
+  width: 100%;
+}

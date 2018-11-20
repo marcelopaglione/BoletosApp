@@ -11,6 +11,7 @@ import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { Cidade } from '../../entity/Cidade';
 import { Config } from '../../entity/Config';
 import { ConfigService } from '../../service/config.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-emissor',
@@ -25,7 +26,8 @@ export class EmissorComponent implements OnInit {
     private messages: MessageService,
     private dropdownService: DropdownService,
     private cepService: ConsultaCepService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    public snackBar: MatSnackBar
   ) { }
 
   fg: FormGroup;
@@ -139,6 +141,9 @@ export class EmissorComponent implements OnInit {
   onSubmit() {
     if (this.fg.valid) {
       this.emissorService.setEmissor(this.fg.value);
+      this.snackBar.open('Dados salvos com sucesso!', 'Fechar', {
+        duration: 5000
+      });
     } else {
       this.messages.add('Invalid emissor form: ' + JSON.stringify(this.fg.value));
     }

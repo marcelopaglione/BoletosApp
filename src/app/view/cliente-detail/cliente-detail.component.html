@@ -1,113 +1,96 @@
-<h1 *ngIf="!data">Aministrar Novo Cliente</h1>
+<h1 *ngIf="!data" mat-dialog-title>Aministrar Novo Cliente</h1>
 <h1 *ngIf="data" mat-dialog-title>Administrar Cliente</h1>
 <form [formGroup]="fg">
-  <div mat-dialog-content>
-    <p>
-      <mat-form-field appearance="standard" class="form-size-field">
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="nome" formControlName="nome">
-        <mat-icon matSuffix>perm_identity</mat-icon>
-        <mat-hint>Entre o nome completo</mat-hint>
-      </mat-form-field>
-    </p>
+  <div mat-dialog-content class="container">
 
-    <p>
-      <mat-form-field appearance="standard" class="form-size-field">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="email" formControlName="email">
-        <mat-icon matSuffix>email</mat-icon>
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="nome" formControlName="nome" (blur)="verificaPorcentagemForm(fg,1)">
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-hint>Entre o nome completo</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="email" formControlName="email" (blur)="verificaPorcentagemForm(fg,1)">
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input matInput placeholder="telefone" formControlName="telefone" (blur)="verificaPorcentagemForm(fg,1)">
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-hint>Entre apenas números!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor</mat-label>
+      <input matInput placeholder="valor" formControlName="valor" (blur)="verificaPorcentagemForm(fg,1)">
+      <mat-icon matSuffix>attach_money</mat-icon>
+      <mat-hint>Entre somente números separado por ponto!</mat-hint>
+    </mat-form-field>
+
+    <div formGroupName="endereco" class="container">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cep</mat-label>
+        <input matInput placeholder="cep" formControlName="cep" (blur)="consultaCEP();verificaPorcentagemForm(fg,1);">
+        <mat-icon matSuffix>check</mat-icon>
+        <mat-hint>Faça busca automática do CEP aqui!</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Rua</mat-label>
+        <input matInput placeholder="rua" formControlName="rua" (blur)="verificaPorcentagemForm(fg,1)">
+        <mat-icon matSuffix>check</mat-icon>
         <mat-hint></mat-hint>
       </mat-form-field>
-    </p>
 
-    <p>
-      <mat-form-field appearance="standard" class="form-size-field">
-        <mat-label>Telefone</mat-label>
-        <input matInput placeholder="telefone" formControlName="telefone">
-        <mat-icon matSuffix>phone</mat-icon>
-        <mat-hint>Entre apenas números!</mat-hint>
+      <mat-form-field appearance="fill">
+        <mat-label>Número</mat-label>
+        <input matInput placeholder="numero" formControlName="numero" (blur)="verificaPorcentagemForm(fg,1)">
+        <mat-icon matSuffix>check</mat-icon>
+        <mat-hint></mat-hint>
       </mat-form-field>
-    </p>
 
-    <p>
-      <mat-form-field appearance="standard" class="form-size-field">
-        <mat-label>Valor</mat-label>
-        <input matInput placeholder="valor" formControlName="valor">
-        <mat-icon matSuffix>attach_money</mat-icon>
-        <mat-hint>Entre somente números separado por ponto!</mat-hint>
+      <mat-form-field appearance="fill">
+        <mat-label>Bairro</mat-label>
+        <input matInput placeholder="bairro" formControlName="bairro" (blur)="verificaPorcentagemForm(fg,1)">
+        <mat-icon matSuffix>check</mat-icon>
+        <mat-hint></mat-hint>
       </mat-form-field>
-    </p>
 
-    <div formGroupName="endereco">
+      <mat-form-field appearance="fill">
+        <mat-label>complemento</mat-label>
+        <input matInput placeholder="complemento" formControlName="complemento" (blur)="verificaPorcentagemForm(fg,1)">
+        <mat-icon matSuffix>check</mat-icon>
+        <mat-hint></mat-hint>
+      </mat-form-field>
 
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-label>Cep</mat-label>
-          <input matInput placeholder="cep" formControlName="cep" (blur)="consultaCEP()">
-          <mat-icon matSuffix>check</mat-icon>
-          <mat-hint>Faça busca automática do CEP aqui!</mat-hint>
-        </mat-form-field>
-      </p>
+      <mat-form-field appearance="fill">
+        <mat-select placeholder="Escolha um estado" formControlName="estado" (blur)="loadCidades();verificaPorcentagemForm(fg,1);" (change)="loadCidades()"
+          [compareWith]="compareFn">
+          <mat-option *ngFor="let estado of estados$ | async" [value]="estado">
+            {{estado.nome}}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>check</mat-icon>
+      </mat-form-field>
 
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-label>Rua</mat-label>
-          <input matInput placeholder="rua" formControlName="rua">
-          <mat-icon matSuffix>check</mat-icon>
-          <mat-hint></mat-hint>
-        </mat-form-field>
-      </p>
+      <mat-form-field appearance="fill">
+        <mat-select placeholder="Escolha uma cidade" formControlName="cidade" [compareWith]="compareFn" (blur)="verificaPorcentagemForm(fg,1)">
+          <mat-option *ngFor="let cidade of cidades$ | async" [value]="cidade">
+            {{cidade.nome}}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>check</mat-icon>
+      </mat-form-field>
 
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-label>Número</mat-label>
-          <input matInput placeholder="numero" formControlName="numero">
-          <mat-icon matSuffix>check</mat-icon>
-          <mat-hint></mat-hint>
-        </mat-form-field>
-      </p>
-
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-label>Bairro</mat-label>
-          <input matInput placeholder="bairro" formControlName="bairro">
-          <mat-icon matSuffix>check</mat-icon>
-          <mat-hint></mat-hint>
-        </mat-form-field>
-      </p>
-
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-label>complemento</mat-label>
-          <input matInput placeholder="complemento" formControlName="complemento">
-          <mat-icon matSuffix>check</mat-icon>
-          <mat-hint></mat-hint>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-select placeholder="Escolha um estado" formControlName="estado" (blur)="loadCidades()" (change)="loadCidades()"
-            [compareWith]="compareFn">
-            <mat-option *ngFor="let estado of estados$ | async" [value]="estado">
-              {{estado.nome}}
-            </mat-option>
-          </mat-select>
-          <mat-icon matSuffix>check</mat-icon>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-select placeholder="Escolha uma cidade" formControlName="cidade" [compareWith]="compareFn">
-            <mat-option *ngFor="let cidade of cidades$ | async" [value]="cidade">
-              {{cidade.nome}}
-            </mat-option>
-          </mat-select>
-          <mat-icon matSuffix>check</mat-icon>
-        </mat-form-field>
-      </p>
     </div>
   </div>
   <div mat-dialog-actions>
+    <mat-progress-bar mode="determinate" [value]="porcentagemConcluida"></mat-progress-bar>
     <button mat-flat-button color="primary" (click)="onSubmit($event)" type="button">Salvar</button>
     <button mat-flat-button color="warn" type="button" (click)="limparForm();onNoClick();"> Cancelar
     </button>

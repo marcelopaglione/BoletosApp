@@ -33,6 +33,8 @@ export class ClienteDetailComponent implements OnInit {
   estados$: Observable<Estado[]>;
   cidades$: Observable<Cidade[]>;
   config: Config;
+  porcentagemConcluida = 0;
+  acaoEditarNovo;
 
   ngOnInit() {
     this.messages.add('Load Client-detail-component');
@@ -71,6 +73,10 @@ export class ClienteDetailComponent implements OnInit {
         this.loadCidades();
       }
     }
+
+    this.fg.get('id') ? this.acaoEditarNovo = 'editar' : this.acaoEditarNovo = 'novo';
+
+    this.verificaPorcentagemForm(this.fg, 1);
   }
 
   onSubmit(event: Event) {
@@ -148,11 +154,13 @@ export class ClienteDetailComponent implements OnInit {
             estado: estadoEscolhido[0]
           }
         });
+        this.verificaPorcentagemForm(this.fg, 1);
         this.dropdownService.getCidadesByName(dados.localidade).subscribe(
           cidadeEscolhida => {
             this.messages.add('cidade escolhida ' + JSON.stringify(cidadeEscolhida));
             this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
             this.fg.patchValue({ endereco: { cidade: cidadeEscolhida[0] } });
+            this.verificaPorcentagemForm(this.fg, 1);
           }
         );
       }
@@ -178,6 +186,29 @@ export class ClienteDetailComponent implements OnInit {
       controle.markAsTouched();
       if (controle instanceof FormGroup) {
         this.verificaValidacoesForm(controle);
+      }
+    });
+  }
+
+  verificaPorcentagemForm(form: FormGroup, index) {
+    if (index === 1) {
+      this.porcentagemConcluida = 0;
+      this.messages.add('Zerar porcentagem');
+    }
+    Object.keys(form.controls).forEach(campo => {
+      const controle = form.get(campo);
+      console.log(controle);
+      if (controle instanceof FormGroup) {
+        this.verificaPorcentagemForm(controle, (index + 1));
+      } else {
+        if (controle.value) {
+          this.messages.add(controle.value + ' + ' + (100 / (this.acaoEditarNovo === 'editar' ? 11 : 10)));
+          this.porcentagemConcluida += (100 / (this.acaoEditarNovo === 'editar' ? 11 : 10));
+          this.messages.add('Total: ' + this.porcentagemConcluida);
+          if (this.porcentagemConcluida > 100) {
+            this.porcentagemConcluida = 100;
+          }
+        }
       }
     });
   }

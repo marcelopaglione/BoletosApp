@@ -1,16 +1,11 @@
-<mat-accordion>
-  <mat-expansion-panel [expanded]="true" #panel1>
-    <div>
-      <button mat-flat-button color="primary" type="button" (click)="openDetails(null)" >Criar Novo Cliente</button>
-    </div>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Clientes
-      </mat-panel-title>
-      <mat-panel-description>
-        Administrar Clientes
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+<mat-card>
+  <mat-card-header class="titleflexheader">
+    <mat-card-title>Administrar Cliente</mat-card-title>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <button class="titleflexbutton" mat-flat-button color="primary" type="button" (click)="openDetails(null)">Criar
+      Novo Cliente</button>
     <div *ngIf="clientes$ as clientes">
       <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
 
@@ -73,9 +68,8 @@
       </table>
       <br><br>
       <mat-card-footer>
-        você está na área administrar clientes!
       </mat-card-footer>
     </div>
-  </mat-expansion-panel>
 
-</mat-accordion>
+  </mat-card-content>
+</mat-card>

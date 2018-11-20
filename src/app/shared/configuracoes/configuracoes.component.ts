@@ -5,6 +5,7 @@ import { MessageService } from '../../service/message.service';
 import { tap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Config } from '../../entity/Config';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-configuracoes',
@@ -19,7 +20,8 @@ export class ConfiguracoesComponent implements OnInit {
   constructor(
     private configService: ConfigService,
     private messages: MessageService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -46,7 +48,11 @@ export class ConfiguracoesComponent implements OnInit {
           this.messages.add(`updated ${JSON.stringify(this.fg.value)}`);
         }),
         catchError(this.handleError<any>('update'))
-      ).subscribe();
+      ).subscribe(_ => {
+        this.snackBar.open('Dados salvos com sucesso!', 'Fechar', {
+          duration: 5000
+        });
+      });
     } else {
       this.messages.add('Invalid config form: ' + JSON.stringify(this.fg.value));
     }
