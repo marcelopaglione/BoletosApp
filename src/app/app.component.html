@@ -1,11 +1,12 @@
 <app-nav></app-nav>
-<div layout="row" style="padding: 10px 20px;">
-  <div layout="column">
-    <router-outlet></router-outlet>
+<div layout="row">
+  <div layout="column" style="padding: 10px 20px;">
+    <div style="margin-top: 80px;">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
 <div *ngIf="config">
-    <app-message *ngIf="config.logMessages"></app-message>
+  <app-message *ngIf="config.logMessages"></app-message>
 </div>
-

@@ -2,7 +2,7 @@
   "config": {
     "parcelas": "12",
     "currentdate": true,
-    "logMessages": true,
+    "logMessages": false,
     "showFormDebug": false
   },
   "emissor": {
@@ -29,110 +29,6 @@
     }
   },
   "boleto": [
-    {
-      "id": 1,
-      "cliente": {
-        "id": 4,
-        "nome": "Produto do Amor Conjugal De Marichá E Maribel",
-        "email": "amor@mail.com",
-        "telefone": "4389597799",
-        "valor": "580",
-        "endereco": {
-          "cep": "66913-340",
-          "numero": "1r2",
-          "complemento": "(Cj Chapéu Virado)",
-          "rua": "Travessa Seis",
-          "bairro": "Chapéu Virado (Mosqueiro)",
-          "cidade": {
-            "id": "2423",
-            "nome": "Alenquer",
-            "estado": "14"
-          },
-          "estado": {
-            "id": "14",
-            "sigla": "PA",
-            "nome": "Pará"
-          }
-        }
-      },
-      "emissor": {
-        "id": 1,
-        "nome": "Marcelo Ortiz Paglione",
-        "email": "marcelo.paglione@gmail.com",
-        "telefone": "(43) 999176376",
-        "endereco": {
-          "cep": "86280000",
-          "numero": "480",
-          "complemento": "Centro",
-          "rua": "Jose de Oliveira Borges",
-          "bairro": "Centro",
-          "cidade": {
-            "id": "3175",
-            "nome": "Uraí",
-            "estado": "18"
-          },
-          "estado": {
-            "id": "18",
-            "sigla": "PR",
-            "nome": "Paraná"
-          }
-        }
-      },
-      "parcela": "12",
-      "dataPrimeiraParcela": "20/11/2018"
-    },
-    {
-      "id": 2,
-      "cliente": {
-        "id": 5,
-        "nome": "Simplício Simplório Da Simplicidade Simples",
-        "email": "simples@assim.com",
-        "telefone": "5288559944",
-        "valor": "5895.80",
-        "endereco": {
-          "cep": "78552-313",
-          "numero": "123",
-          "complemento": "de 6428 a 7142 - lado par",
-          "rua": "Avenida André Antônio Maggi",
-          "bairro": "Jardim das Oliveiras",
-          "cidade": {
-            "id": "1473",
-            "nome": "Sinop",
-            "estado": "13"
-          },
-          "estado": {
-            "id": "13",
-            "sigla": "MT",
-            "nome": "Mato Grosso"
-          }
-        }
-      },
-      "emissor": {
-        "id": 1,
-        "nome": "Marcelo Ortiz Paglione",
-        "email": "marcelo.paglione@gmail.com",
-        "telefone": "(43) 999176376",
-        "endereco": {
-          "cep": "86280000",
-          "numero": "480",
-          "complemento": "Centro",
-          "rua": "Jose de Oliveira Borges",
-          "bairro": "Centro",
-          "cidade": {
-            "id": "3175",
-            "nome": "Uraí",
-            "estado": "18"
-          },
-          "estado": {
-            "id": "18",
-            "sigla": "PR",
-            "nome": "Paraná"
-          }
-        }
-      },
-      "parcela": "12",
-      "dataPrimeiraParcela": "20/11/2018"
-    },
     {
       "id": 3,
       "cliente": {
@@ -236,13 +132,117 @@
       },
       "parcela": "12",
       "dataPrimeiraParcela": "20/11/2017"
+    },
+    {
+      "id": 5,
+      "cliente": {
+        "id": 2,
+        "nome": "Jean Claude Van Dame Da Silva",
+        "email": "jea@daime.com",
+        "telefone": "34909176376",
+        "valor": "4700",
+        "endereco": {
+          "cep": "57015-581",
+          "numero": "1313",
+          "complemento": "(Cj Virgem dos Pobres I)",
+          "rua": "Rua N",
+          "bairro": "Vergel do Lago",
+          "cidade": {
+            "id": "147",
+            "nome": "Maceió",
+            "estado": "2"
+          },
+          "estado": {
+            "id": "2",
+            "sigla": "AL",
+            "nome": "Alagoas"
+          }
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglione",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "86280000",
+          "numero": "480",
+          "complemento": "Centro",
+          "rua": "Jose de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": {
+            "id": "3175",
+            "nome": "Uraí",
+            "estado": "18"
+          },
+          "estado": {
+            "id": "18",
+            "sigla": "PR",
+            "nome": "Paraná"
+          }
+        }
+      },
+      "parcela": "12",
+      "dataPrimeiraParcela": "20/11/2018"
+    },
+    {
+      "id": 6,
+      "cliente": {
+        "id": 4,
+        "nome": "Produto do Amor Conjugal De Marichá E Maribel",
+        "email": "amor@mail.com",
+        "telefone": "4389597799",
+        "valor": "580",
+        "endereco": {
+          "cep": "66913-340",
+          "numero": "1r2",
+          "complemento": "(Cj Chapéu Virado)",
+          "rua": "Travessa Seis",
+          "bairro": "Chapéu Virado (Mosqueiro)",
+          "cidade": {
+            "id": "2423",
+            "nome": "Alenquer",
+            "estado": "14"
+          },
+          "estado": {
+            "id": "14",
+            "sigla": "PA",
+            "nome": "Pará"
+          }
+        }
+      },
+      "emissor": {
+        "id": 1,
+        "nome": "Marcelo Ortiz Paglione",
+        "email": "marcelo.paglione@gmail.com",
+        "telefone": "(43) 999176376",
+        "endereco": {
+          "cep": "86280000",
+          "numero": "480",
+          "complemento": "Centro",
+          "rua": "Jose de Oliveira Borges",
+          "bairro": "Centro",
+          "cidade": {
+            "id": "3175",
+            "nome": "Uraí",
+            "estado": "18"
+          },
+          "estado": {
+            "id": "18",
+            "sigla": "PR",
+            "nome": "Paraná"
+          }
+        }
+      },
+      "parcela": "12",
+      "dataPrimeiraParcela": "20/11/2018"
     }
   ],
   "cliente": [
     {
       "id": 2,
       "nome": "Jean Claude Van Dame Da Silva",
-      "email": "jea@daime.com",
+      "email": "jean@daime.com",
       "telefone": "34909176376",
       "valor": "4700",
       "endereco": {
@@ -338,7 +338,7 @@
     {
       "id": 8,
       "nome": "Janeiro Fevereiro de Março Abril",
-      "email": "1@2.com",
+      "email": "01@2.com",
       "telefone": "157844889",
       "valor": "5800",
       "endereco": {
@@ -347,6 +347,30 @@
         "complemento": "",
         "rua": "Rua Chuí",
         "bairro": "Jardim Agari",
+        "cidade": {
+          "id": "2976",
+          "nome": "Londrina",
+          "estado": "18"
+        },
+        "estado": {
+          "id": "18",
+          "sigla": "PR",
+          "nome": "Paraná"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "nome": "Azul Verde Amarelo",
+      "email": "verde@amarelo.com",
+      "telefone": "46558899777",
+      "valor": "5800",
+      "endereco": {
+        "cep": "86055000",
+        "numero": "481",
+        "complemento": "Centro",
+        "rua": "Avenida Deputado Arnaldo Busato",
+        "bairro": "Portal de Versalhes 3",
         "cidade": {
           "id": "2976",
           "nome": "Londrina",

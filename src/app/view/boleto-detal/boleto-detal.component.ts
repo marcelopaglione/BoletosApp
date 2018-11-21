@@ -35,7 +35,27 @@ export class BoletoDetalComponent implements OnInit {
       for (let index = 0; index < this.boleto.parcela; index++) {
         this.boletovector.push(index);
       }
+      //this.print();
     });
+
+
+  }
+
+  print(): void {
+    let printContents, popupWin;
+    console.log(document.getElementById('boletos-header').innerHTML);
+    printContents = document.getElementById('print-section').innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+      <head>
+        ${document.getElementById('boletos-header').innerHTML}
+      </head>
+        <body onload="window.print();window.close()" style="display: flex;justify-content: center;">${printContents}</body>
+      </html>`
+    );
+    popupWin.document.close();
   }
 
 }
