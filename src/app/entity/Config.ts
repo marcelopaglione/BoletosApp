@@ -3,4 +3,5 @@ export class Config {
   currentdate: boolean;
   logMessages: boolean;
   showFormDebug: boolean;
+  verBoletoAutomaticamente: boolean;
 }

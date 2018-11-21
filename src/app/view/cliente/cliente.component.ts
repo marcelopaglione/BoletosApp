@@ -90,16 +90,13 @@ export class ClienteComponent implements OnInit {
 
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       this.messages.add(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.messages.add(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
 }

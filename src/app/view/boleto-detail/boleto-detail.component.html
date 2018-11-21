@@ -1,0 +1,38 @@
+<h1 *ngIf="!data" mat-dialog-title>Criar Novo Boleto</h1>
+<h1 *ngIf="data" mat-dialog-title>Administrar Boleto</h1>
+
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+
+  <div mat-dialog-content class="container">
+
+    <mat-form-field appearance="fill">
+      <mat-select placeholder="Escolha um Cliente" formControlName="cliente" [compareWith]="compareFn">
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente">
+          {{cliente.nome}}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>check</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Primeira Parcela</mat-label>
+      <input matInput placeholder="15/04/2020" formControlName="dataPrimeiraParcela">
+      <mat-hint>Selecione a data da primeira parcela</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Quantidade de Parcelas</mat-label>
+      <input matInput placeholder="12" formControlName="parcela">
+      <mat-hint>Selecione a quantidade total de parcelas</mat-hint>
+    </mat-form-field>
+
+  </div>
+
+  <button mat-flat-button color="primary" (click)="onSubmit($event)" type="button">Salvar</button>&nbsp;
+  <button mat-flat-button color="warn" type="button" (click)="limparForm();onNoClick();"> Cancelar </button>
+
+</form>
+
+<div *ngIf="prefferedConfig">
+  <app-form-debug *ngIf="prefferedConfig.showFormDebug" [form]="fg"></app-form-debug>
+</div>

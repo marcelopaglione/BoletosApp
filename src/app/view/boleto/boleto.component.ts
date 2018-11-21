@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '../../service/message.service';
 import { Observable, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
-import { ClienteService } from '../../service/cliente.service';
 import { Cliente } from '../../entity/Cliente';
 import { Boleto } from '../../entity/Boleto';
 import { BoletoService } from '../../service/boleto.service';
 import { Emissor } from 'src/app/entity/Emissor';
-import { EmissorService } from '../../service/emissor.service';
 import { ConfigService } from '../../service/config.service';
 import { Config } from 'src/app/entity/Config';
-import { format } from 'libphonenumber-js';
 import { Router } from '@angular/router';
+import { BoletoDetailComponent } from '../boleto-detail/boleto-detail.component';
+import { MatSnackBar, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-boleto',
@@ -26,49 +24,28 @@ export class BoletoComponent implements OnInit {
   emissor: Emissor;
   prefferedConfig: Config;
 
-  headElements: string[];
-  fg: FormGroup;
+  headElements: string[] = this.boletoService.getTabelaHeaders();
 
   constructor(
-    private formBuilder: FormBuilder,
     private boletoService: BoletoService,
-    private clienteService: ClienteService,
-    private emissorService: EmissorService,
     private messages: MessageService,
-    private configService: ConfigService,
-    private router: Router
+    private router: Router,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    public configService: ConfigService
   ) { }
 
   ngOnInit() {
     this.messages.add('*** Página Boleto.Componenet aberta ***');
-
+    this.initializePageData();
     this.configService.getConfig().subscribe(data => {
       this.prefferedConfig = data;
-      this.fg.patchValue({ parcela: data.parcelas });
     });
-    this.fg = this.formBuilder.group({
-      id: [null],
-      cliente: [null, [Validators.required]],
-      emissor: [null, [Validators.required]],
-      parcela: [null, [Validators.required]],
-      dataPrimeiraParcela: [null, Validators.required]
-    });
-
-    this.initializePageData();
   }
 
   initializePageData() {
-    this.limparForm();
-    this.headElements = this.boletoService.getTabelaHeaders();
     this.boletoService.getBoletoList().subscribe(data => {
       this.boletos = data;
-    });
-    this.clienteService.getClienteList().subscribe(data => {
-      this.clientes = data;
-    });
-    this.emissorService.getEmissor().subscribe(data => {
-      this.emissor = data;
-      this.fg.patchValue({ emissor: data });
     });
   }
 
@@ -76,76 +53,86 @@ export class BoletoComponent implements OnInit {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
-  editar(c: Boleto) {
-    this.messages.add('Editar: ' + JSON.stringify(c));
-    this.fg.patchValue(c);
+  editar(b: Boleto) {
+    const dialogRef = this.dialog.open(BoletoDetailComponent, {
+      width: '720px',
+      data: b
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.boletoService.getBoletoList().subscribe(data => {
+        this.boletos = data;
+      });
+      console.log('The dialog was closed');
+    });
   }
 
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       this.messages.add(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.messages.add(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  limparForm() {
-    this.fg.reset();
-    this.fg.patchValue({ emissor: this.emissor });
-    this.configService.getConfig().subscribe(data => {
-      this.fg.patchValue({ parcela: data.parcelas });
-      if (data.currentdate) {
-        this.fg.patchValue({ dataPrimeiraParcela: new Date().toLocaleString().slice(0, 10) });
-      }
-    });
-  }
-
-  delete(id) {
-    this.boletoService.deleteById(id).pipe(
-      tap(_ => {
-        this.messages.add(`deleted id=${id}`);
-        this.initializePageData();
-      }),
-      catchError(this.handleError<any>('delete'))
-    ).subscribe();
-  }
-
-  verificaValidacoesForm(form: FormGroup) {
-    Object.keys(form.controls).forEach(campo => {
-      const controle = form.get(campo);
-      controle.markAsTouched();
-      if (controle instanceof FormGroup) {
-        this.verificaValidacoesForm(controle);
-      }
-    });
-  }
-
-  verificaValidTouched(campo: string) {
-    return !this.fg.get(campo).valid && this.fg.get(campo).touched;
-  }
-
-  onSubmit() {
-    if (this.fg.valid) {
-      this.boletoService.setBoleto(this.fg.value).pipe(
+  delete(element, evento) {
+    this.messages.add('Perguntando para o usuário se ele tem certeza da besteira que ele está prestes a fazer: deletar cliente '
+      + JSON.stringify(element));
+    this.snackBar.open(`Deseja deletar Boleto ${element.id}: ${element.cliente.nome} ?`, 'SIM Eu quero!', {
+      duration: 5000
+    }).onAction().subscribe(data => {
+      this.messages.add('Já era!, usuário confirmou deletar cliente ' + JSON.stringify(element));
+      this.boletoService.deleteById(element.id).pipe(
         tap(_ => {
-          this.messages.add(`updated ${JSON.stringify(this.fg.value)}`);
+          this.messages.add(`deleted id=${element.id}`);
           this.initializePageData();
         }),
-        catchError(this.handleError<any>('update'))
-      ).subscribe();
-    } else {
-      this.messages.add('Invalid boleto form: ' + JSON.stringify(this.fg.value));
-    }
+        catchError(this.handleError<any>('delete'))
+      ).subscribe(_ => {
+        this.snackBar.open(`Boleto ${element.id}: ${element.cliente.nome} deletado!`, 'Fechar', {
+          duration: 5000
+        });
+      });
+    });
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   viewBoleto(boleto) {
     this.router.navigate(['/boleto/' + boleto.id]);
+  }
+
+  openDetails(clientEscolhido) {
+    const dialogRef = this.dialog.open(BoletoDetailComponent, {
+      width: '720px',
+      data: clientEscolhido
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      const boletosBefore = this.boletos;
+      this.boletoService.getBoletoList().subscribe(data => {
+        this.boletos = data;
+        if (this.prefferedConfig.verBoletoAutomaticamente) {
+          const boletosAfter = this.boletos;
+          const onlyInA = boletosAfter.filter(comparer(boletosBefore));
+          const onlyInB = boletosBefore.filter(comparer(boletosAfter));
+          result = onlyInA.concat(onlyInB);
+          console.log(result);
+          this.viewBoleto(result[0]);
+        }
+      });
+    });
+
+    function comparer(otherArray) {
+      return function (current) {
+        return otherArray.filter(function (other) {
+          return other.id === current.id;
+        }).length === 0;
+      };
+    }
+
+
+
   }
 
 }

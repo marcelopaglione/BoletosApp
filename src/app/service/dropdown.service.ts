@@ -9,8 +9,8 @@ import { environment } from '../../environments/environment';
 })
 export class DropdownService {
 
-  APIEstados = environment.APIEstados + '/estados';
-  APICidades = environment.APICidades + '/cidades';
+  APIEstados = environment.API + '/estados';
+  APICidades = environment.API + '/cidades';
 
   constructor(
     private http: Http,

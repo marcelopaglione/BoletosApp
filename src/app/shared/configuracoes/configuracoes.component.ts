@@ -30,7 +30,8 @@ export class ConfiguracoesComponent implements OnInit {
       parcelas: [null, [Validators.required]],
       currentdate: [null, [Validators.required]],
       logMessages: [null, [Validators.required]],
-      showFormDebug: [null, [Validators.required]]
+      showFormDebug: [null, [Validators.required]],
+      verBoletoAutomaticamente: [null, [Validators.required]]
     });
 
     this.configService.getConfig().subscribe(data => {

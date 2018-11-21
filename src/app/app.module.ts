@@ -20,10 +20,9 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
 import { PhonePipe } from './shared/phone.pipe';
-import { BoletoDetalComponent } from './view/boleto-detal/boleto-detal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule,
+  MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatTabsModule,
   MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule,
   MatGridListModule, MatTableModule, MatFormFieldModule, MatDialogModule, MatProgressBarModule,
   MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule
@@ -31,6 +30,8 @@ import {
 import { FormInputComponent } from './shared/form-input/form-input.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ClienteDetailComponent } from './view/cliente-detail/cliente-detail.component';
+import { BoletoDetailComponent } from './view/boleto-detail/boleto-detail.component';
+import { BoletoViewComponent } from './view/boleto-view/boleto-view.component';
 registerLocaleData(localeBr);
 
 @NgModule({
@@ -47,15 +48,16 @@ registerLocaleData(localeBr);
     ConfiguracoesComponent,
     ErrorControlComponent,
     PhonePipe,
-    BoletoDetalComponent,
+    BoletoDetailComponent,
     FormInputComponent,
     FooterComponent,
-    ClienteDetailComponent
+    ClienteDetailComponent,
+    BoletoViewComponent
   ],
   imports: [
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
-    MatDialogModule, MatProgressBarModule,
+    MatDialogModule, MatProgressBarModule, MatTabsModule,
     MatSortModule,
     MatButtonModule,
     MatMenuModule,
@@ -70,7 +72,7 @@ registerLocaleData(localeBr);
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  entryComponents: [ClienteDetailComponent],
+  entryComponents: [ClienteDetailComponent, BoletoDetailComponent],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })

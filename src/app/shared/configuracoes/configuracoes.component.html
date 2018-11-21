@@ -6,36 +6,54 @@
     </mat-card-header>
     <hr>
     <mat-card-content>
-      <p>
-        <mat-checkbox appearance="standard" class="form-size-field" formControlName="currentdate">
-          <mat-label>Data de Hoje</mat-label>
-          <br>
-          <mat-hint>Ao criar um novo boleto é configurado automaticamente a data de hoje commo padrão</mat-hint>
-        </mat-checkbox>
-      </p>
-      <p>
-        <mat-checkbox appearance="standard" class="form-size-field" formControlName="logMessages">
-          <mat-label>Log Messages</mat-label>
-          <br>
-          <mat-hint>Mostrar log de todas as ações clicadas</mat-hint>
-        </mat-checkbox>
-      </p>
-      <p>
-        <mat-checkbox appearance="standard" class="form-size-field" formControlName="showFormDebug">
-          <mat-label>Form Debug</mat-label>
-          <br>
-          <mat-hint>Mostrar Formulário que será submetido</mat-hint>
-        </mat-checkbox>
-      </p>
-      <p>
-        <mat-form-field appearance="standard" class="form-size-field">
-          <mat-label>Parcelas</mat-label>
-          <input matInput placeholder="parcelas" formControlName="parcelas">
-          <mat-hint>Total de parcelas para a ser criada por boleto</mat-hint>
-        </mat-form-field>
-      </p>
+      <mat-tab-group>
+
+        <mat-tab label="Usuário">
+          <p>
+            <mat-checkbox appearance="fill" class="form-size-field" formControlName="currentdate">
+              <mat-label>Data de Hoje</mat-label>
+              <br>
+              <mat-hint>Ao criar um novo boleto é configurado automaticamente a data de hoje commo padrão</mat-hint>
+            </mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox appearance="fill" class="form-size-field" formControlName="verBoletoAutomaticamente">
+              <mat-label>Ir Para Boletos</mat-label>
+              <br>
+              <mat-hint>Automaticamente vizualise o boleto após criado</mat-hint>
+            </mat-checkbox>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="form-size-field">
+              <mat-label>Parcelas</mat-label>
+              <input matInput placeholder="parcelas" formControlName="parcelas">
+              <mat-hint>Total de parcelas para a ser criada por boleto</mat-hint>
+            </mat-form-field>
+          </p>
+        </mat-tab>
+        <mat-tab label="Desenvolvedor">
+          <p>
+            <mat-checkbox appearance="fill" class="form-size-field" formControlName="logMessages">
+              <mat-label>Log Messages</mat-label>
+              <br>
+              <mat-hint>Mostrar log de todas as ações clicadas</mat-hint>
+            </mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox appearance="fill" class="form-size-field" formControlName="showFormDebug">
+              <mat-label>Form Debug</mat-label>
+              <br>
+              <mat-hint>Mostrar Formulário que será submetido</mat-hint>
+            </mat-checkbox>
+          </p>
+        </mat-tab>
 
 
+
+
+
+
+      </mat-tab-group>
 
     </mat-card-content>
     <mat-card-actions>

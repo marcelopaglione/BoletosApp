@@ -35,7 +35,6 @@ export class ClienteService {
     return [
       'id',
       'nome',
-      'email',
       'telefone',
       'valor',
       'cep',

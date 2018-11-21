@@ -5,11 +5,11 @@ import { BoletoService } from '../../service/boleto.service';
 import { MessageService } from '../../service/message.service';
 
 @Component({
-  selector: 'app-boleto-detal',
-  templateUrl: './boleto-detal.component.html',
-  styleUrls: ['./boleto-detal.component.scss']
+  selector: 'app-boleto-view',
+  templateUrl: './boleto-view.component.html',
+  styleUrls: ['./boleto-view.component.scss']
 })
-export class BoletoDetalComponent implements OnInit {
+export class BoletoViewComponent implements OnInit {
 
   boletoId;
   boleto: Boleto;
@@ -35,7 +35,7 @@ export class BoletoDetalComponent implements OnInit {
       for (let index = 0; index < this.boleto.parcela; index++) {
         this.boletovector.push(index);
       }
-      //this.print();
+      // this.print();
     });
 
 
