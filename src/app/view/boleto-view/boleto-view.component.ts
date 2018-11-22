@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Boleto } from '../../entity/Boleto';
 import { BoletoService } from '../../service/boleto.service';
 import { MessageService } from '../../service/message.service';
+import numero from 'numero-por-extenso';
 
 @Component({
   selector: 'app-boleto-view',
@@ -18,11 +19,10 @@ export class BoletoViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private boletoService: BoletoService,
-    private messages: MessageService) {
+    private messages: MessageService
+  ) {
 
     this.route.params.subscribe(params => {
-
-      console.log('set id ' + JSON.stringify(params));
       this.boletoId = params.id;
     });
   }
@@ -43,7 +43,6 @@ export class BoletoViewComponent implements OnInit {
 
   print(): void {
     let printContents, popupWin;
-    console.log(document.getElementById('boletos-header').innerHTML);
     printContents = document.getElementById('print-section').innerHTML;
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
     popupWin.document.open();
@@ -52,10 +51,21 @@ export class BoletoViewComponent implements OnInit {
       <head>
         ${document.getElementById('boletos-header').innerHTML}
       </head>
-        <body onload="window.print();window.close()" style="display: flex;justify-content: center;">${printContents}</body>
+        <body onload='window.print();window.close()' style='display: flex;justify-content: center;'>${printContents}</body>
       </html>`
     );
     popupWin.document.close();
+  }
+
+  somarMes(dataParcela, quantidade) {
+    const _dataParcela = new Date(dataParcela);
+    _dataParcela.setMonth(_dataParcela.getMonth() + quantidade);
+    return _dataParcela;
+  }
+
+  extenso(c) {
+
+    return numero.porExtenso(c, numero.estilo.monetario);
   }
 
 }

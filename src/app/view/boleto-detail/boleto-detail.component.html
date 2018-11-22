@@ -6,7 +6,7 @@
   <div mat-dialog-content class="container">
 
     <mat-form-field appearance="fill">
-      <mat-select placeholder="Escolha um Cliente" formControlName="cliente" [compareWith]="compareFn">
+      <mat-select placeholder="Escolha um Cliente" formControlName="cliente" [compareWith]="compareFn" (blur)="updateValor()">
         <mat-option *ngFor="let cliente of clientes" [value]="cliente">
           {{cliente.nome}}
         </mat-option>
@@ -15,9 +15,15 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Primeira Parcela</mat-label>
-      <input matInput placeholder="15/04/2020" formControlName="dataPrimeiraParcela">
-      <mat-hint>Selecione a data da primeira parcela</mat-hint>
+      <input matInput [matDatepicker]="picker" placeholder="Escolha uma data" formControlName="dataPrimeiraParcela" >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor do Aluguel</mat-label>
+      <input matInput placeholder="" formControlName="valor" readonly="true">
+      <mat-hint>Valor Informado em Clientes</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">

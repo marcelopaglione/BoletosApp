@@ -6,5 +6,5 @@ export class Boleto {
   cliente: Cliente;
   emissor: Emissor;
   parcela: number;
-  dataPrimeiraParcela: string;
+  dataPrimeiraParcela: Date;
 }

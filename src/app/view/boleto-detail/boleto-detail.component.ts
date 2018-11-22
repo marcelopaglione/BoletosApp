@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConfigService } from '../../service/config.service';
 import { MessageService } from '../../service/message.service';
@@ -11,7 +11,7 @@ import { Cliente } from '../../entity/Cliente';
 import { Emissor } from '../../entity/Emissor';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatDatepicker } from '@angular/material';
 
 @Component({
   selector: 'app-boleto-detail',
@@ -28,7 +28,7 @@ export class BoletoDetailComponent implements OnInit {
     private emissorService: EmissorService,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<BoletoDetailComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: Boleto
   ) { }
 
   boleto: Boleto;
@@ -36,25 +36,29 @@ export class BoletoDetailComponent implements OnInit {
   emissor: Emissor;
   prefferedConfig: Config;
   fg: FormGroup;
+  dataEscolhida: string;
 
   ngOnInit() {
-    this.configService.getConfig().subscribe(data => {
-      this.prefferedConfig = data;
-      this.fg.patchValue({ parcela: data.parcelas });
-    });
+
     this.fg = this.formBuilder.group({
       id: [null],
       cliente: [null, [Validators.required]],
       emissor: [null, [Validators.required]],
       parcela: [null, [Validators.required]],
+      valor:  [null, [Validators.required]],
       dataPrimeiraParcela: [null, Validators.required]
     });
+
     this.initializePageData();
 
     if (this.data) {
-      this.messages.add('Income data: ' + JSON.stringify(this.data));
-      const boleto = this.data;
-      this.fg.patchValue(boleto);
+      this.configService.getConfig().subscribe(configData => {
+        this.prefferedConfig = configData;
+        const boleto = this.data;
+        this.fg.patchValue(boleto);
+        this.fg.patchValue({valor: boleto.cliente.valor});
+        this.boleto = this.data;
+      });
     }
   }
 
@@ -66,6 +70,7 @@ export class BoletoDetailComponent implements OnInit {
     this.emissorService.getEmissor().subscribe(data => {
       this.emissor = data;
       this.fg.patchValue({ emissor: data });
+
     });
   }
 
@@ -75,7 +80,7 @@ export class BoletoDetailComponent implements OnInit {
     this.configService.getConfig().subscribe(data => {
       this.fg.patchValue({ parcela: data.parcelas });
       if (data.currentdate) {
-        this.fg.patchValue({ dataPrimeiraParcela: new Date().toLocaleString().slice(0, 10) });
+        this.fg.patchValue({ dataPrimeiraParcela: new Date() });
       }
     });
   }
@@ -125,4 +130,8 @@ export class BoletoDetailComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  updateValor() {
+    const clienteEscolhido: Cliente = this.fg.get('cliente').value;
+    this.fg.patchValue({ valor: clienteEscolhido.valor});
+  }
 }

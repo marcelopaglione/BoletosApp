@@ -29,7 +29,7 @@
 
         <ng-container matColumnDef="Parcelas">
           <th mat-header-cell *matHeaderCellDef> Primeira Parcela </th>
-          <td mat-cell *matCellDef="let element"> {{element.dataPrimeiraParcela}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.dataPrimeiraParcela | dateFormat}} </td>
         </ng-container>
 
         <ng-container matColumnDef="DataPrimeiraParcela">

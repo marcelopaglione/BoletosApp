@@ -23,7 +23,8 @@ import { PhonePipe } from './shared/phone.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatTabsModule,
-  MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule,
+  MatNativeDateModule,
+  MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule, MatDatepickerModule,
   MatGridListModule, MatTableModule, MatFormFieldModule, MatDialogModule, MatProgressBarModule,
   MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule
 } from '@angular/material';
@@ -32,6 +33,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ClienteDetailComponent } from './view/cliente-detail/cliente-detail.component';
 import { BoletoDetailComponent } from './view/boleto-detail/boleto-detail.component';
 import { BoletoViewComponent } from './view/boleto-view/boleto-view.component';
+import { DateFormatPipe } from './shared/date.pipe';
 registerLocaleData(localeBr);
 
 @NgModule({
@@ -48,6 +50,7 @@ registerLocaleData(localeBr);
     ConfiguracoesComponent,
     ErrorControlComponent,
     PhonePipe,
+    DateFormatPipe,
     BoletoDetailComponent,
     FormInputComponent,
     FooterComponent,
@@ -57,8 +60,8 @@ registerLocaleData(localeBr);
   imports: [
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
-    MatDialogModule, MatProgressBarModule, MatTabsModule,
-    MatSortModule,
+    MatDialogModule, MatProgressBarModule, MatTabsModule, MatDatepickerModule,
+    MatSortModule, MatNativeDateModule,
     MatButtonModule,
     MatMenuModule,
     MatCardModule,

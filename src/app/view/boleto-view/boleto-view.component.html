@@ -8,28 +8,28 @@
 
           <div class="container margin-sections">
             <div class="content">
-              <div class="item">
+              <div class="item center">
                 <h4>Canhoto N° {{b + 1}} </h4>
               </div>
             </div>
             <div class="content">
-              <div class="item">
+              <div class="item center">
                 <h5>{{boleto.cliente.nome}}</h5>
               </div>
             </div>
             <div class="content">
-              <div class="item">
+              <div class="item center">
                 <h5>{{boleto.cliente.endereco.rua}}
                   {{boleto.cliente.endereco.numero}} {{boleto.cliente.endereco.bairro}}</h5>
               </div>
             </div>
             <div class="content">
-              <div class="item">
+              <div class="item center">
                 <h4>R$ {{boleto.cliente.valor}}</h4>
               </div>
             </div>
             <div class="content text-center">
-              <h4>____/____/______</h4>
+              <h4>{{somarMes(boleto.dataPrimeiraParcela, b) | dateFormat}}</h4>
             </div>
           </div>
 
@@ -72,13 +72,14 @@
                 <h4>A importância de:</h4>
               </div>
               <div class="item left">
-                <h4>R$ {{boleto.cliente.valor}}</h4>
+                <h4> {{extenso(boleto.cliente.valor)}}</h4>
               </div>
             </div>
             <br>
             <div class="content">
               <div class="item center">
-                <h4 class="text-color"> {{boleto.emissor.endereco.cidade.nome}},</h4>
+                <h4 class="text-color"> {{boleto.emissor.endereco.cidade.nome}}, {{somarMes(boleto.dataPrimeiraParcela,
+                  b) | dateFormat}}</h4>
               </div>
             </div>
             <br />
