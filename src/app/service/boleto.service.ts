@@ -4,8 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Boleto } from '../entity/Boleto';
 import { ClienteService } from './cliente.service';
-import { Cliente } from '../entity/Cliente';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
