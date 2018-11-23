@@ -1,16 +1,19 @@
-<mat-toolbar color="primary" class="positionNav">
-  <span>Boletos</span>
-
-  <!-- This fills the remaining space of the current row -->
-  <div class="fill-remaining-space">
-    <div class="button-row">
-      <a mat-flat-button color="primary" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
-      <a mat-flat-button color="primary" routerLink="emissor" routerLinkActive="active">Emissor</a>
-      <a mat-flat-button color="primary" routerLink="cliente" routerLinkActive="active">Cliente</a>
-      <a mat-flat-button color="primary" routerLink="boleto" routerLinkActive="active">Boleto</a>
-      <a mat-flat-button color="primary" routerLink="configuracoes" routerLinkActive="active">Configuracoes</a>
-    </div>
-  </div>
-
-  <span>@</span>
-</mat-toolbar>
+<div id='cssmenu'>
+  <ul>
+    <li [ngClass]="{'active':selectedTab === 'dashboard'}" (click)="selectTab('dashboard')">
+      <a routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+    </li>
+    <li [ngClass]="{'active':selectedTab === 'emissor'}" (click)="selectTab('emissor')">
+      <a routerLink="emissor" routerLinkActive="active">Emissor</a>
+    </li>
+    <li [ngClass]="{'active':selectedTab === 'cliente'}" (click)="selectTab('cliente')">
+      <a routerLink="cliente" routerLinkActive="active">Cliente</a>
+    </li>
+    <li [ngClass]="{'active':selectedTab === 'boleto'}" (click)="selectTab('boleto')">
+      <a routerLink="boleto" routerLinkActive="active">Boleto</a>
+    </li>
+    <li [ngClass]="{'active':selectedTab === 'configuracoes'}" (click)="selectTab('configuracoes')">
+      <a routerLink="configuracoes" routerLinkActive="active">Configuracoes</a>
+    </li>
+  </ul>
+</div>

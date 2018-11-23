@@ -295,26 +295,26 @@
     {
       "id": 7,
       "cliente": {
-        "id": 5,
-        "nome": "Simplício Simplório Da Simplicidade Simples",
-        "email": "simples@assim.com",
-        "telefone": "5288559944",
-        "valor": "5895.80",
+        "id": 4,
+        "nome": "Produto do Amor Conjugal De Marichá E Maribel",
+        "email": "amor@mail.com",
+        "telefone": "4389597799",
+        "valor": "580.69",
         "endereco": {
-          "cep": "78552-313",
-          "numero": "123",
-          "complemento": "de 6428 a 7142 - lado par",
-          "rua": "Avenida André Antônio Maggi",
-          "bairro": "Jardim das Oliveiras",
+          "cep": "66913-340",
+          "numero": "1r2",
+          "complemento": "(Cj Chapéu Virado)",
+          "rua": "Travessa Seis",
+          "bairro": "Chapéu Virado (Mosqueiro)",
           "cidade": {
-            "id": "1473",
-            "nome": "Sinop",
-            "estado": "13"
+            "id": "2423",
+            "nome": "Alenquer",
+            "estado": "14"
           },
           "estado": {
-            "id": "13",
-            "sigla": "MT",
-            "nome": "Mato Grosso"
+            "id": "14",
+            "sigla": "PA",
+            "nome": "Pará"
           }
         }
       },
@@ -342,8 +342,8 @@
         }
       },
       "parcela": "12",
-      "valor": "5895.80",
-      "dataPrimeiraParcela": "2018-11-22T02:51:49.912Z"
+      "valor": "580.69",
+      "dataPrimeiraParcela": "2018-12-07T02:00:00.000Z"
     }
   ],
   "cliente": [
@@ -424,7 +424,7 @@
       "nome": "Márciano Verdinho Das Antenas Longas",
       "email": "as@b.com",
       "telefone": "157844998",
-      "valor": "6000",
+      "valor": "60005",
       "endereco": {
         "cep": "41710-890",
         "numero": "123",

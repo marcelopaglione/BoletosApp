@@ -1,27 +1,61 @@
 table {
   width: 100%;
 }
-.example-container {
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr:not(.example-expanded-row):hover {
+  background: #f5f5f5;
+}
+
+tr:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.buttonGroup {
+  justify-content: center;
   display: flex;
-  flex-direction: column;
 }
 
-.example-container > * {
-  width: 100%;
+.buttonGroup:hover {
+  .bt1 {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 500ms;
+  }
+  .bt2 {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-20px, 0);
+    transition: all 500ms;
+  }
+  .bt3 {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(20px, 0);
+    transition: all 500ms;
+  }
 }
 
-.form-size-field{
-  width: 600px;
+.buttonGroup {
+  .bt1 {
+    visibility: visible;
+    opacity: 1;
+    transition: all 300ms;
+  }
+  .bt2 {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms;
+  }
+  .bt3 {
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+    transition: all 300ms;
+  }
 }
 
-.form-input-content{
-  text-align: center;
-    padding: 20px;
-}
-
-.titleflexheader {
-  flex-grow: 5;
-}
-.titleflexbutton {
-  flex-grow: 1;
-}

@@ -9,7 +9,13 @@ export class NavComponent implements OnInit {
 
   constructor() { }
 
+  selectedTab = '';
+
   ngOnInit() {
   }
 
+  selectTab(tab: string) {
+    console.log(tab);
+    this.selectedTab = tab;
+  }
 }
