@@ -28,22 +28,19 @@ tr:not(.example-expanded-row):active {
   .bt2 {
     visibility: visible;
     opacity: 1;
-//    transform: translateY(-10px);
-    transform: translate(40px, 0);
+    transform: translate(42px, 0);
     transition: all 500ms;
   }
   .bt3 {
     visibility: visible;
     opacity: 1;
-  //  transform: translateY(-10px);
-    transform: translate(-40px, 0);
+    transform: translate(-42px, 0);
     transition: all 500ms;
   }
   .bt4 {
     visibility: visible;
     opacity: 1;
-   // transform: translateY(40px);
-   transform: translate(0px, -0px);
+    transform: translate(0px, -0px);
     transition: all 500ms;
   }
 }

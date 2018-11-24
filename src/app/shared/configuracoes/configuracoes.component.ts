@@ -27,11 +27,23 @@ export class ConfiguracoesComponent implements OnInit {
   ngOnInit() {
     this.messages.add('*** Página Config.Componenet aberta ***');
     this.fg = this.formBuilder.group({
-      parcelas: [null, [Validators.required]],
-      currentdate: [null, [Validators.required]],
-      logMessages: [null, [Validators.required]],
-      showFormDebug: [null, [Validators.required]],
-      verBoletoAutomaticamente: [null, [Validators.required]]
+      parcelas: [null, Validators.required],
+      currentdate: [null, Validators.required],
+      logMessages: [null, Validators.required],
+      showFormDebug: [null, Validators.required],
+      verBoletoAutomaticamente: [null, Validators.required],
+
+      canhotoWidth: [null, Validators.required],
+      canhotoHeight: [null, Validators.required],
+      canhotoBorder: [null, Validators.required],
+      canhotoPadding: [null, Validators.required],
+      canhotoFont: [null, Validators.required],
+
+      reciboWidth: [null, Validators.required],
+      reciboHeight: [null, Validators.required],
+      reciboBorder: [null, Validators.required],
+      reciboPadding: [null, Validators.required],
+      reciboFont: [null, Validators.required]
     });
 
     this.configService.getConfig().subscribe(data => {
@@ -65,6 +77,10 @@ export class ConfiguracoesComponent implements OnInit {
       this.messages.add(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
+  }
+
+  updateFormWithCSS(event) {
+    this.fg.patchValue(event);
   }
 
 }

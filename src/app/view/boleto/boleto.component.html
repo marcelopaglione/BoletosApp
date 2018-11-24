@@ -47,15 +47,15 @@
                   settings
                 </i>
               </button>
-              <button class="bt2" mat-mini-fab color="warn" (click)="delete(element, $event)">
+              <button class="bt2" mat-mini-fab color="warn" (click)="delete(element, $event)" matTooltip="Deletar {{element.cliente.nome}}">
                 <i class="material-icons">
                   delete
                 </i></button>&nbsp;
-              <button class="bt3" mat-mini-fab color="accent" (click)="viewBoleto(element)">
+              <button class="bt3" mat-mini-fab color="accent" (click)="viewBoleto(element)" matTooltip="Ver Boleto Para {{element.cliente.nome}}">
                 <i class="material-icons">
                   attach_money
                 </i> </button> &nbsp;
-              <button class="bt4" mat-mini-fab color="primary" (click)="editar(element)">
+              <button class="bt4" mat-mini-fab color="primary" (click)="editar(element)" matTooltip="Editar {{element.cliente.nome}}">
                 <i class="material-icons">
                   edit
                 </i>

@@ -10,7 +10,7 @@ import { NotFoundComponent } from './view/not-found/not-found.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessageComponent } from './shared/message/message.component';
 import { HttpModule } from '@angular/http';
 import { FormDebugComponent } from './shared/form-debug/form-debug.component';
@@ -26,7 +26,7 @@ import {
   MatNativeDateModule,
   MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule, MatDatepickerModule,
   MatGridListModule, MatTableModule, MatFormFieldModule, MatDialogModule, MatProgressBarModule,
-  MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule
+  MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
 import { FormInputComponent } from './shared/form-input/form-input.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -61,7 +61,7 @@ registerLocaleData(localeBr);
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
     MatDialogModule, MatProgressBarModule, MatTabsModule, MatDatepickerModule,
-    MatSortModule, MatNativeDateModule,
+    MatSortModule, MatNativeDateModule, MatTooltipModule,
     MatButtonModule,
     MatMenuModule,
     MatCardModule,
@@ -73,7 +73,10 @@ registerLocaleData(localeBr);
     HttpClientModule,
     HttpModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    BrowserModule,
+    FormsModule
   ],
   entryComponents: [ClienteDetailComponent, BoletoDetailComponent],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],

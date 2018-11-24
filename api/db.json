@@ -4,7 +4,17 @@
     "currentdate": true,
     "logMessages": false,
     "showFormDebug": false,
-    "verBoletoAutomaticamente": true
+    "verBoletoAutomaticamente": true,
+    "canhotoWidth": 11,
+    "canhotoHeight": "81",
+    "canhotoBorder": "1",
+    "canhotoPadding": "22",
+    "canhotoFont": 142,
+    "reciboWidth": 125,
+    "reciboHeight": "81",
+    "reciboBorder": "1",
+    "reciboPadding": "22",
+    "reciboFont": 101
   },
   "emissor": {
     "id": 1,
@@ -80,59 +90,8 @@
         }
       },
       "parcela": "12",
-      "dataPrimeiraParcela": "2018-11-22T01:57:55.275Z"
-    },
-    {
-      "id": 3,
-      "cliente": {
-        "id": 8,
-        "nome": "Janeiro Fevereiro de Março Abril",
-        "email": "1@2.com",
-        "telefone": "157844889",
-        "valor": "5800",
-        "endereco": {
-          "cep": "86025600",
-          "numero": "42",
-          "complemento": "",
-          "rua": "Rua Chuí",
-          "bairro": "Jardim Agari",
-          "cidade": {
-            "id": "2976",
-            "nome": "Londrina",
-            "estado": "18"
-          },
-          "estado": {
-            "id": "18",
-            "sigla": "PR",
-            "nome": "Paraná"
-          }
-        }
-      },
-      "emissor": {
-        "id": 1,
-        "nome": "Marcelo Ortiz Paglione",
-        "email": "marcelo.paglione@gmail.com",
-        "telefone": "(43) 999176376",
-        "endereco": {
-          "cep": "86280000",
-          "numero": "480",
-          "complemento": "",
-          "rua": "José de Oliveira Borges",
-          "bairro": "Centro",
-          "cidade": {
-            "id": "3175",
-            "nome": "Uraí",
-            "estado": "18"
-          },
-          "estado": {
-            "id": "18",
-            "sigla": "PR",
-            "nome": "Paraná"
-          }
-        }
-      },
-      "parcela": "12",
-      "dataPrimeiraParcela": "2018-11-22T02:08:00.035Z"
+      "valor": "5800",
+      "dataPrimeiraParcela": "2018-11-03T03:00:00.000Z"
     },
     {
       "id": 4,
