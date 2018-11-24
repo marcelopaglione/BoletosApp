@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
 })
 export class EmissorService {
 
-  private readonly API = environment.API + '/emissor';
+  private readonly API = environment.API + '/emissors';
 
   public getEmissor() {
     this.messages.add(`API: ${this.API} - GET`);

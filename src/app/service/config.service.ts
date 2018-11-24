@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { MessageService } from './message.service';
 import { HttpClient } from '@angular/common/http';
 import { Config } from '../entity/Config';
@@ -13,7 +13,7 @@ export class ConfigService {
     private messages: MessageService,
     private http: HttpClient) { }
 
-  private readonly API = environment.API + '/config';
+  private readonly API = environment.API + '/configs';
 
   public getConfig() {
     this.messages.add(`API: ${this.API} - GET`);

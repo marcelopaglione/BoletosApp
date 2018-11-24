@@ -10,7 +10,7 @@ import { ClienteService } from './cliente.service';
 })
 export class BoletoService {
 
-  private readonly API = environment.API + '/boleto';
+  private readonly API = environment.API + '/boletos';
 
   public getBoletoList() {
     this.messages.add(`API: ${this.API} - GET`);

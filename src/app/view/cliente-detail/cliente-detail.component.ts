@@ -81,19 +81,13 @@ export class ClienteDetailComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault();
-    console.log('submmit ciente-detail-componenet');
-    console.log(event);
     if (this.fg.valid) {
       this.clienteService.setCliente(this.fg.value).pipe(
         tap(_ => {
           event.preventDefault();
           event.stopImmediatePropagation();
-          console.log(`Cliente Updated ${JSON.stringify(this.fg.value)}`);
           this.limparForm();
-          console.log(`limparForm`);
           this.onNoClick();
-          console.log(`fecharForm`);
-
         }),
         catchError(this.handleError<any>('update'))
       ).subscribe();
@@ -197,7 +191,6 @@ export class ClienteDetailComponent implements OnInit {
     }
     Object.keys(form.controls).forEach(campo => {
       const controle = form.get(campo);
-      console.log(controle);
       if (controle instanceof FormGroup) {
         this.verificaPorcentagemForm(controle, (index + 1));
       } else {

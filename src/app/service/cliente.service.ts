@@ -9,7 +9,7 @@ import { MessageService } from './message.service';
 })
 export class ClienteService {
 
-  private readonly API = environment.API + '/cliente';
+  private readonly API = environment.API + '/clientes';
 
   public getClienteList() {
     this.messages.add(`API: ${this.API} - GET`);
