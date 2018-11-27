@@ -6,7 +6,7 @@
   <mat-card-content>
     <button class="titleflexbutton" mat-flat-button color="primary" type="button" (click)="openDetails(null)">Criar
       Novo Cliente</button>
-    <div *ngIf="clientes$ as clientes" class="tableContent">
+    <div *ngIf="clientes$ as clientes; else loading" class="tableContent">
       <table mat-table [dataSource]="clientes">
 
         <ng-container matColumnDef="id">
@@ -83,3 +83,9 @@
 
   </mat-card-content>
 </mat-card>
+
+<ng-template #loading>
+    <div class="loading">
+      <span> <mat-spinner></mat-spinner></span>
+    </div>
+</ng-template>

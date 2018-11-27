@@ -23,7 +23,7 @@ import { PhonePipe } from './shared/phone.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatTabsModule,
-  MatNativeDateModule,
+  MatNativeDateModule, MatProgressSpinnerModule,
   MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule, MatDatepickerModule,
   MatGridListModule, MatTableModule, MatFormFieldModule, MatDialogModule, MatProgressBarModule,
   MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule, MatTooltipModule
@@ -61,7 +61,7 @@ registerLocaleData(localeBr);
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
     MatDialogModule, MatProgressBarModule, MatTabsModule, MatDatepickerModule,
-    MatSortModule, MatNativeDateModule, MatTooltipModule,
+    MatSortModule, MatNativeDateModule, MatTooltipModule, MatProgressSpinnerModule,
     MatButtonModule,
     MatMenuModule,
     MatCardModule,

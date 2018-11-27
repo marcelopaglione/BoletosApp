@@ -21,7 +21,7 @@ export class ConfigService {
   }
 
   public setConfig(config) {
-    this.messages.add(`${this.API} - PUT: ' + ${JSON.stringify(config)}`);
-    return this.http.put(`${this.API}`, config);
+    this.messages.add(`${this.API}/${config.id} - PUT: ' + ${JSON.stringify(config)}`);
+    return this.http.put(`${this.API}/${config.id}`, config);
   }
 }

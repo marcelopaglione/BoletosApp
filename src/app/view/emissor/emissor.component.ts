@@ -53,6 +53,7 @@ export class EmissorComponent implements OnInit {
       email: [null, [Validators.email]],
       telefone: [null],
       endereco: this.formBuilder.group({
+        id: [null],
         cep: [null, Validators.required],
         numero: [null, Validators.required],
         complemento: [null],
@@ -72,17 +73,25 @@ export class EmissorComponent implements OnInit {
     this.emissor$ = this.emissorService.getEmissor().pipe(
       tap(dados => {
         this.updateValues(dados);
-        const estadoDoEmissor: Estado = this.fg.get('endereco.estado').value;
-        if (estadoDoEmissor) {
-          this.messages.add('Carregar Cidades para o estado do emissor: ' + JSON.stringify(estadoDoEmissor));
-          this.loadCidades();
+        if (this.fg.get('endereco').value) {
+          const estadoDoEmissor: Estado = this.fg.get('endereco.estado').value;
+          if (estadoDoEmissor) {
+            this.messages.add('Carregar Cidades para o estado do emissor: ' + JSON.stringify(estadoDoEmissor));
+            this.loadCidades();
+          }
         }
       })
     );
   }
 
   updateValues(emissor: Emissor) {
-    this.fg.patchValue(emissor);
+    this.messages.add('Patch Value Emissor start: ' + JSON.stringify(emissor));
+    if (emissor.endereco) {
+      this.fg.patchValue(emissor);
+    } else {
+      this.fg.patchValue({id: emissor.id, nome: emissor.nome, telefone: emissor.telefone, email: emissor.email});
+    }
+    this.messages.add('Patch Value Emissor end: ' + JSON.stringify(emissor));
   }
 
   consultaCEP() {

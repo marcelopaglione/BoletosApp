@@ -27,6 +27,7 @@ export class ConfiguracoesComponent implements OnInit {
   ngOnInit() {
     this.messages.add('*** Página Config.Componenet aberta ***');
     this.fg = this.formBuilder.group({
+      id: [null, Validators.required],
       parcelas: [null, Validators.required],
       currentdate: [null, Validators.required],
       logMessages: [null, Validators.required],

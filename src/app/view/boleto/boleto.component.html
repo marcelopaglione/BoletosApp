@@ -3,7 +3,7 @@
     <mat-card-title>Administrar Boletos</mat-card-title>
   </mat-card-header>
   <hr>
-  <mat-card-content>
+  <mat-card-content >
     <button class="titleflexbutton" mat-flat-button color="primary" type="button" (click)="openDetails(null)">Criar
       Novo Boleto</button>
     <div *ngIf="boletos; else loading">
@@ -74,5 +74,7 @@
 </mat-card>
 
 <ng-template #loading>
-  <span> Carregando...</span>
+    <div class="loading">
+      <span> <mat-spinner></mat-spinner></span>
+    </div>
 </ng-template>

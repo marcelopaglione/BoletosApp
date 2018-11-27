@@ -18,8 +18,8 @@ export class EmissorService {
   }
 
   public setEmissor(emissor: Emissor) {
-    this.messages.add(`API: ${this.API} - PUT: ' + ${JSON.stringify(emissor)}`);
-    this.http.put(this.API, emissor).subscribe(
+    this.messages.add(`API: ${this.API}/${emissor.id} - PUT: ${JSON.stringify(emissor)}`);
+    this.http.put(`${this.API}/${emissor.id}`, emissor).subscribe(
       r => {
         return r;
       }

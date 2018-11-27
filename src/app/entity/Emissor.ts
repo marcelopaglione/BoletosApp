@@ -6,6 +6,7 @@ export class Emissor {
   email: string;
   telefone: string;
   endereco: {
+    id: number;
     cep: string;
     numero: string;
     complemento: string;

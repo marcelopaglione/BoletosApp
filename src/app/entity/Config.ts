@@ -1,4 +1,5 @@
 export class Config {
+  id: number;
   parcelas: number;
   currentdate: boolean;
   logMessages: boolean;

@@ -84,5 +84,8 @@
   <app-form-debug *ngIf="config.showFormDebug" [form]="fg"></app-form-debug>
 </div>
 <ng-template #loading>
-  <span> Carregando...</span>
+    <div class="loading">
+      <span> <mat-spinner></mat-spinner></span>
+    </div>
 </ng-template>
+
