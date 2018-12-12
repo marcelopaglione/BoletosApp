@@ -7,50 +7,58 @@
     <hr>
     <mat-card-content>
       <div class="container">
-
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
           <mat-label> Nome</mat-label>
           <input matInput type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
         </mat-form-field>
+      </div>
 
-        <mat-form-field appearance="fill">
+      <div class="container">
+        <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
           <mat-label> Email</mat-label>
           <input matInput type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class=" formsize">
+        <mat-form-field appearance="fill" class=" formsize" style="flex-grow: 1; padding: 5px;">
           <mat-label> Telefone</mat-label>
           <input matInput type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
         </mat-form-field>
+      </div>
 
-        <div formGroupName="endereco" class="container">
 
-          <mat-form-field appearance="fill">
+      <div formGroupName="endereco">
+
+        <div class="container">
+          <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> cep</mat-label>
             <input matInput type="text" id="cep" placeholder="cep" formControlName="cep" (blur)="consultaCEP()">
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style="flex-grow: 2; padding: 5px;">
             <mat-label> rua</mat-label>
             <input matInput type="text" id="rua" placeholder="rua" formControlName="rua">
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> Número</mat-label>
             <input matInput type="text" id="numero" placeholder="numero" formControlName="numero">
           </mat-form-field>
+        </div>
 
-          <mat-form-field appearance="fill">
+        <div class="container">
+          <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> bairro</mat-label>
             <input matInput type="text" id="bairro" placeholder="bairro" formControlName="bairro">
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> complemento</mat-label>
             <input matInput type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
           </mat-form-field>
+        </div>
 
-          <mat-form-field appearance="fill">
+        <div class="container">
+          <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> estado</mat-label>
             <mat-select id="estado" formControlName="estado" (blur)="loadCidades()" (change)="loadCidades()"
               [compareWith]="compareFn">
@@ -58,13 +66,12 @@
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> cidade</mat-label>
             <mat-select id="cidade" formControlName="cidade" [compareWith]="compareFn">
               <mat-option *ngFor="let cidade of cidades$ | async" [value]="cidade"> {{cidade.nome}} </mat-option>
             </mat-select>
           </mat-form-field>
-
         </div>
 
       </div>

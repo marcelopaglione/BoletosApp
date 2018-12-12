@@ -4,9 +4,12 @@
 }
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
-
-.container > * {
-  width: 100%;
-}
+ .child {
+  flex-grow: 1
+ }
