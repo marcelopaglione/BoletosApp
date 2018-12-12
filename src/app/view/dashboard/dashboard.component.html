@@ -1,3 +1,36 @@
-<p>
-  dashboard works!
-</p>
+<div class="cards">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar><i class="fas fa-2x fa-money-bill-alt"></i></div>
+      <mat-card-title>Rensa Mensal</mat-card-title>
+      <mat-card-subtitle
+        >Renda estimada de acordo com a lista de clientes</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{ dashboard.rendaMensal | currency: 'BRL' }}</h1>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar><i class="fas fa-2x fa-dice-d6"></i></div>
+      <mat-card-title>Clientes</mat-card-title>
+      <mat-card-subtitle>Total de clientes cadastrados</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{ dashboard.totalClientes }}</h1>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar><i class="far fa-2x fa-credit-card"></i></div>
+      <mat-card-title>Boletos</mat-card-title>
+      <mat-card-subtitle>Total de boletos cadastrados</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{ dashboard.totalBoletos }}</h1>
+    </mat-card-content>
+  </mat-card>
+</div>

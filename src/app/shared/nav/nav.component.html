@@ -1,19 +1,19 @@
 <div id='cssmenu'>
   <ul>
-    <li [ngClass]="{'active':selectedTab === 'dashboard'}" (click)="selectTab('dashboard')">
-      <a routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+    <li routerLink="dashboard" routerLinkActive="active" (click)="selectTab('dashboard')">
+      <a>Dashboard</a>
     </li>
-    <li [ngClass]="{'active':selectedTab === 'emissor'}" (click)="selectTab('emissor')">
-      <a routerLink="emissor" routerLinkActive="active">Emissor</a>
+    <li routerLink="emissor" routerLinkActive="active" (click)="selectTab('emissor')">
+      <a >Emissor</a>
     </li>
-    <li [ngClass]="{'active':selectedTab === 'cliente'}" (click)="selectTab('cliente')">
-      <a routerLink="cliente" routerLinkActive="active">Cliente</a>
+    <li routerLink="cliente" routerLinkActive="active" (click)="selectTab('cliente')">
+      <a >Cliente</a>
     </li>
-    <li [ngClass]="{'active':selectedTab === 'boleto'}" (click)="selectTab('boleto')">
-      <a routerLink="boleto" routerLinkActive="active">Boleto</a>
+    <li routerLink="boleto" routerLinkActive="active" (click)="selectTab('boleto')">
+      <a >Boleto</a>
     </li>
-    <li [ngClass]="{'active':selectedTab === 'configuracoes'}" (click)="selectTab('configuracoes')">
-      <a routerLink="configuracoes" routerLinkActive="active">Configuracoes</a>
+    <li routerLink="configuracoes" routerLinkActive="active" (click)="selectTab('configuracoes')">
+      <a >Configuracoes</a>
     </li>
   </ul>
 </div>
