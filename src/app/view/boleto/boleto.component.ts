@@ -11,11 +11,20 @@ import { Config } from 'src/app/entity/Config';
 import { Router } from '@angular/router';
 import { BoletoDetailComponent } from '../boleto-detail/boleto-detail.component';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-boleto',
   templateUrl: './boleto.component.html',
-  styleUrls: ['./boleto.component.scss']
+  styleUrls: ['./boleto.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(300)),
+    ]),
+  ]
 })
 export class BoletoComponent implements OnInit {
 

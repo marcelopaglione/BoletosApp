@@ -12,11 +12,20 @@ import { Cidade } from '../../entity/Cidade';
 import { Config } from '../../entity/Config';
 import { ConfigService } from '../../service/config.service';
 import { MatSnackBar } from '@angular/material';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-emissor',
   templateUrl: './emissor.component.html',
-  styleUrls: ['./emissor.component.scss']
+  styleUrls: ['./emissor.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(300)),
+    ]),
+  ]
 })
 export class EmissorComponent implements OnInit {
 

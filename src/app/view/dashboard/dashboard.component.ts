@@ -5,11 +5,43 @@ import { Cliente } from './../../entity/Cliente';
 import { Dashboard } from './../../entity/Dashboard';
 import { ClienteService } from './../../service/cliente.service';
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  animations: [
+    trigger('fadeInOut1', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(300)),
+    ]),
+    trigger('fadeInOut2', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(800)),
+    ]),
+    trigger('fadeInOut3', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
+    trigger('balloonEffect', [
+      state('initial', style({
+        backgroundColor: 'green',
+        transform: 'scale(1)'
+      })),
+      state('final', style({
+        backgroundColor: 'red',
+        transform: 'scale(1.2)'
+      })),
+      transition('final<=>initial', animate('1000ms'))
+    ]),
+  ]
 })
 export class DashboardComponent implements OnInit {
   dashboard: Dashboard = new Dashboard();

@@ -1,6 +1,6 @@
 <div class="printButton">
   <form [formGroup]="fg" (ngSubmit)="onSubmit()">
-    <button (click)="print()" mat-flat-button color="warn">Imprimir</button>
+    <button  (click)="print()" mat-flat-button color="warn">Imprimir</button>
     <p>
       <mat-form-field>
         <input matInput #height type="number" placeholder="Recibo Altura (mm)" formControlName="reciboHeight"
@@ -20,6 +20,18 @@
       </mat-form-field>
     </p>
     <p>
+        <mat-form-field>
+          <input matInput #widthR type="number" placeholder="Recibo Width (px)" formControlName="reciboWidth"
+          (click)="change()">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput #widthR type="number" placeholder="Recibo Font (100)" formControlName="reciboFont"
+          (click)="change()">
+        </mat-form-field>
+      </p>
+    <p>
       <mat-form-field>
         <input matInput #widthC type="number" placeholder="Canhoto Width (px)" formControlName="canhotoWidth"
         (click)="change()">
@@ -31,18 +43,7 @@
         (click)="change()">
       </mat-form-field>
     </p>
-    <p>
-      <mat-form-field>
-        <input matInput #widthR type="number" placeholder="Recibo Width (px)" formControlName="reciboWidth"
-        (click)="change()">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field>
-        <input matInput #widthR type="number" placeholder="Recibo Font (100)" formControlName="reciboFont"
-        (click)="change()">
-      </mat-form-field>
-    </p>
+
   </form>
 </div>
 

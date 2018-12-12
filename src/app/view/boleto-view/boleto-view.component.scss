@@ -1,110 +1,120 @@
 .boleto {
-  display: flex;
+    display: flex;
 }
 
 .canhoto {
-  flex-grow: 1;
+    flex-grow: 1;
+    text-transform: capitalize;
 }
 
 .recibo {
-  flex-grow: 1;
+    flex-grow: 1;
+    text-transform: capitalize;
 }
 
 .recibo .content {
-  display: flex;
+    display: flex;
 }
 
 .recibo .content .item {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 h4 {
-  margin: 5px 5px;
+    margin: 5px 5px;
 }
 
 .recibo .content .center {
-  text-align: center;
+    text-align: center;
 }
 
 .recibo .content .left {
-  text-align: left;
+    text-align: left;
 }
 
 .recibo .content .right {
-  text-align: right;
+    text-align: right;
 }
 
 .folha {
-  border: 1px dashed black;
+    border: 1px dashed black;
 }
 
 .a4 {
-  width: 297mm;
-  height: 210mm;
-  border: 1px dashed black;
+    width: 297mm;
+    height: 210mm;
+    border: 1px dashed black;
 }
 
 .section {
-  padding-top: 4mm;
-  padding-bottom: 4mm;
+    padding-top: 4mm;
+    padding-bottom: 4mm;
 }
 
 .text-primary {
-    color:black;
+    color: black;
 }
 
-.text-info{
-    color:black;
+.text-info {
+    color: black;
 }
 
-.realce{
+.realce {
     font-weight: 500;
 }
 
 @media screen {
-  #printSection {
-      display: none;
-  }
+    #printSection {
+        display: none;
+    }
 }
+
 @media print {
-  body * {
-      visibility:hidden;
-  }
-  #printSection, #printSection * {
-      visibility:visible;
-  }
-  #printSection {
-      position:absolute;
-      left:0;
-      top:0;
-  }
+    body * {
+        visibility: hidden;
+    }
+    #printSection,
+    #printSection * {
+        visibility: visible;
+    }
+    #printSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
 
 .printButton {
-  position: fixed;
-  background-color: #cee5ed;
-  padding: 10px;
-  text-align: left;
-  border-radius: 10px;
+    position: fixed;
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: left;
+    border-radius: 10px;
+    color: #f44336;
+    font-weight: bold;
+    box-shadow: inset 0px 0px 5px 5px #78c2ad;
 }
 
 .printSettings {
-  position: fixed;
-  top: 100px;
+    position: fixed;
+    top: 100px;
 }
 
 .boletosPosition {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 h1 {
-  margin: 8px;
-  font-family: Roboto, "Arial, Helvetica, sans-serif";
-  font-weight: 500;
+    margin: 8px;
+    font-family: Roboto, "Arial, Helvetica, sans-serif";
+    font-weight: 500;
 }
-h4, h3, h2{
-  margin: 5px;
-  font-family: Roboto, "Arial, Helvetica, sans-serif";
-  font-weight: 500;
+
+h4,
+h3,
+h2 {
+    margin: 5px;
+    font-family: Roboto, "Arial, Helvetica, sans-serif";
+    font-weight: 500;
 }

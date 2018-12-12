@@ -1,5 +1,5 @@
 <mat-card>
-  <form [formGroup]="fg" (ngSubmit)="onSubmit()" *ngIf="emissor$ | async as emissor; else loading">
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()" *ngIf="emissor$ | async as emissor; else loading" [@fadeInOut]>
     <mat-card-header>
       <mat-card-title>Administrar Emissor</mat-card-title>
       <mat-card-subtitle>Configurar Emissor Principal de Boletos</mat-card-subtitle>

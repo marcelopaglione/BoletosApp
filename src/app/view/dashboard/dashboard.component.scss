@@ -1,19 +1,27 @@
 .example-card {
-  max-width: 400px;
-  min-width: 300px;
-  display: inline-block;
-  margin: 20px;
+    max-width: 400px;
+    min-width: 300px;
+    display: inline-block;
+    margin: 20px;
+    transition: all .5s ease;
+    cursor: pointer;
 }
 
+.example-card:hover {
+    transition: all .5s ease;
+    transform: scale(1.1);
+}
+
+
 .example-header-image {
-  background-image: url('/assets/img/money.png');
-  background-size: cover;
+    background-image: url('/assets/img/money.png');
+    background-size: cover;
 }
 
 .cards {
-  text-align: center;
+    text-align: center;
 }
 
 h1 {
-  color: #da1111;
+    color: #da1111;
 }

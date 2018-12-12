@@ -6,11 +6,20 @@ import { ClienteService } from '../../service/cliente.service';
 import { Cliente } from '../../entity/Cliente';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { ClienteDetailComponent } from '../cliente-detail/cliente-detail.component';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.scss']
+  styleUrls: ['./cliente.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(300)),
+    ]),
+  ]
 })
 export class ClienteComponent implements OnInit {
 

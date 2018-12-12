@@ -1,3 +1,6 @@
+#cssmenu{
+  transition: all .9s ease;
+}
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
@@ -25,7 +28,7 @@
 }
 #cssmenu {
   width: auto;
-  border-bottom: 3px solid #7fb6cb;
+  border-bottom: 3px solid #78C2AD;
   font-family: Raleway, sans-serif;
   line-height: 1;
 }
@@ -56,13 +59,14 @@
   font-size: 15px;
   font-weight: 400;
   text-decoration: none;
-  color: #444444;
+  color: #4b776b;
   -webkit-transition: all .2s ease;
   -moz-transition: all .2s ease;
   -ms-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease;
   margin-right: -4px;
+
 }
 #cssmenu > ul > li.active > a,
 #cssmenu > ul > li:hover > a,
@@ -93,7 +97,7 @@
 #cssmenu > ul > li.active > a:after,
 #cssmenu > ul > li:hover > a:after,
 #cssmenu > ul > li > a:hover:after {
-  background: #7fb6cb;
+  background: #78C2AD;
 }
 
 

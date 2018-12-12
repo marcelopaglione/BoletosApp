@@ -6,20 +6,28 @@ pink-bluegrey.css
 purple-green.css
 */
 
-.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
-  background-color: #7fb6cb;
+.mat-fab.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-mini-fab.mat-primary,
+.mat-raised-button.mat-primary {
+    background-color: #78C2AD;
 }
 
 @import '~@angular/material/theming';
-$custom-typography: mat-typography-config(
-  $font-family: 'Roboto, monospace',
-  $headline: mat-typography-level(32px, 48px, 700),
-  $body-1: mat-typography-level(16px, 24px, 500)
-);
-
-
-
+$custom-typography: mat-typography-config( $font-family: 'Roboto, monospace', $headline: mat-typography-level(32px, 48px, 700), $body-1: mat-typography-level(16px, 24px, 500));
 .loading {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    transition: all .2s ease;
+}
+
+button:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
