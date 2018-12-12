@@ -9,7 +9,7 @@ import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.com
 import { BoletoViewComponent } from './view/boleto-view/boleto-view.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'boleto' },
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'emissor', component: EmissorComponent},
   { path: 'cliente', component: ClienteComponent},

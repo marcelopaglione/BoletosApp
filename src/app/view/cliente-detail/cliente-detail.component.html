@@ -1,6 +1,8 @@
 <h1 *ngIf="!data" mat-dialog-title>Aministrar Novo Cliente</h1>
 <h1 *ngIf="data" mat-dialog-title>Administrar Cliente</h1>
+
 <form [formGroup]="fg">
+  <mat-dialog-content>
   <div mat-dialog-content class="container">
     <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
       <mat-label>Nome</mat-label>
@@ -98,6 +100,8 @@
       </mat-form-field>
     </div>
   </div>
+
+</mat-dialog-content>
   <div mat-dialog-actions>
     <mat-progress-bar mode="determinate" [value]="porcentagemConcluida"></mat-progress-bar>
     <button mat-flat-button color="primary" (click)="onSubmit($event)" type="button">Salvar</button>&nbsp;
@@ -105,6 +109,8 @@
     </button>
   </div>
 </form>
+
+
 <div *ngIf="config">
   <app-form-debug *ngIf="config.showFormDebug" [form]="fg"></app-form-debug>
 </div>
