@@ -4,6 +4,7 @@ export class Config {
   currentdate: boolean;
   logMessages: boolean;
   showFormDebug: boolean;
+  hideCompletedBoletos: boolean;
   verBoletoAutomaticamente: boolean;
 
   canhotoWidth: number;

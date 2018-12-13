@@ -15,7 +15,10 @@
 
         <ng-container matColumnDef="Cliente">
           <th mat-header-cell *matHeaderCellDef> Nome </th>
-          <td class="mousebtn" (click)="viewBoleto(element)" mat-cell *matCellDef="let element"> {{element.cliente.nome}} </td>
+          <td class="mousebtn" (click)="viewBoleto(element)" mat-cell *matCellDef="let element">
+            {{element.cliente.nome}}
+            <span class="badge" *ngIf="verificaBoletoVencido(element.dataPrimeiraParcela)">Vencido</span>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="Emissor">

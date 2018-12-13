@@ -46,7 +46,12 @@
         <table mat-table [dataSource]="parcelas" class="tableContent" >
             <ng-container matColumnDef="ID">
               <th style="text-align: center" mat-header-cell *matHeaderCellDef> Número da Parcela </th>
-              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> #{{element.id}} </td>
+              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element">
+                #{{element.id}}
+                <span class="badge badge-warning" *ngIf="element.id === 12" >
+                  Criar Novo Boleto!
+                </span>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="Cliente">

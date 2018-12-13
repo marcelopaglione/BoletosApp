@@ -31,3 +31,15 @@ button:hover {
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
+
+
+.badge {
+  background-color: #78c2ad;
+  color: white;
+  border-radius: 5px;
+  padding: 2px 5px;
+  float: right;
+  margin: 0 10px;
+  font-size: 0.8em;
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+}

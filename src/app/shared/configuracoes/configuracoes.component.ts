@@ -33,6 +33,7 @@ export class ConfiguracoesComponent implements OnInit {
       logMessages: [null, Validators.required],
       showFormDebug: [null, Validators.required],
       verBoletoAutomaticamente: [null, Validators.required],
+      hideCompletedBoletos: [null, Validators.required],
 
       canhotoWidth: [null, Validators.required],
       canhotoHeight: [null, Validators.required],

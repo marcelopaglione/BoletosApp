@@ -28,11 +28,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class BoletoComponent implements OnInit {
 
-  boletos: Boleto[];
+  boletos: Boleto[] = [];
   clientes: Cliente[] = [];
   emissor: Emissor;
   prefferedConfig: Config;
-
   headElements: string[] = this.boletoService.getTabelaHeaders();
 
   constructor(
@@ -46,15 +45,27 @@ export class BoletoComponent implements OnInit {
 
   ngOnInit() {
     this.messages.add('*** Página Boleto.Componenet aberta ***');
-    this.initializePageData();
+
     this.configService.getConfig().subscribe(data => {
       this.prefferedConfig = data;
+      this.initializePageData();
     });
   }
 
   initializePageData() {
     this.boletoService.getBoletoList().subscribe(data => {
-      this.boletos = data;
+      const boletos = data;
+      if (!this.prefferedConfig.hideCompletedBoletos) {
+        this.boletos = boletos;
+      } else {
+        const boletosTemp = [];
+        boletos.forEach(boleto => {
+          if (!this.verificaBoletoVencido(boleto.dataPrimeiraParcela)) {
+            boletosTemp.push(boleto);
+          }
+        });
+        this.boletos = boletosTemp;
+      }
     });
   }
 
@@ -139,9 +150,28 @@ export class BoletoComponent implements OnInit {
         }).length === 0;
       };
     }
+  }
 
+  verificaBoletoVencido(boletoData: Date): Boolean {
+    const difInDays = this.calcDifDays(new Date(boletoData), new Date());
+    console.log({'dias calculados': difInDays});
+    if (difInDays < -365) {
+      return true;
+    }
+    return false;
+  }
 
+  private calcDifDays(data1: Date, data2: Date) {
+    const oneDay = 24 * 60 * 60 * 1000;
+    return Math.round((this.zerarHoras(data1).getTime() - this.zerarHoras(data2).getTime()) / oneDay);
+  }
 
+  private zerarHoras(data: Date): Date {
+    data.setHours(0);
+    data.setMinutes(0);
+    data.setSeconds(0);
+    data.setMilliseconds(0);
+    return data;
   }
 
 }
