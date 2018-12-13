@@ -1,79 +1,86 @@
-<div class="cards">
-  <mat-card class="example-card" [@fadeInOut1] routerLink="/cliente">
-    <mat-card-header>
-      <div mat-card-avatar><i class="fas fa-2x fa-money-bill-alt"></i></div>
-      <mat-card-title>Renda Mensal</mat-card-title>
-      <mat-card-subtitle
-        >Renda estimada de acordo com a lista de clientes</mat-card-subtitle
-      >
-    </mat-card-header>
-    <mat-card-content>
-      <h1>{{ dashboard.rendaMensal | currency: 'BRL' }}</h1>
-    </mat-card-content>
-  </mat-card>
 
-  <mat-card class="example-card" [@fadeInOut2] routerLink="/cliente">
-    <mat-card-header>
-      <div mat-card-avatar><i class="fas fa-2x fa-dice-d6"></i></div>
-      <mat-card-title>Clientes</mat-card-title>
-      <mat-card-subtitle>Total de clientes cadastrados</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <h1>{{ dashboard.totalClientes }}</h1>
-    </mat-card-content>
-  </mat-card>
+<div style="display: flex; flex-direction: row; justify-content: center; align-items:stretch;">
+  <div style="display: flex; flex-direction: column;">
+      <div *ngIf="parcelas">
+          <mat-card class="example-card" [@fadeInOut2] style="cursor: context-menu;" >
+            <mat-card-header>
+              <div mat-card-avatar><i class="fas fa-2x fa-align-justify"></i></div>
+              <mat-card-title>Próximas Parcelas</mat-card-title>
+              <mat-card-subtitle>Lista de parcelas a receber</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
 
-  <mat-card class="example-card" [@fadeInOut3] routerLink="/boleto">
-    <mat-card-header>
-      <div mat-card-avatar><i class="far fa-2x fa-credit-card"></i></div>
-      <mat-card-title>Boletos</mat-card-title>
-      <mat-card-subtitle>Total de boletos cadastrados</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <h1>{{ dashboard.totalBoletos }}</h1>
-    </mat-card-content>
-  </mat-card>
+              <table mat-table [dataSource]="parcelas" class="tableContent" >
+                  <ng-container matColumnDef="ID">
+                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Número da Parcela </th>
+                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element">
+                      #{{element.id}}
+                      <span class="badge badge-warning" *ngIf="element.id === 12" >
+                        Criar Novo Boleto!
+                      </span>
+                    </td>
+                  </ng-container>
 
-  <div *ngIf="parcelas">
-    <mat-card class="example-card" [@fadeInOut2] style="cursor: context-menu;" >
+                  <ng-container matColumnDef="Cliente">
+                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Cliente </th>
+                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.nome}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Valor">
+                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Valor a Receber </th>
+                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.valor | currency:'BRL'}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Data">
+                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Data de Recebimento </th>
+                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element" [style.color]="styleCardDate(element)" > {{element.data | dateFormat}} </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="headElements"></tr>
+                  <tr mat-row *matRowDef="let row; columns: headElements;"></tr>
+                </table>
+              <h1>{{ parcelas.length }}</h1>
+            </mat-card-content>
+          </mat-card>
+        </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column;">
+    <mat-card class="example-card" [@fadeInOut1] routerLink="/cliente">
       <mat-card-header>
-        <div mat-card-avatar><i class="fas fa-2x fa-align-justify"></i></div>
-        <mat-card-title>Próximas Parcelas</mat-card-title>
-        <mat-card-subtitle>Lista de parcelas a receber</mat-card-subtitle>
+        <div mat-card-avatar><i class="fas fa-2x fa-money-bill-alt"></i></div>
+        <mat-card-title>Renda Mensal</mat-card-title>
+        <mat-card-subtitle
+          >Renda estimada de acordo com a lista de clientes</mat-card-subtitle
+        >
       </mat-card-header>
       <mat-card-content>
+        <h1>{{ dashboard.rendaMensal | currency: 'BRL' }}</h1>
+      </mat-card-content>
+    </mat-card>
 
-        <table mat-table [dataSource]="parcelas" class="tableContent" >
-            <ng-container matColumnDef="ID">
-              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Número da Parcela </th>
-              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element">
-                #{{element.id}}
-                <span class="badge badge-warning" *ngIf="element.id === 12" >
-                  Criar Novo Boleto!
-                </span>
-              </td>
-            </ng-container>
+    <mat-card class="example-card" [@fadeInOut2] routerLink="/cliente">
+      <mat-card-header>
+        <div mat-card-avatar><i class="fas fa-2x fa-dice-d6"></i></div>
+        <mat-card-title>Clientes</mat-card-title>
+        <mat-card-subtitle>Total de clientes cadastrados</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>{{ dashboard.totalClientes }}</h1>
+      </mat-card-content>
+    </mat-card>
 
-            <ng-container matColumnDef="Cliente">
-              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Cliente </th>
-              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.nome}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Valor">
-              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Valor a Receber </th>
-              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.valor | currency:'BRL'}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Data">
-              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Data de Recebimento </th>
-              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element" [style.color]="styleCardDate(element)" > {{element.data | dateFormat}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="headElements"></tr>
-            <tr mat-row *matRowDef="let row; columns: headElements;"></tr>
-          </table>
-        <h1>{{ parcelas.length }}</h1>
+    <mat-card class="example-card" [@fadeInOut3] routerLink="/boleto">
+      <mat-card-header>
+        <div mat-card-avatar><i class="far fa-2x fa-credit-card"></i></div>
+        <mat-card-title>Boletos</mat-card-title>
+        <mat-card-subtitle>Total de boletos cadastrados</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>{{ dashboard.totalBoletos }}</h1>
       </mat-card-content>
     </mat-card>
   </div>
 </div>
+
+
