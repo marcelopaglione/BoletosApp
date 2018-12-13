@@ -2,7 +2,7 @@
   <mat-card class="example-card" [@fadeInOut1] routerLink="/cliente">
     <mat-card-header>
       <div mat-card-avatar><i class="fas fa-2x fa-money-bill-alt"></i></div>
-      <mat-card-title>Rensa Mensal</mat-card-title>
+      <mat-card-title>Renda Mensal</mat-card-title>
       <mat-card-subtitle
         >Renda estimada de acordo com a lista de clientes</mat-card-subtitle
       >
@@ -34,4 +34,41 @@
     </mat-card-content>
   </mat-card>
 
+  <div *ngIf="parcelas">
+    <mat-card class="example-card" [@fadeInOut2] style="cursor: context-menu;" >
+      <mat-card-header>
+        <div mat-card-avatar><i class="fas fa-2x fa-align-justify"></i></div>
+        <mat-card-title>Próximas Parcelas</mat-card-title>
+        <mat-card-subtitle>Lista de parcelas a receber</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+
+        <table mat-table [dataSource]="parcelas" class="tableContent" [@fadeInOut2] >
+            <ng-container matColumnDef="ID">
+              <th mat-header-cell *matHeaderCellDef> Número da Parcela </th>
+              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> #{{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Cliente">
+              <th mat-header-cell *matHeaderCellDef> Cliente </th>
+              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.nome}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Valor">
+              <th mat-header-cell *matHeaderCellDef> Valor a Receber </th>
+              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.valor | currency:'BRL'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Data">
+              <th mat-header-cell *matHeaderCellDef> Data de Recebimento </th>
+              <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element" [style.color]="styleCardDate(element)" > {{element.data | dateFormat}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="headElements"></tr>
+            <tr mat-row *matRowDef="let row; columns: headElements;"></tr>
+          </table>
+        <h1>{{ parcelas.length }}</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
