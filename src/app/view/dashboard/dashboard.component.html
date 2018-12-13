@@ -43,24 +43,24 @@
       </mat-card-header>
       <mat-card-content>
 
-        <table mat-table [dataSource]="parcelas" class="tableContent" [@fadeInOut2] >
+        <table mat-table [dataSource]="parcelas" class="tableContent" >
             <ng-container matColumnDef="ID">
-              <th mat-header-cell *matHeaderCellDef> Número da Parcela </th>
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Número da Parcela </th>
               <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> #{{element.id}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Cliente">
-              <th mat-header-cell *matHeaderCellDef> Cliente </th>
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Cliente </th>
               <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.nome}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Valor">
-              <th mat-header-cell *matHeaderCellDef> Valor a Receber </th>
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Valor a Receber </th>
               <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.valor | currency:'BRL'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Data">
-              <th mat-header-cell *matHeaderCellDef> Data de Recebimento </th>
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Data de Recebimento </th>
               <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element" [style.color]="styleCardDate(element)" > {{element.data | dateFormat}} </td>
             </ng-container>
 
