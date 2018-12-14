@@ -22,7 +22,7 @@ export class BoletoService {
     return this.http.get<Boleto>(`${this.API}/${id}`);
   }
 
-  public deleteById(id){
+  public deleteById(id) {
     this.messages.add(`API: ${this.API}/${id} - DELETE`);
     return this.http.delete(`${this.API}/${id}`);
   }
@@ -42,9 +42,7 @@ export class BoletoService {
     return [
       'ID',
       'Cliente',
-      'Emissor',
       'Valor',
-      'Parcelas',
       'DataPrimeiraParcela',
       'Acoes'
     ];

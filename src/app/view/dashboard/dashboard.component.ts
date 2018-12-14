@@ -107,16 +107,16 @@ export class DashboardComponent implements OnInit {
   }
 
   private generateParcelas(boleto: Boleto): Parcela {
-    console.log({'Gerar Parcelas para': boleto.cliente.nome});
+    // console.log({'Gerar Parcelas para': boleto.cliente.nome});
     for (let index = 0; index < boleto.parcela; index++) {
       const parcela = new Parcela();
       parcela.boleto = boleto;
       parcela.data = this.somarMes(boleto.dataPrimeiraParcela, index);
       parcela.id = index + 1;
       parcela.valor = boleto.cliente.valor;
-      console.log({'Parcela Calculada': parcela});
+      // console.log({'Parcela Calculada': parcela});
       if (this.calcDifDays(parcela.data, new Date()) >= 0) {
-        console.log({ parcela: JSON.stringify(parcela) });
+        // console.log({ parcela: JSON.stringify(parcela) });
         return parcela;
       }
     }
@@ -133,13 +133,13 @@ export class DashboardComponent implements OnInit {
     const difInDays = this.calcDifDays(parcela.data, new Date());
     switch (difInDays) {
       case 0:
-      console.log({'dif red': JSON.stringify(difInDays), 'data': parcela.data});
+      // console.log({'dif red': JSON.stringify(difInDays), 'data': parcela.data});
         return 'red';
       case 1:
-        console.log({'dif orange': JSON.stringify(difInDays), 'data': parcela.data});
+        // console.log({'dif orange': JSON.stringify(difInDays), 'data': parcela.data});
         return 'orange';
       default:
-        console.log({'dif blue': JSON.stringify(difInDays), 'data': parcela.data});
+        // console.log({'dif blue': JSON.stringify(difInDays), 'data': parcela.data});
         return 'blue';
     }
   }

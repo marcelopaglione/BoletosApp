@@ -10,7 +10,7 @@ import { ConfigService } from '../../service/config.service';
 import { Config } from 'src/app/entity/Config';
 import { Router } from '@angular/router';
 import { BoletoDetailComponent } from '../boleto-detail/boleto-detail.component';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, Sort } from '@angular/material';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -83,7 +83,6 @@ export class BoletoComponent implements OnInit {
       this.boletoService.getBoletoList().subscribe(data => {
         this.boletos = data;
       });
-      console.log('The dialog was closed');
     });
   }
 
@@ -137,7 +136,6 @@ export class BoletoComponent implements OnInit {
           const onlyInA = boletosAfter.filter(comparer(boletosBefore));
           const onlyInB = boletosBefore.filter(comparer(boletosAfter));
           result = onlyInA.concat(onlyInB);
-          console.log(result);
           this.viewBoleto(result[0]);
         }
       });
@@ -154,7 +152,6 @@ export class BoletoComponent implements OnInit {
 
   verificaBoletoVencido(boletoData: Date): Boolean {
     const difInDays = this.calcDifDays(new Date(boletoData), new Date());
-    console.log({'dias calculados': difInDays});
     if (difInDays < -365) {
       return true;
     }
@@ -172,6 +169,29 @@ export class BoletoComponent implements OnInit {
     data.setSeconds(0);
     data.setMilliseconds(0);
     return data;
+  }
+
+  sortData(sort: Sort) {
+    const data = this.boletos.slice();
+    if (!sort.active || sort.direction === '') {
+      this.boletos = data;
+      return;
+    }
+
+    this.boletos = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'ID': return this.compare(a.id, b.id, isAsc);
+        case 'Cliente': return this.compare(a.cliente.nome, b.cliente.nome, isAsc);
+        case 'Valor': return this.compare(a.cliente.valor, b.cliente.valor, isAsc);
+        case 'DataPrimeiraParcela': return this.compare(a.dataPrimeiraParcela.getTime(), b.dataPrimeiraParcela.getTime(), isAsc);
+        default: return 0;
+      }
+    });
+  }
+
+  compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
 }

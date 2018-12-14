@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { ClienteService } from '../../service/cliente.service';
 import { Cliente } from '../../entity/Cliente';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, Sort } from '@angular/material';
 import { ClienteDetailComponent } from '../cliente-detail/cliente-detail.component';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -107,5 +107,32 @@ export class ClienteComponent implements OnInit {
 
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
+  sortData(sort: Sort) {
+    const data = this.clientes$.slice();
+    if (!sort.active || sort.direction === '') {
+      this.clientes$ = data;
+      return;
+    }
+
+    this.clientes$ = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'ID': return this.compare(a.id, b.id, isAsc);
+        case 'Nome': return this.compare(a.nome, b.nome, isAsc);
+        case 'Valor': return this.compare(a.valor, b.valor, isAsc);
+        case 'Telefone': return this.compare(a.telefone, b.telefone, isAsc);
+        case 'Cep': return this.compare(a.endereco.cep, b.endereco.cep, isAsc);
+        case 'Rua': return this.compare(a.endereco.rua, b.endereco.rua, isAsc);
+        case 'Numero': return this.compare(a.endereco.numero, b.endereco.numero, isAsc);
+        case 'Cidade': return this.compare(a.endereco.cidade.nome, b.endereco.cidade.nome, isAsc);
+        default: return 0;
+      }
+    });
+  }
+
+  compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }

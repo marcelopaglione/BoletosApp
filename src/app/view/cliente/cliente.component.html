@@ -7,45 +7,45 @@
     <button class="titleflexbutton" mat-flat-button color="primary" type="button" (click)="openDetails(null)">Criar
       Novo Cliente</button>
     <div *ngIf="clientes$ as clientes; else loading" class="tableContent" [@fadeInOut]>
-      <table mat-table [dataSource]="clientes">
+      <table matSort (matSortChange)="sortData($event)" mat-table [dataSource]="clientes" >
 
         <ng-container matColumnDef="id" >
-          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <th mat-sort-header="ID" mat-header-cell *matHeaderCellDef> ID </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
         <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <th mat-sort-header="Nome" mat-header-cell *matHeaderCellDef> Nome </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.nome}} </td>
         </ng-container>
 
         <ng-container matColumnDef="telefone">
-          <th mat-header-cell *matHeaderCellDef> Telefone </th>
+          <th mat-sort-header="Telefone" mat-header-cell *matHeaderCellDef> Telefone </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.telefone | phone}} </td>
         </ng-container>
 
         <ng-container matColumnDef="valor">
-          <th mat-header-cell *matHeaderCellDef> Valor do Aluguel </th>
+          <th mat-sort-header="Valor" mat-header-cell *matHeaderCellDef> Valor do Aluguel </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.valor | currency:'BRL'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="cep">
-          <th mat-header-cell *matHeaderCellDef> Cep </th>
+          <th mat-sort-header="Cep" mat-header-cell *matHeaderCellDef> Cep </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.endereco.cep}} </td>
         </ng-container>
 
         <ng-container matColumnDef="rua">
-          <th mat-header-cell *matHeaderCellDef> Rua </th>
+          <th mat-sort-header="Rua" mat-header-cell *matHeaderCellDef> Rua </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.endereco.rua}} </td>
         </ng-container>
 
         <ng-container matColumnDef="numero">
-          <th mat-header-cell *matHeaderCellDef> Número </th>
+          <th mat-sort-header="Numero" mat-header-cell *matHeaderCellDef> Número </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.endereco.numero}} </td>
         </ng-container>
 
         <ng-container matColumnDef="cidade">
-          <th mat-header-cell *matHeaderCellDef> Cidade </th>
+          <th mat-sort-header="Cidade" mat-header-cell *matHeaderCellDef> Cidade </th>
           <td class="mousebtn" (click)="editar(element)" mat-cell *matCellDef="let element"> {{element.endereco.cidade.nome}} -
             {{element.endereco.estado.sigla}}
           </td>
