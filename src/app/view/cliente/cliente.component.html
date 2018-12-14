@@ -3,10 +3,10 @@
     <mat-card-title>Administrar Cliente</mat-card-title>
   </mat-card-header>
   <hr>
-  <mat-card-content>
+  <mat-card-content *ngIf="clientes$ as clientes; else loading">
     <button class="titleflexbutton" mat-flat-button color="primary" type="button" (click)="openDetails(null)">Criar
       Novo Cliente</button>
-    <div *ngIf="clientes$ as clientes; else loading" class="tableContent" [@fadeInOut]>
+    <div class="tableContent" [@fadeInOut]>
       <table matSort (matSortChange)="sortData($event)" mat-table [dataSource]="clientes" >
 
         <ng-container matColumnDef="id" >

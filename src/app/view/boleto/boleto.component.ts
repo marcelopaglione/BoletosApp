@@ -118,7 +118,9 @@ export class BoletoComponent implements OnInit {
   }
 
   viewBoleto(boleto) {
-    this.router.navigate(['/boleto/' + boleto.id]);
+    if (boleto) {
+      this.router.navigate(['/boleto/' + boleto.id]);
+    }
   }
 
   openDetails(clientEscolhido) {

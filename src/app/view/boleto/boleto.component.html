@@ -1,12 +1,12 @@
-<mat-card>
+<mat-card >
   <mat-card-header class="titleflexheader">
     <mat-card-title>Administrar Boletos</mat-card-title>
   </mat-card-header>
   <hr>
-  <mat-card-content >
+  <mat-card-content *ngIf="boletos.length>0; else loading">
     <button class="titleflexbutton" mat-flat-button color="primary" type="button" (click)="openDetails(null)">Criar
       Novo Boleto</button>
-    <div *ngIf="boletos; else loading">
+    <div>
       <table mat-table [dataSource]="boletos" class="tableContent" matSort (matSortChange)="sortData($event)" [@fadeInOut]>
         <ng-container matColumnDef="ID">
           <th mat-sort-header="id" mat-header-cell *matHeaderCellDef> ID </th>

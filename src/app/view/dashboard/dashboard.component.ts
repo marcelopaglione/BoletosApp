@@ -67,7 +67,7 @@ import { Router } from '@angular/router';
   ]
 })
 export class DashboardComponent implements OnInit {
-  dashboard: Dashboard = new Dashboard();
+  dashboard: Dashboard;
   countNParcelas = 5;
   parcelas: Parcela[] = [];
   headElements: string[] = ['ID', 'Cliente', 'Valor', 'Data'];
@@ -81,6 +81,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.clienteService.getClienteList().subscribe(data => {
       const clientes: Cliente[] = data;
+      this.dashboard = new Dashboard();
       this.dashboard.totalClientes = clientes.length;
       this.dashboard.rendaMensal =
         '' +

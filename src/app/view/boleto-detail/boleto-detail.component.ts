@@ -132,6 +132,8 @@ export class BoletoDetailComponent implements OnInit {
 
   updateValor() {
     const clienteEscolhido: Cliente = this.fg.get('cliente').value;
-    this.fg.patchValue({ valor: clienteEscolhido.valor});
+    if (clienteEscolhido) {
+      this.fg.patchValue({ valor: clienteEscolhido.valor});
+    }
   }
 }

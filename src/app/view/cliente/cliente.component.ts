@@ -56,7 +56,7 @@ export class ClienteComponent implements OnInit {
       this.clienteService.getClienteList().subscribe(data => {
         this.clientes$ = data;
       });
-      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
     });
   }
 
@@ -70,7 +70,7 @@ export class ClienteComponent implements OnInit {
       this.clienteService.getClienteList().subscribe(data => {
         this.clientes$ = data;
       });
-      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
     });
   }
 

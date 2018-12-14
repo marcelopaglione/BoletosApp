@@ -1,5 +1,5 @@
 
-<div style="display: flex; flex-direction: row; justify-content: center; align-items:stretch;">
+<div style="display: flex; flex-direction: row; justify-content: center; align-items:stretch;" *ngIf="dashboard; else loading" >
   <div style="display: flex; flex-direction: column;">
       <div *ngIf="parcelas">
           <mat-card class="example-card" [@fadeInOut2] style="cursor: context-menu;" >
@@ -83,4 +83,15 @@
   </div>
 </div>
 
+<ng-template #loading>
+    <mat-card>
+      <mat-card-header class="titleflexheader">
+        <mat-card-title>DashBoard</mat-card-title>
+      </mat-card-header>
+      <hr>
 
+      <div class="loading">
+        <span> <mat-spinner></mat-spinner></span>
+      </div>
+    </mat-card>
+</ng-template>

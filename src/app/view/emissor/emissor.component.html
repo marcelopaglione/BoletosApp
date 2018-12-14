@@ -1,11 +1,10 @@
 <mat-card>
-  <form [formGroup]="fg" (ngSubmit)="onSubmit()" *ngIf="emissor$ | async as emissor; else loading" [@fadeInOut]>
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()" [@fadeInOut]>
     <mat-card-header>
       <mat-card-title>Administrar Emissor</mat-card-title>
-      <mat-card-subtitle>Configurar Emissor Principal de Boletos</mat-card-subtitle>
     </mat-card-header>
     <hr>
-    <mat-card-content>
+    <mat-card-content *ngIf="emissor$ | async as emissor; else loading" >
       <div class="container">
         <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
           <mat-label> Nome</mat-label>
@@ -75,10 +74,8 @@
         </div>
 
       </div>
-    </mat-card-content>
-    <mat-card-actions>
       <button mat-flat-button color="primary" type="submit" ng-disabled="fg.$invalid">Salvar</button>&nbsp;
-    </mat-card-actions>
+    </mat-card-content>
   </form>
 </mat-card>
 
@@ -86,9 +83,6 @@
   <app-form-debug *ngIf="config.showFormDebug" [form]="fg"></app-form-debug>
 </div>
 
-<div *ngIf="config">
-  <app-form-debug *ngIf="config.showFormDebug" [form]="fg"></app-form-debug>
-</div>
 <ng-template #loading>
     <div class="loading">
       <span> <mat-spinner></mat-spinner></span>
