@@ -69,7 +69,7 @@ export class RenovaBoletoComponent implements OnInit {
 
   }
 
-  onSubmit(event: Event) {
+  onSubmit() {
     if (this.fg.valid) {
       this.updateCliente();
     } else {
