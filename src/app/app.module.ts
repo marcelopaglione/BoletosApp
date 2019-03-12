@@ -34,6 +34,7 @@ import { ClienteDetailComponent } from './view/cliente-detail/cliente-detail.com
 import { BoletoDetailComponent } from './view/boleto-detail/boleto-detail.component';
 import { BoletoViewComponent } from './view/boleto-view/boleto-view.component';
 import { DateFormatPipe } from './shared/date.pipe';
+import { RenovaBoletoComponent } from './view/renova-boleto/renova-boleto.component';
 registerLocaleData(localeBr);
 
 @NgModule({
@@ -55,7 +56,8 @@ registerLocaleData(localeBr);
     FormInputComponent,
     FooterComponent,
     ClienteDetailComponent,
-    BoletoViewComponent
+    BoletoViewComponent,
+    RenovaBoletoComponent
   ],
   imports: [
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
@@ -78,7 +80,7 @@ registerLocaleData(localeBr);
     BrowserModule,
     FormsModule
   ],
-  entryComponents: [ClienteDetailComponent, BoletoDetailComponent],
+  entryComponents: [ClienteDetailComponent, BoletoDetailComponent, RenovaBoletoComponent],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })

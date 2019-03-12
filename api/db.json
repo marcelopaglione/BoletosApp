@@ -1,5 +1,5 @@
 {
-  "config": {
+  "configs": {
     "parcelas": "12",
     "currentdate": true,
     "logMessages": false,

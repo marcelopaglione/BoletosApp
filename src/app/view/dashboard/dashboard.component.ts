@@ -14,6 +14,8 @@ import {
 } from '@angular/animations';
 import { Parcela } from 'src/app/entity/Parcela';
 import { Router } from '@angular/router';
+import { RenovaBoletoComponent } from '../renova-boleto/renova-boleto.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
@@ -75,7 +77,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private clienteService: ClienteService,
     private boletoService: BoletoService,
-    private router: Router
+    private router: Router,
+    public dialogDash: MatDialog
   ) {}
 
   ngOnInit() {
@@ -160,5 +163,18 @@ export class DashboardComponent implements OnInit {
 
   viewBoleto(boleto) {
     this.router.navigate(['/boleto/' + boleto.id]);
+  }
+
+  renovaBoleto(c: Boleto) {
+    console.log('Renovar boleto' + JSON.stringify(c));
+    const dialogRefDash = this.dialogDash.open(RenovaBoletoComponent, {
+      width: '720px',
+      data: c
+    });
+
+    dialogRefDash.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
+    });
   }
 }

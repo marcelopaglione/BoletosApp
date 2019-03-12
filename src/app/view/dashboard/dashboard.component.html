@@ -13,11 +13,11 @@
               <table mat-table [dataSource]="parcelas" class="tableContent" >
                   <ng-container matColumnDef="ID">
                     <th style="text-align: center" mat-header-cell *matHeaderCellDef> Número da Parcela </th>
-                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element">
+                    <td class="mousebtn" mat-cell *matCellDef="let element">
                       #{{element.id}}
-                      <span class="badge badge-warning" *ngIf="element.id === 12" >
-                        Criar Novo Boleto!
-                      </span>
+                      <a style="cursor: pointer;" class="badge badge-warning" *ngIf="element.id === 12" (click)="renovaBoleto(element.boleto)">
+                        Renovar Boleto!
+                      </a>
                     </td>
                   </ng-container>
 
