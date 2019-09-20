@@ -41,7 +41,6 @@ import { AppComponent } from './app.component';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 import { DateFormatPipe } from './shared/date.pipe';
 import { ErrorControlComponent } from './shared/error-control/error-control.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { FormInputComponent } from './shared/form-input/form-input.component';
 import { MessageComponent } from './shared/message/message.component';
 import { NavComponent } from './shared/nav/nav.component';
@@ -74,7 +73,6 @@ registerLocaleData(localeBr);
     DateFormatPipe,
     BoletoDetailComponent,
     FormInputComponent,
-    FooterComponent,
     ClienteDetailComponent,
     BoletoViewComponent,
     RenovaBoletoComponent
