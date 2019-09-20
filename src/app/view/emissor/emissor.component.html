@@ -73,8 +73,8 @@
           </mat-form-field>
         </div>
 
-      </div>
-      <button mat-flat-button color="primary" type="submit" ng-disabled="fg.$invalid">Salvar</button>&nbsp;
+      </div>      
+      <app-button [disabled]="!fg.valid" [type]="'submit'">Salvar</app-button>
     </mat-card-content>
   </form>
 </mat-card>

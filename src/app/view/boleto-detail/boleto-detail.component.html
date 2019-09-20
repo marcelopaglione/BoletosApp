@@ -34,8 +34,8 @@
 
     </div>
   </mat-dialog-content>
-  <button mat-flat-button color="primary" (click)="onSubmit()" type="button">Salvar</button>&nbsp;
-  <button mat-flat-button color="warn" type="button" (click)="limparForm();onNoClick();"> Cancelar </button>
+  <app-button color="primary" (click)="onSubmit()">Salvar</app-button>&nbsp;
+  <app-button color="warn" (click)="limparForm();onNoClick();">Cancelar</app-button>  
 
 </form>
 

@@ -103,10 +103,9 @@
 
 </mat-dialog-content>
   <div mat-dialog-actions>
-    <mat-progress-bar mode="determinate" [value]="porcentagemConcluida"></mat-progress-bar>
-    <button mat-flat-button color="primary" (click)="onSubmit($event)" type="button">Salvar</button>&nbsp;
-    <button mat-flat-button color="warn" type="button" (click)="limparForm();onNoClick();"> Cancelar
-    </button>
+    <mat-progress-bar mode="determinate" [value]="porcentagemConcluida"></mat-progress-bar>  
+    <app-button color="primary" (click)="onSubmit()">Salvar</app-button>&nbsp;
+    <app-button color="warn" (click)="limparForm();onNoClick();">Cancelar</app-button>
   </div>
 </form>
 

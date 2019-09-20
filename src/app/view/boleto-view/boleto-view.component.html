@@ -1,6 +1,6 @@
 <div class="printButton">
   <form [formGroup]="fg" (ngSubmit)="onSubmit()">
-    <button  (click)="print()" mat-flat-button color="warn">Imprimir</button>
+    <app-button color="warn" (click)="print()">Imprimir</app-button>
     <p>
       <mat-form-field>
         <input matInput #height type="number" placeholder="Recibo Altura (mm)" formControlName="reciboHeight"

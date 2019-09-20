@@ -54,8 +54,8 @@
           </p>
         </mat-tab>
 
-      </mat-tab-group>
-      <button mat-flat-button color="primary" type="submit">Salvar</button>
+      </mat-tab-group>      
+      <app-button [disabled]="!fg.valid" [type]="'submit'">Salvar</app-button>
     </mat-card-content>
   </form>
 </mat-card>

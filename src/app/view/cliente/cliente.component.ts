@@ -1,12 +1,12 @@
-import { Component, OnInit, PipeTransform } from '@angular/core';
-import { MessageService } from '../../service/message.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatSnackBar, Sort } from '@angular/material';
 import { Observable, of } from 'rxjs';
-import { tap, catchError, map } from 'rxjs/operators';
-import { ClienteService } from '../../service/cliente.service';
+import { catchError, tap } from 'rxjs/operators';
 import { Cliente } from '../../entity/Cliente';
-import { MatSnackBar, MatDialog, Sort } from '@angular/material';
+import { ClienteService } from '../../service/cliente.service';
+import { MessageService } from '../../service/message.service';
 import { ClienteDetailComponent } from '../cliente-detail/cliente-detail.component';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-cliente',
@@ -61,9 +61,11 @@ export class ClienteComponent implements OnInit {
   }
 
   openDetails(clientEscolhido) {
+    console.log('open details novo', clientEscolhido);
+
     const dialogRef = this.dialog.open(ClienteDetailComponent, {
       width: '720px',
-      data: clientEscolhido
+      data: clientEscolhido ? clientEscolhido : null
     });
 
     dialogRef.afterClosed().subscribe(result => {

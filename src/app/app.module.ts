@@ -1,40 +1,35 @@
+import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import localeBr from '@angular/common/locales/pt';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { MatBadgeModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppCommonModule } from './app-common/app-common.module';
+import { ButtonModule } from './app-common/button/button.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClienteComponent } from './view/cliente/cliente.component';
-import { EmissorComponent } from './view/emissor/emissor.component';
-import { BoletoComponent } from './view/boleto/boleto.component';
-import { NotFoundComponent } from './view/not-found/not-found.component';
-import { DashboardComponent } from './view/dashboard/dashboard.component';
-import { NavComponent } from './shared/nav/nav.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MessageComponent } from './shared/message/message.component';
-import { HttpModule } from '@angular/http';
-import { FormDebugComponent } from './shared/form-debug/form-debug.component';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
+import { DateFormatPipe } from './shared/date.pipe';
 import { ErrorControlComponent } from './shared/error-control/error-control.component';
-import { LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
-import localeBr from '@angular/common/locales/pt';
-import { PhonePipe } from './shared/phone.pipe';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatTabsModule,
-  MatNativeDateModule, MatProgressSpinnerModule, MatBadgeModule,
-  MatIconModule, MatSidenavModule, MatListModule, MatCheckboxModule, MatDatepickerModule,
-  MatGridListModule, MatTableModule, MatFormFieldModule, MatDialogModule, MatProgressBarModule,
-  MatInputModule, MatPaginatorModule, MatSortModule, MatSelectModule, MatExpansionModule, MatSnackBarModule, MatTooltipModule
-} from '@angular/material';
-import { FormInputComponent } from './shared/form-input/form-input.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { ClienteDetailComponent } from './view/cliente-detail/cliente-detail.component';
+import { FormDebugComponent } from './shared/form-debug/form-debug.component';
+import { FormInputComponent } from './shared/form-input/form-input.component';
+import { MessageComponent } from './shared/message/message.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { PhonePipe } from './shared/phone.pipe';
 import { BoletoDetailComponent } from './view/boleto-detail/boleto-detail.component';
 import { BoletoViewComponent } from './view/boleto-view/boleto-view.component';
-import { DateFormatPipe } from './shared/date.pipe';
+import { BoletoComponent } from './view/boleto/boleto.component';
+import { ClienteDetailComponent } from './view/cliente-detail/cliente-detail.component';
+import { ClienteComponent } from './view/cliente/cliente.component';
+import { DashboardComponent } from './view/dashboard/dashboard.component';
+import { EmissorComponent } from './view/emissor/emissor.component';
+import { NotFoundComponent } from './view/not-found/not-found.component';
 import { RenovaBoletoComponent } from './view/renova-boleto/renova-boleto.component';
+
 registerLocaleData(localeBr);
 
 @NgModule({
@@ -60,6 +55,8 @@ registerLocaleData(localeBr);
     RenovaBoletoComponent
   ],
   imports: [
+    AppCommonModule,
+    ButtonModule,
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
     MatDialogModule, MatProgressBarModule, MatTabsModule, MatDatepickerModule,
