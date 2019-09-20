@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar, Sort } from '@angular/material';
 import { Router } from '@angular/router';
 
-import { MessageService } from '../../app-common/log-message/message.service';
+import { MessageService } from '../../app-common/log-message/log-message.service';
 import { Boleto } from '../../entity/Boleto';
 import { Cliente } from '../../entity/Cliente';
 import { BoletoService } from '../../service/boleto.service';

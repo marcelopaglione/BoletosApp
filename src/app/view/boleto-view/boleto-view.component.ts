@@ -4,7 +4,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-import { MessageService } from '../../app-common/log-message/message.service';
+import { MessageService } from '../../app-common/log-message/log-message.service';
 import { Boleto } from '../../entity/Boleto';
 import { Config } from '../../entity/Config';
 import { BoletoService } from '../../service/boleto.service';

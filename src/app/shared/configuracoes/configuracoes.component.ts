@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
-import { MessageService } from '../../app-common/log-message/message.service';
+import { MessageService } from '../../app-common/log-message/log-message.service';
 import { Config } from '../../entity/Config';
 
 @Component({
