@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import localeBr from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import {
     MatBadgeModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
     MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule,
@@ -68,7 +67,6 @@ registerLocaleData(localeBr);
     MatListModule,
     BrowserModule,
     HttpClientModule,
-    HttpModule,
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserModule,
