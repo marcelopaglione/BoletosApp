@@ -21,7 +21,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 import { DateFormatPipe } from './shared/date.pipe';
-import { FormInputComponent } from './shared/form-input/form-input.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { PhonePipe } from './shared/phone.pipe';
 import { BoletoDetailComponent } from './view/boleto-detail/boleto-detail.component';
@@ -49,7 +48,6 @@ registerLocaleData(localeBr);
     PhonePipe,
     DateFormatPipe,
     BoletoDetailComponent,
-    FormInputComponent,
     ClienteDetailComponent,
     BoletoViewComponent,
     RenovaBoletoComponent

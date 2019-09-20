@@ -31,14 +31,10 @@ export class PhonePipe implements PipeTransform {
         break;
 
       case 8:
-        // city = value.slice(0, 2);
-        // number = value.slice(2);
         number = value.slice(0, 4) + '-' + value.slice(4);
         break;
 
       case 9:
-        // city = value.slice(0, 2);
-        // number = value.slice(2);
         number = value.slice(0, 5) + '-' + value.slice(5);
         break;
 
