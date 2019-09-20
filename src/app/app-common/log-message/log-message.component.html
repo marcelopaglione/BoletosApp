@@ -1,0 +1,30 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-chip-list>
+          <mat-chip color="warn">Mensagens</mat-chip>
+        </mat-chip-list>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-card>
+      <mat-card-content>
+        <ng-container *ngIf="messages.messages.length > 0; else elseTemplate">
+          <div *ngFor="let message of messages.messages">
+            <code> {{ message }} </code>
+          </div>
+        </ng-container>
+        <ng-template #elseTemplate> Não há mensagens para mostrar </ng-template>
+      </mat-card-content>
+      <mat-card-actions>
+        <app-button
+          *ngIf="messages.messages.length > 0"
+          color="warn"
+          (click)="click()"
+          >Zerar</app-button
+        >
+      </mat-card-actions>
+    </mat-card>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -5,31 +5,12 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
-  MatBadgeModule,
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
+    MatBadgeModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
+    MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule,
+    MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule,
+    MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule,
+    MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule,
+    MatTooltipModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +22,6 @@ import { AppComponent } from './app.component';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 import { DateFormatPipe } from './shared/date.pipe';
 import { FormInputComponent } from './shared/form-input/form-input.component';
-import { MessageComponent } from './shared/message/message.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { PhonePipe } from './shared/phone.pipe';
 import { BoletoDetailComponent } from './view/boleto-detail/boleto-detail.component';
@@ -65,7 +45,6 @@ registerLocaleData(localeBr);
     NotFoundComponent,
     DashboardComponent,
     NavComponent,
-    MessageComponent,
     ConfiguracoesComponent,
     PhonePipe,
     DateFormatPipe,
