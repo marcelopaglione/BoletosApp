@@ -1,0 +1,18 @@
+<mat-card *ngIf="form" class="form-width">
+  <mat-card-header>
+    <mat-card-title>Detalhes do Form</mat-card-title>
+  </mat-card-header>
+  <hr />
+  <mat-card-content>
+    <h5>
+      Formulário válido:
+      <code> {{ form.valid }} </code>
+    </h5>
+    <h5>
+      Formulário
+      <code>
+        <pre>{{ form.value | json }}</pre>
+      </code>
+    </h5>
+  </mat-card-content>
+</mat-card>

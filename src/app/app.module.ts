@@ -42,7 +42,6 @@ import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.com
 import { DateFormatPipe } from './shared/date.pipe';
 import { ErrorControlComponent } from './shared/error-control/error-control.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { FormDebugComponent } from './shared/form-debug/form-debug.component';
 import { FormInputComponent } from './shared/form-input/form-input.component';
 import { MessageComponent } from './shared/message/message.component';
 import { NavComponent } from './shared/nav/nav.component';
@@ -69,7 +68,6 @@ registerLocaleData(localeBr);
     DashboardComponent,
     NavComponent,
     MessageComponent,
-    FormDebugComponent,
     ConfiguracoesComponent,
     ErrorControlComponent,
     PhonePipe,
