@@ -14,8 +14,6 @@ export class ButtonComponent {
   @Output() onclick = new EventEmitter<any>();
 
   onClick(event) {
-    console.log('clic component');
-
     this.onclick.emit(event);
   }
 }

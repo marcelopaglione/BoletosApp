@@ -1,34 +1,34 @@
 .example-card {
-    min-width: 300px;
-    display: inline-block;
-    margin: 20px;
-    transition: all .5s ease;
-    cursor: pointer;
-    background-color: #ffffff;
-    color: #212121;
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
+  min-width: 300px;
+  display: inline-block;
+  margin: 20px;
+  transition: all .5s ease;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #212121;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
 .example-card:hover {
-    transition: all .5s ease;
-    transform: scale(1.05);
+  transition: all .5s ease;
+  transform: scale(1.05);
 }
 
 
 .example-header-image {
-    background-image: url('/assets/img/money.png');
-    background-size: cover;
+  background-image: url('/assets/img/money.png');
+  background-size: cover;
 }
 
 .cards {
-    text-align: center;
-    display: flex;
+  text-align: center;
+  display: flex;
 }
 
 h1 {
-    color: #da1111;
-    font-size: 2.5em;
+  color: #da1111;
+  font-size: 2.5em;
 }
 
 table {

@@ -1,23 +1,24 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { EmissorService } from '../../service/emissor.service';
-import { Emissor } from '../../entity/Emissor';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
-import { MessageService } from '../../service/message.service';
-import { DropdownService } from '../../service/dropdown.service';
-import { Estado } from '../../entity/Estado';
-import { ConsultaCepService } from '../../service/consulta-cep.service';
+import { tap } from 'rxjs/operators';
+
 import { Cidade } from '../../entity/Cidade';
 import { Config } from '../../entity/Config';
+import { Emissor } from '../../entity/Emissor';
+import { Estado } from '../../entity/Estado';
 import { ConfigService } from '../../service/config.service';
-import { MatSnackBar } from '@angular/material';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { ConsultaCepService } from '../../service/consulta-cep.service';
+import { DropdownService } from '../../service/dropdown.service';
+import { EmissorService } from '../../service/emissor.service';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-emissor',
   templateUrl: './emissor.component.html',
-  styleUrls: ['./emissor.component.scss'],
+  styleUrls: [ './emissor.component.scss' ],
   animations: [
     trigger('fadeInOut', [
       state('void', style({
@@ -57,19 +58,19 @@ export class EmissorComponent implements OnInit {
     this.getEmissor();
 
     this.fg = this.formBuilder.group({
-      id: [null],
-      nome: [null, [Validators.required, Validators.min(3), Validators.max(25)]],
-      email: [null, [Validators.email]],
-      telefone: [null],
+      id: [ null ],
+      nome: [ null, [ Validators.required, Validators.min(3), Validators.max(25) ] ],
+      email: [ null, [ Validators.email ] ],
+      telefone: [ null ],
       endereco: this.formBuilder.group({
-        id: [null],
-        cep: [null, Validators.required],
-        numero: [null, Validators.required],
-        complemento: [null],
-        rua: [null, Validators.required],
-        bairro: [null, Validators.required],
-        cidade: [null, Validators.required],
-        estado: [null, Validators.required]
+        id: [ null ],
+        cep: [ null, Validators.required ],
+        numero: [ null, Validators.required ],
+        complemento: [ null ],
+        rua: [ null, Validators.required ],
+        bairro: [ null, Validators.required ],
+        cidade: [ null, Validators.required ],
+        estado: [ null, Validators.required ]
       })
     });
   }
@@ -98,7 +99,7 @@ export class EmissorComponent implements OnInit {
     if (emissor.endereco) {
       this.fg.patchValue(emissor);
     } else {
-      this.fg.patchValue({id: emissor.id, nome: emissor.nome, telefone: emissor.telefone, email: emissor.email});
+      this.fg.patchValue({ id: emissor.id, nome: emissor.nome, telefone: emissor.telefone, email: emissor.email });
     }
     this.messages.add('Patch Value Emissor end: ' + JSON.stringify(emissor));
   }
@@ -129,14 +130,14 @@ export class EmissorComponent implements OnInit {
             rua: dados.logradouro,
             complemento: dados.complemento,
             bairro: dados.bairro,
-            estado: estadoEscolhido[0]
+            estado: estadoEscolhido[ 0 ]
           }
         });
         this.dropdownService.getCidadesByName(dados.localidade).subscribe(
           cidadeEscolhida => {
             this.messages.add('cidade escolhida ' + JSON.stringify(cidadeEscolhida));
-            this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
-            this.fg.patchValue({endereco : {cidade: cidadeEscolhida[0]}});
+            this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[ 0 ].id);
+            this.fg.patchValue({ endereco: { cidade: cidadeEscolhida[ 0 ] } });
           }
         );
       }
@@ -184,7 +185,7 @@ export class EmissorComponent implements OnInit {
   verificaEmailInvalid() {
     const campoEmail = this.fg.get('email');
     if (campoEmail.errors) {
-      return campoEmail.errors['email'];
+      return campoEmail.errors[ 'email' ];
     }
   }
 

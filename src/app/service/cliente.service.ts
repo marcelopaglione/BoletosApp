@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Cliente } from '../entity/Cliente';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { environment } from '../../environments/environment';
+import { Cliente } from '../entity/Cliente';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.API);
   }
 
-  public deleteById(id){
+  public deleteById(id) {
     this.messages.add(`API: ${this.API}/${id} - DELETE`);
     return this.http.delete(`${this.API}/${id}`);
   }

@@ -2,19 +2,16 @@
   <mat-card-header>
     <mat-card-title>Detalhes do Form</mat-card-title>
   </mat-card-header>
-  <hr>
+  <hr />
   <mat-card-content>
+    <code> Formulário válido: {{ form.valid }} </code>
+    <br />
     <code>
-            Formulário válido: {{ form.valid }}
-          </code>
-    <br>
-    <code>
-            Formulário Valores
-            <pre>{{ form.value | json }}</pre>
-          </code>
-
+      Formulário Valores
+      <pre>{{ form.value | json }}</pre>
+    </code>
   </mat-card-content>
   <mat-card-actions>
-    <hr>
+    <hr />
   </mat-card-actions>
 </mat-card>

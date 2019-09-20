@@ -3,77 +3,146 @@
     <mat-card-header>
       <mat-card-title>Administrar Emissor</mat-card-title>
     </mat-card-header>
-    <hr>
-    <mat-card-content *ngIf="emissor$ | async as emissor; else loading" >
+    <hr />
+    <mat-card-content *ngIf="emissor$ | async as emissor; else loading">
       <div class="container">
         <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
           <mat-label> Nome</mat-label>
-          <input matInput type="text" id="Name" placeholder="Nome Completo" formControlName="nome"><br />
+          <input
+            matInput
+            type="text"
+            id="Name"
+            placeholder="Nome Completo"
+            formControlName="nome"
+          /><br />
         </mat-form-field>
       </div>
 
       <div class="container">
         <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
           <mat-label> Email</mat-label>
-          <input matInput type="email" id="Email" placeholder="E-mail" formControlName="email"><br />
+          <input
+            matInput
+            type="email"
+            id="Email"
+            placeholder="E-mail"
+            formControlName="email"
+          /><br />
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class=" formsize" style="flex-grow: 1; padding: 5px;">
+        <mat-form-field
+          appearance="fill"
+          class=" formsize"
+          style="flex-grow: 1; padding: 5px;"
+        >
           <mat-label> Telefone</mat-label>
-          <input matInput type="text" id="Telefone" placeholder="Telefone" formControlName="telefone"><br />
+          <input
+            matInput
+            type="text"
+            id="Telefone"
+            placeholder="Telefone"
+            formControlName="telefone"
+          /><br />
         </mat-form-field>
       </div>
 
-
       <div formGroupName="endereco">
-
         <div class="container">
           <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> cep</mat-label>
-            <input matInput type="text" id="cep" placeholder="cep" formControlName="cep" (blur)="consultaCEP()">
+            <input
+              matInput
+              type="text"
+              id="cep"
+              placeholder="cep"
+              formControlName="cep"
+              (blur)="consultaCEP()"
+            />
           </mat-form-field>
 
           <mat-form-field appearance="fill" style="flex-grow: 2; padding: 5px;">
             <mat-label> rua</mat-label>
-            <input matInput type="text" id="rua" placeholder="rua" formControlName="rua">
+            <input
+              matInput
+              type="text"
+              id="rua"
+              placeholder="rua"
+              formControlName="rua"
+            />
           </mat-form-field>
 
           <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> Número</mat-label>
-            <input matInput type="text" id="numero" placeholder="numero" formControlName="numero">
+            <input
+              matInput
+              type="text"
+              id="numero"
+              placeholder="numero"
+              formControlName="numero"
+            />
           </mat-form-field>
         </div>
 
         <div class="container">
           <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> bairro</mat-label>
-            <input matInput type="text" id="bairro" placeholder="bairro" formControlName="bairro">
+            <input
+              matInput
+              type="text"
+              id="bairro"
+              placeholder="bairro"
+              formControlName="bairro"
+            />
           </mat-form-field>
 
           <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> complemento</mat-label>
-            <input matInput type="text" id="complemento" placeholder="complemento" formControlName="complemento"><br />
+            <input
+              matInput
+              type="text"
+              id="complemento"
+              placeholder="complemento"
+              formControlName="complemento"
+            /><br />
           </mat-form-field>
         </div>
 
         <div class="container">
           <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> estado</mat-label>
-            <mat-select id="estado" formControlName="estado" (blur)="loadCidades()" (change)="loadCidades()"
-              [compareWith]="compareFn">
-              <mat-option *ngFor="let estado of estados$ | async" [value]="estado"> {{estado.nome}} </mat-option>
+            <mat-select
+              id="estado"
+              formControlName="estado"
+              (blur)="loadCidades()"
+              (change)="loadCidades()"
+              [compareWith]="compareFn"
+            >
+              <mat-option
+                *ngFor="let estado of estados$ | async"
+                [value]="estado"
+              >
+                {{ estado.nome }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="fill" style="flex-grow: 1; padding: 5px;">
             <mat-label> cidade</mat-label>
-            <mat-select id="cidade" formControlName="cidade" [compareWith]="compareFn">
-              <mat-option *ngFor="let cidade of cidades$ | async" [value]="cidade"> {{cidade.nome}} </mat-option>
+            <mat-select
+              id="cidade"
+              formControlName="cidade"
+              [compareWith]="compareFn"
+            >
+              <mat-option
+                *ngFor="let cidade of cidades$ | async"
+                [value]="cidade"
+              >
+                {{ cidade.nome }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-
-      </div>      
+      </div>
       <app-button [disabled]="!fg.valid" [type]="'submit'">Salvar</app-button>
     </mat-card-content>
   </form>
@@ -84,8 +153,7 @@
 </div>
 
 <ng-template #loading>
-    <div class="loading">
-      <span> <mat-spinner></mat-spinner></span>
-    </div>
+  <div class="loading">
+    <span> <mat-spinner></mat-spinner></span>
+  </div>
 </ng-template>
-

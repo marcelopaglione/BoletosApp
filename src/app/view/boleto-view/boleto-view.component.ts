@@ -1,17 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Boleto } from '../../entity/Boleto';
-import { BoletoService } from '../../service/boleto.service';
-import { MessageService } from '../../service/message.service';
 import numero from 'numero-por-extenso';
+
+import { Boleto } from '../../entity/Boleto';
 import { Config } from '../../entity/Config';
+import { BoletoService } from '../../service/boleto.service';
 import { ConfigService } from '../../service/config.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-boleto-view',
   templateUrl: './boleto-view.component.html',
-  styleUrls: ['./boleto-view.component.scss']
+  styleUrls: [ './boleto-view.component.scss' ]
 })
 export class BoletoViewComponent implements OnInit {
 
@@ -42,24 +43,24 @@ export class BoletoViewComponent implements OnInit {
   ngOnInit() {
     // show on Configuration page
     this.fg = this.formBuilder.group({
-      id: [null, Validators.required],
-      parcelas: [null, Validators.required],
-      currentdate: [null, Validators.required],
-      logMessages: [null, Validators.required],
-      showFormDebug: [null, Validators.required],
-      verBoletoAutomaticamente: [null, Validators.required],
+      id: [ null, Validators.required ],
+      parcelas: [ null, Validators.required ],
+      currentdate: [ null, Validators.required ],
+      logMessages: [ null, Validators.required ],
+      showFormDebug: [ null, Validators.required ],
+      verBoletoAutomaticamente: [ null, Validators.required ],
 
-      canhotoWidth: [null, Validators.required],
-      canhotoHeight: [null, Validators.required],
-      canhotoBorder: [null, Validators.required],
-      canhotoPadding: [null, Validators.required],
-      canhotoFont: [null, Validators.required],
+      canhotoWidth: [ null, Validators.required ],
+      canhotoHeight: [ null, Validators.required ],
+      canhotoBorder: [ null, Validators.required ],
+      canhotoPadding: [ null, Validators.required ],
+      canhotoFont: [ null, Validators.required ],
 
-      reciboWidth: [null, Validators.required],
-      reciboHeight: [null, Validators.required],
-      reciboBorder: [null, Validators.required],
-      reciboPadding: [null, Validators.required],
-      reciboFont: [null, Validators.required]
+      reciboWidth: [ null, Validators.required ],
+      reciboHeight: [ null, Validators.required ],
+      reciboBorder: [ null, Validators.required ],
+      reciboPadding: [ null, Validators.required ],
+      reciboFont: [ null, Validators.required ]
     });
 
     this.boletoService.getBoletoById(this.boletoId).subscribe(data => {
@@ -138,7 +139,7 @@ export class BoletoViewComponent implements OnInit {
   }
 
   changeV(value) {
-    console.log('To patch' + JSON.stringify(value) );
+    console.log('To patch' + JSON.stringify(value));
     this.fg.patchValue(value);
     this.config = this.fg.value;
   }

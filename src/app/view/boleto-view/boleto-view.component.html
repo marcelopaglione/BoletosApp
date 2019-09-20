@@ -3,99 +3,156 @@
     <app-button color="warn" (click)="print()">Imprimir</app-button>
     <p>
       <mat-form-field>
-        <input matInput #height type="number" placeholder="Recibo Altura (mm)" formControlName="reciboHeight"
-        (click)="changeV({reciboHeight: height.value,canhotoHeight: height.value})">
+        <input
+          matInput
+          #height
+          type="number"
+          placeholder="Recibo Altura (mm)"
+          formControlName="reciboHeight"
+          (click)="
+            changeV({ reciboHeight: height.value, canhotoHeight: height.value })
+          "
+        />
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput #padding type="number" placeholder="Recibo Padding (px)" formControlName="reciboPadding"
-          (click)="changeV({reciboPadding: padding.value,canhotoPadding: padding.value})">
+        <input
+          matInput
+          #padding
+          type="number"
+          placeholder="Recibo Padding (px)"
+          formControlName="reciboPadding"
+          (click)="
+            changeV({
+              reciboPadding: padding.value,
+              canhotoPadding: padding.value
+            })
+          "
+        />
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput #border type="number" placeholder="Recibo Border (px)" formControlName="reciboBorder"
-        (click)="changeV({reciboBorder: border.value,canhotoBorder: border.value})">
-      </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field>
-          <input matInput #widthR type="number" placeholder="Recibo Width (px)" formControlName="reciboWidth"
-          (click)="change()">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field>
-          <input matInput #widthR type="number" placeholder="Recibo Font (100)" formControlName="reciboFont"
-          (click)="change()">
-        </mat-form-field>
-      </p>
-    <p>
-      <mat-form-field>
-        <input matInput #widthC type="number" placeholder="Canhoto Width (px)" formControlName="canhotoWidth"
-        (click)="change()">
+        <input
+          matInput
+          #border
+          type="number"
+          placeholder="Recibo Border (px)"
+          formControlName="reciboBorder"
+          (click)="
+            changeV({ reciboBorder: border.value, canhotoBorder: border.value })
+          "
+        />
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput #widthC type="number" placeholder="Canhoto Font (%)" formControlName="canhotoFont"
-        (click)="change()">
+        <input
+          matInput
+          #widthR
+          type="number"
+          placeholder="Recibo Width (px)"
+          formControlName="reciboWidth"
+          (click)="change()"
+        />
       </mat-form-field>
     </p>
-
+    <p>
+      <mat-form-field>
+        <input
+          matInput
+          #widthR
+          type="number"
+          placeholder="Recibo Font (100)"
+          formControlName="reciboFont"
+          (click)="change()"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input
+          matInput
+          #widthC
+          type="number"
+          placeholder="Canhoto Width (px)"
+          formControlName="canhotoWidth"
+          (click)="change()"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input
+          matInput
+          #widthC
+          type="number"
+          placeholder="Canhoto Font (%)"
+          formControlName="canhotoFont"
+          (click)="change()"
+        />
+      </mat-form-field>
+    </p>
   </form>
 </div>
 
 <div *ngIf="config">
   <div class="container impressao boletosPosition" id="print-section">
     <div *ngIf="boleto">
-      <div *ngFor="let b of boletovector,let i = index;">
-        <div class="boleto" style="width:230mm;background-image: url(assets/shared/bgazul.jpg) !important;">
+      <div *ngFor="let b of boletovector; let i = index">
+        <div
+          class="boleto"
+          style="width:230mm;background-image: url(assets/shared/bgazul.jpg) !important;"
+        >
           <div [ngStyle]="canhoto()" class="canhoto">
-
             <div class="container">
               <div class="content">
                 <div class="item center">
-                  <h4>Canhoto N° {{b + 1}} </h4>
+                  <h4>Canhoto N° {{ b + 1 }}</h4>
                 </div>
               </div>
               <div class="content">
                 <div class="item center">
-                  <h5>{{boleto.cliente.nome}}</h5>
+                  <h5>{{ boleto.cliente.nome }}</h5>
                 </div>
               </div>
               <div class="content">
                 <div class="item center">
-                  <h5>{{boleto.cliente.endereco.rua}}
-                    {{boleto.cliente.endereco.numero}} {{boleto.cliente.endereco.bairro}}</h5>
+                  <h5>
+                    {{ boleto.cliente.endereco.rua }}
+                    {{ boleto.cliente.endereco.numero }}
+                    {{ boleto.cliente.endereco.bairro }}
+                  </h5>
                 </div>
               </div>
               <div class="content">
                 <div class="item center">
-                  <h4> {{boleto.cliente.valor | currency:'BRL'}}</h4>
+                  <h4>{{ boleto.cliente.valor | currency: 'BRL' }}</h4>
                 </div>
               </div>
               <div class="content text-center">
-                <h4>{{somarMes(boleto.dataPrimeiraParcela, b) | dateFormat}}</h4>
+                <h4>
+                  {{ somarMes(boleto.dataPrimeiraParcela, b) | dateFormat }}
+                </h4>
               </div>
             </div>
-
           </div>
           <div [ngStyle]="recibo()" class="recibo">
-
             <div class="container">
               <div class="content">
                 <div class="item center">
-                  <h3>RECIBO N° {{b + 1}}</h3>
+                  <h3>RECIBO N° {{ b + 1 }}</h3>
                 </div>
                 <div class="item center">
-                  <h3>*** {{boleto.cliente.valor | currency:'BRL'}} ***</h3>
+                  <h3>*** {{ boleto.cliente.valor | currency: 'BRL' }} ***</h3>
                 </div>
               </div>
               <div class="content">
                 <div class="item center">
-                  <h3>{{boleto.emissor.nome}} - {{boleto.emissor.telefone}}</h3>
+                  <h3>
+                    {{ boleto.emissor.nome }} - {{ boleto.emissor.telefone }}
+                  </h3>
                 </div>
               </div>
               <div class="content">
@@ -103,7 +160,7 @@
                   <h4>Recebemos de:</h4>
                 </div>
                 <div class="item left">
-                  <h4>{{boleto.cliente.nome}}</h4>
+                  <h4>{{ boleto.cliente.nome }}</h4>
                 </div>
               </div>
               <div class="content">
@@ -111,8 +168,11 @@
                   <h4>Endereço:</h4>
                 </div>
                 <div class="item left">
-                  <h4>{{boleto.cliente.endereco.rua}}
-                    {{boleto.cliente.endereco.numero}} {{boleto.cliente.endereco.bairro}} </h4>
+                  <h4>
+                    {{ boleto.cliente.endereco.rua }}
+                    {{ boleto.cliente.endereco.numero }}
+                    {{ boleto.cliente.endereco.bairro }}
+                  </h4>
                 </div>
               </div>
               <div class="content">
@@ -120,31 +180,32 @@
                   <h4>A importância de:</h4>
                 </div>
                 <div class="item left">
-                  <h4> {{extenso(boleto.cliente.valor)}}</h4>
-                </div>
-              </div>
-              <br>
-              <div class="content">
-                <div class="item center">
-                  <h4 class="text-color"> {{boleto.emissor.endereco.cidade.nome}},
-                    {{somarMes(boleto.dataPrimeiraParcela,
-                    b) | dateFormat}}</h4>
+                  <h4>{{ extenso(boleto.cliente.valor) }}</h4>
                 </div>
               </div>
               <br />
               <div class="content">
                 <div class="item center">
-                  <h4>____________________________________________________
+                  <h4 class="text-color">
+                    {{ boleto.emissor.endereco.cidade.nome }},
+                    {{ somarMes(boleto.dataPrimeiraParcela, b) | dateFormat }}
+                  </h4>
+                </div>
+              </div>
+              <br />
+              <div class="content">
+                <div class="item center">
+                  <h4>
+                    ____________________________________________________
                     <br />
                     <small>Assinatura</small>
                   </h4>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-        <div *ngIf="((i + 1) % 2) == 0" style="page-break-after: always"></div>
+        <div *ngIf="(i + 1) % 2 == 0" style="page-break-after: always"></div>
       </div>
     </div>
   </div>

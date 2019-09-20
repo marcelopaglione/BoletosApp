@@ -1,6 +1,7 @@
-#cssmenu{
+#cssmenu {
   transition: all .9s ease;
 }
+
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
@@ -17,8 +18,9 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 #cssmenu:after,
-#cssmenu > ul:after {
+#cssmenu>ul:after {
   content: ".";
   display: block;
   clear: both;
@@ -26,34 +28,42 @@
   line-height: 0;
   height: 0;
 }
+
 #cssmenu {
   width: auto;
   border-bottom: 3px solid #78C2AD;
   font-family: Raleway, sans-serif;
   line-height: 1;
 }
+
 #cssmenu ul {
   background: #ffffff;
 }
-#cssmenu > ul > li {
+
+#cssmenu>ul>li {
   float: left;
 }
-#cssmenu.align-center > ul {
+
+#cssmenu.align-center>ul {
   font-size: 0;
   text-align: center;
 }
-#cssmenu.align-center > ul > li {
+
+#cssmenu.align-center>ul>li {
   display: inline-block;
   float: none;
 }
-#cssmenu.align-right > ul > li {
+
+#cssmenu.align-right>ul>li {
   float: right;
 }
-#cssmenu.align-right > ul > li > a {
+
+#cssmenu.align-right>ul>li>a {
   margin-right: 0;
   margin-left: -4px;
 }
-#cssmenu > ul > li > a {
+
+#cssmenu>ul>li>a {
   z-index: 2;
   padding: 18px 25px 12px 25px;
   font-size: 15px;
@@ -68,12 +78,14 @@
   margin-right: -4px;
 
 }
-#cssmenu > ul > li.active > a,
-#cssmenu > ul > li:hover > a,
-#cssmenu > ul > li > a:hover {
+
+#cssmenu>ul>li.active>a,
+#cssmenu>ul>li:hover>a,
+#cssmenu>ul>li>a:hover {
   color: #ffffff;
 }
-#cssmenu > ul > li > a:after {
+
+#cssmenu>ul>li>a:after {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -94,9 +106,10 @@
   transform: perspective(5px) rotateX(2deg);
   transform-origin: bottom;
 }
-#cssmenu > ul > li.active > a:after,
-#cssmenu > ul > li:hover > a:after,
-#cssmenu > ul > li > a:hover:after {
+
+#cssmenu>ul>li.active>a:after,
+#cssmenu>ul>li:hover>a:after,
+#cssmenu>ul>li>a:hover:after {
   background: #78C2AD;
 }
 

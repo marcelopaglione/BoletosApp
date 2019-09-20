@@ -1,26 +1,20 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { Parcela } from 'src/app/entity/Parcela';
+
+import { RenovaBoletoComponent } from '../renova-boleto/renova-boleto.component';
 import { Boleto } from './../../entity/Boleto';
-import { BoletoService } from './../../service/boleto.service';
-import { element } from 'protractor';
 import { Cliente } from './../../entity/Cliente';
 import { Dashboard } from './../../entity/Dashboard';
+import { BoletoService } from './../../service/boleto.service';
 import { ClienteService } from './../../service/cliente.service';
-import { Component, OnInit } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
-import { Parcela } from 'src/app/entity/Parcela';
-import { Router } from '@angular/router';
-import { RenovaBoletoComponent } from '../renova-boleto/renova-boleto.component';
-import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  styleUrls: [ './dashboard.component.scss' ],
   animations: [
     trigger('fadeInOut1', [
       state(
@@ -72,14 +66,14 @@ export class DashboardComponent implements OnInit {
   dashboard: Dashboard;
   countNParcelas = 5;
   parcelas: Parcela[] = [];
-  headElements: string[] = ['ID', 'Cliente', 'Valor', 'Data'];
+  headElements: string[] = [ 'ID', 'Cliente', 'Valor', 'Data' ];
 
   constructor(
     private clienteService: ClienteService,
     private boletoService: BoletoService,
     private router: Router,
     public dialogDash: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.clienteService.getClienteList().subscribe(data => {
@@ -105,7 +99,7 @@ export class DashboardComponent implements OnInit {
           parcelas.push(p);
         }
       });
-      parcelas.sort((a, b) => a['data'] - b['data']);
+      parcelas.sort((a, b) => a[ 'data' ] - b[ 'data' ]);
       this.parcelas = parcelas;
     });
   }
@@ -137,7 +131,7 @@ export class DashboardComponent implements OnInit {
     const difInDays = this.calcDifDays(parcela.data, new Date());
     switch (difInDays) {
       case 0:
-      // console.log({'dif red': JSON.stringify(difInDays), 'data': parcela.data});
+        // console.log({'dif red': JSON.stringify(difInDays), 'data': parcela.data});
         return 'red';
       case 1:
         // console.log({'dif orange': JSON.stringify(difInDays), 'data': parcela.data});
@@ -162,7 +156,7 @@ export class DashboardComponent implements OnInit {
   }
 
   viewBoleto(boleto) {
-    this.router.navigate(['/boleto/' + boleto.id]);
+    this.router.navigate([ '/boleto/' + boleto.id ]);
   }
 
   renovaBoleto(c: Boleto) {

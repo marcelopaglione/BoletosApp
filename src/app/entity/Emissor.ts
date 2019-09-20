@@ -1,5 +1,6 @@
 import { Cidade } from './Cidade';
 import { Estado } from './Estado';
+
 export class Emissor {
   id: string;
   nome: string;

@@ -1,4 +1,5 @@
 import { Boleto } from './Boleto';
+
 export class Parcela {
   id: number;
   data: Date;

@@ -1,22 +1,23 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ConfigService } from '../../service/config.service';
-import { MessageService } from '../../service/message.service';
-import { Config } from '../../entity/Config';
-import { BoletoService } from '../../service/boleto.service';
-import { ClienteService } from '../../service/cliente.service';
-import { EmissorService } from '../../service/emissor.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
 import { Boleto } from '../../entity/Boleto';
 import { Cliente } from '../../entity/Cliente';
+import { Config } from '../../entity/Config';
 import { Emissor } from '../../entity/Emissor';
-import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, MatDatepicker } from '@angular/material';
+import { BoletoService } from '../../service/boleto.service';
+import { ClienteService } from '../../service/cliente.service';
+import { ConfigService } from '../../service/config.service';
+import { EmissorService } from '../../service/emissor.service';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-boleto-detail',
   templateUrl: './boleto-detail.component.html',
-  styleUrls: ['./boleto-detail.component.scss']
+  styleUrls: [ './boleto-detail.component.scss' ]
 })
 export class BoletoDetailComponent implements OnInit {
 
@@ -41,12 +42,12 @@ export class BoletoDetailComponent implements OnInit {
   ngOnInit() {
 
     this.fg = this.formBuilder.group({
-      id: [null],
-      cliente: [null, [Validators.required]],
-      emissor: [null, [Validators.required]],
-      parcela: [null, [Validators.required]],
-      valor:  [null, [Validators.required]],
-      dataPrimeiraParcela: [null, Validators.required]
+      id: [ null ],
+      cliente: [ null, [ Validators.required ] ],
+      emissor: [ null, [ Validators.required ] ],
+      parcela: [ null, [ Validators.required ] ],
+      valor: [ null, [ Validators.required ] ],
+      dataPrimeiraParcela: [ null, Validators.required ]
     });
 
     this.initializePageData();
@@ -56,7 +57,7 @@ export class BoletoDetailComponent implements OnInit {
         this.prefferedConfig = configData;
         const boleto = this.data;
         this.fg.patchValue(boleto);
-        this.fg.patchValue({valor: boleto.cliente.valor});
+        this.fg.patchValue({ valor: boleto.cliente.valor });
         this.boleto = this.data;
       });
     }
@@ -133,7 +134,7 @@ export class BoletoDetailComponent implements OnInit {
   updateValor() {
     const clienteEscolhido: Cliente = this.fg.get('cliente').value;
     if (clienteEscolhido) {
-      this.fg.patchValue({ valor: clienteEscolhido.valor});
+      this.fg.patchValue({ valor: clienteEscolhido.valor });
     }
   }
 }

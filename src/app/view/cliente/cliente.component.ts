@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar, Sort } from '@angular/material';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+
 import { Cliente } from '../../entity/Cliente';
 import { ClienteService } from '../../service/cliente.service';
 import { MessageService } from '../../service/message.service';
@@ -11,7 +12,7 @@ import { ClienteDetailComponent } from '../cliente-detail/cliente-detail.compone
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.scss'],
+  styleUrls: [ './cliente.component.scss' ],
   animations: [
     trigger('fadeInOut', [
       state('void', style({

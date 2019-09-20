@@ -1,22 +1,23 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../../service/message.service';
-import { Observable, of } from 'rxjs';
-import { tap, map, catchError } from 'rxjs/operators';
-import { Cliente } from '../../entity/Cliente';
-import { Boleto } from '../../entity/Boleto';
-import { BoletoService } from '../../service/boleto.service';
-import { Emissor } from 'src/app/entity/Emissor';
-import { ConfigService } from '../../service/config.service';
-import { Config } from 'src/app/entity/Config';
+import { MatDialog, MatSnackBar, Sort } from '@angular/material';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { Config } from 'src/app/entity/Config';
+import { Emissor } from 'src/app/entity/Emissor';
+
+import { Boleto } from '../../entity/Boleto';
+import { Cliente } from '../../entity/Cliente';
+import { BoletoService } from '../../service/boleto.service';
+import { ConfigService } from '../../service/config.service';
+import { MessageService } from '../../service/message.service';
 import { BoletoDetailComponent } from '../boleto-detail/boleto-detail.component';
-import { MatSnackBar, MatDialog, Sort } from '@angular/material';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-boleto',
   templateUrl: './boleto.component.html',
-  styleUrls: ['./boleto.component.scss'],
+  styleUrls: [ './boleto.component.scss' ],
   animations: [
     trigger('fadeInOut', [
       state('void', style({
@@ -119,7 +120,7 @@ export class BoletoComponent implements OnInit {
 
   viewBoleto(boleto) {
     if (boleto) {
-      this.router.navigate(['/boleto/' + boleto.id]);
+      this.router.navigate([ '/boleto/' + boleto.id ]);
     }
   }
 
@@ -138,7 +139,7 @@ export class BoletoComponent implements OnInit {
           const onlyInA = boletosAfter.filter(comparer(boletosBefore));
           const onlyInB = boletosBefore.filter(comparer(boletosAfter));
           result = onlyInA.concat(onlyInB);
-          this.viewBoleto(result[0]);
+          this.viewBoleto(result[ 0 ]);
         }
       });
     });

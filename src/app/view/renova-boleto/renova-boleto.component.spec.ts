@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RenovaBoletoComponent } from './renova-boleto.component';
 
+
 describe('RenovaBoletoComponent', () => {
   let component: RenovaBoletoComponent;
   let fixture: ComponentFixture<RenovaBoletoComponent>;
@@ -10,7 +11,7 @@ describe('RenovaBoletoComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ RenovaBoletoComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

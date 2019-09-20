@@ -1,21 +1,22 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
+import { Cidade } from '../../entity/Cidade';
+import { Config } from '../../entity/Config';
+import { Estado } from '../../entity/Estado';
 import { ClienteService } from '../../service/cliente.service';
-import { MessageService } from '../../service/message.service';
+import { ConfigService } from '../../service/config.service';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { DropdownService } from '../../service/dropdown.service';
-import { Observable, of } from 'rxjs';
-import { Estado } from '../../entity/Estado';
-import { Cidade } from '../../entity/Cidade';
-import { catchError, tap } from 'rxjs/operators';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
-import { Config } from '../../entity/Config';
-import { ConfigService } from '../../service/config.service';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-cliente-detail',
   templateUrl: './cliente-detail.component.html',
-  styleUrls: ['./cliente-detail.component.scss']
+  styleUrls: [ './cliente-detail.component.scss' ]
 })
 export class ClienteDetailComponent implements OnInit {
   constructor(
@@ -45,19 +46,19 @@ export class ClienteDetailComponent implements OnInit {
 
     this.estados$ = this.dropdownService.getEstadosBr();
     this.fg = this.formBuilder.group({
-      id: [null],
-      nome: [null, [Validators.required, Validators.min(3), Validators.max(25)]],
-      email: [null, [Validators.email]],
-      telefone: [null],
-      valor: [null, Validators.required],
+      id: [ null ],
+      nome: [ null, [ Validators.required, Validators.min(3), Validators.max(25) ] ],
+      email: [ null, [ Validators.email ] ],
+      telefone: [ null ],
+      valor: [ null, Validators.required ],
       endereco: this.formBuilder.group({
-        cep: [null, Validators.required],
-        numero: [null, Validators.required],
-        complemento: [null],
-        rua: [null, Validators.required],
-        bairro: [null, Validators.required],
-        cidade: [null, Validators.required],
-        estado: [null, Validators.required]
+        cep: [ null, Validators.required ],
+        numero: [ null, Validators.required ],
+        complemento: [ null ],
+        rua: [ null, Validators.required ],
+        bairro: [ null, Validators.required ],
+        cidade: [ null, Validators.required ],
+        estado: [ null, Validators.required ]
       })
     });
 
@@ -145,15 +146,15 @@ export class ClienteDetailComponent implements OnInit {
             rua: dados.logradouro,
             complemento: dados.complemento,
             bairro: dados.bairro,
-            estado: estadoEscolhido[0]
+            estado: estadoEscolhido[ 0 ]
           }
         });
         this.verificaPorcentagemForm(this.fg, 1);
         this.dropdownService.getCidadesByName(dados.localidade).subscribe(
           cidadeEscolhida => {
             this.messages.add('cidade escolhida ' + JSON.stringify(cidadeEscolhida));
-            this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[0].id);
-            this.fg.patchValue({ endereco: { cidade: cidadeEscolhida[0] } });
+            this.cidades$ = this.dropdownService.getCidadesByEstadoId(estadoEscolhido[ 0 ].id);
+            this.fg.patchValue({ endereco: { cidade: cidadeEscolhida[ 0 ] } });
             this.verificaPorcentagemForm(this.fg, 1);
           }
         );

@@ -1,38 +1,92 @@
-<mat-card >
+<mat-card>
   <mat-card-header class="titleflexheader">
     <mat-card-title>Administrar Boletos</mat-card-title>
   </mat-card-header>
-  <hr>
-  <mat-card-content *ngIf="boletos.length>0; else loading">
-    <button class="titleflexbutton" mat-flat-button color="primary" type="button" (click)="openDetails(null)">Criar
-      Novo Boleto</button>
+  <hr />
+  <mat-card-content *ngIf="boletos.length > 0; else loading">
+    <button
+      class="titleflexbutton"
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="openDetails(null)"
+    >
+      Criar Novo Boleto
+    </button>
     <div>
-      <table mat-table [dataSource]="boletos" class="tableContent" matSort (matSortChange)="sortData($event)" [@fadeInOut]>
+      <table
+        mat-table
+        [dataSource]="boletos"
+        class="tableContent"
+        matSort
+        (matSortChange)="sortData($event)"
+        [@fadeInOut]
+      >
         <ng-container matColumnDef="ID">
-          <th mat-sort-header="id" mat-header-cell *matHeaderCellDef> ID </th>
-          <td class="mousebtn" (click)="viewBoleto(element)" mat-cell *matCellDef="let element"> {{element.id}} </td>
+          <th mat-sort-header="id" mat-header-cell *matHeaderCellDef>ID</th>
+          <td
+            class="mousebtn"
+            (click)="viewBoleto(element)"
+            mat-cell
+            *matCellDef="let element"
+          >
+            {{ element.id }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="Cliente">
-          <th mat-sort-header="Cliente" mat-header-cell *matHeaderCellDef> Nome </th>
-          <td class="mousebtn" (click)="viewBoleto(element)" mat-cell *matCellDef="let element">
-            {{element.cliente.nome}}
-            <span class="badge" *ngIf="verificaBoletoVencido(element.dataPrimeiraParcela)">Vencido</span>
+          <th mat-sort-header="Cliente" mat-header-cell *matHeaderCellDef>
+            Nome
+          </th>
+          <td
+            class="mousebtn"
+            (click)="viewBoleto(element)"
+            mat-cell
+            *matCellDef="let element"
+          >
+            {{ element.cliente.nome }}
+            <span
+              class="badge"
+              *ngIf="verificaBoletoVencido(element.dataPrimeiraParcela)"
+              >Vencido</span
+            >
           </td>
         </ng-container>
 
         <ng-container matColumnDef="Valor">
-          <th mat-sort-header="Valor" mat-header-cell *matHeaderCellDef> Valor </th>
-          <td class="mousebtn" (click)="viewBoleto(element)" mat-cell *matCellDef="let element"> {{element.cliente.valor | currency:'BRL'}} </td>
+          <th mat-sort-header="Valor" mat-header-cell *matHeaderCellDef>
+            Valor
+          </th>
+          <td
+            class="mousebtn"
+            (click)="viewBoleto(element)"
+            mat-cell
+            *matCellDef="let element"
+          >
+            {{ element.cliente.valor | currency: 'BRL' }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="DataPrimeiraParcela">
-          <th mat-sort-header="DataPrimeiraParcela" mat-header-cell *matHeaderCellDef> Primeira Parcela </th>
-          <td class="mousebtn" (click)="viewBoleto(element)" mat-cell *matCellDef="let element"> {{element.dataPrimeiraParcela | dateFormat}} </td>
+          <th
+            mat-sort-header="DataPrimeiraParcela"
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Primeira Parcela
+          </th>
+          <td
+            class="mousebtn"
+            (click)="viewBoleto(element)"
+            mat-cell
+            *matCellDef="let element"
+          >
+            {{ element.dataPrimeiraParcela | dateFormat }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="Acoes">
-          <th mat-header-cell *matHeaderCellDef> Ações </th>
+          <th mat-header-cell *matHeaderCellDef>Ações</th>
           <td mat-cell *matCellDef="let element">
             <div class="buttonGroup">
               <button class="bt1" mat-mini-fab color="primary">
@@ -40,34 +94,57 @@
                   settings
                 </i>
               </button>
-              <button class="bt2" mat-mini-fab color="warn" (click)="delete(element, $event)" matTooltip="Deletar {{element.cliente.nome}}">
+              <button
+                class="bt2"
+                mat-mini-fab
+                color="warn"
+                (click)="delete(element, $event)"
+                matTooltip="Deletar {{ element.cliente.nome }}"
+              >
                 <i class="material-icons">
                   delete
-                </i></button>&nbsp;
-              <button class="bt3" mat-mini-fab color="accent" (click)="viewBoleto(element)" matTooltip="Ver Boleto Para {{element.cliente.nome}}">
+                </i></button
+              >&nbsp;
+              <button
+                class="bt3"
+                mat-mini-fab
+                color="accent"
+                (click)="viewBoleto(element)"
+                matTooltip="Ver Boleto Para {{ element.cliente.nome }}"
+              >
                 <i class="material-icons">
                   attach_money
-                </i> </button> &nbsp;
-              <button class="bt4" mat-mini-fab color="primary" (click)="editar(element)" matTooltip="Editar {{element.cliente.nome}}">
+                </i>
+              </button>
+              &nbsp;
+              <button
+                class="bt4"
+                mat-mini-fab
+                color="primary"
+                (click)="editar(element)"
+                matTooltip="Editar {{ element.cliente.nome }}"
+              >
                 <i class="material-icons">
                   edit
                 </i>
               </button>
             </div>
-
-          <td mat-cell *matCellDef="let element">
           </td>
+
+          <td mat-cell *matCellDef="let element"></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="headElements"></tr>
-        <tr mat-row *matRowDef="let row; columns: headElements;"></tr>
+        <tr mat-row *matRowDef="let row; columns: headElements"></tr>
       </table>
     </div>
   </mat-card-content>
 </mat-card>
 
 <ng-template #loading>
-    <div class="loading">
-      <span> <mat-spinner></mat-spinner></span>
-    </div>
+  <div class="loading">
+    <span>
+      <mat-spinner></mat-spinner>
+    </span>
+  </div>
 </ng-template>

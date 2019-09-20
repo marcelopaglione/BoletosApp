@@ -1,48 +1,92 @@
-
-<div style="display: flex; flex-direction: row; justify-content: center; align-items:stretch;" *ngIf="dashboard; else loading" >
+<div
+  style="display: flex; flex-direction: row; justify-content: center; align-items:stretch;"
+  *ngIf="dashboard; else loading"
+>
   <div style="display: flex; flex-direction: column;">
-      <div *ngIf="parcelas">
-          <mat-card class="example-card" [@fadeInOut2] style="cursor: context-menu;" >
-            <mat-card-header>
-              <div mat-card-avatar><i class="fas fa-2x fa-align-justify"></i></div>
-              <mat-card-title>Próximas Parcelas</mat-card-title>
-              <mat-card-subtitle>Lista de parcelas a receber</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
+    <div *ngIf="parcelas">
+      <mat-card
+        class="example-card"
+        [@fadeInOut2]
+        style="cursor: context-menu;"
+      >
+        <mat-card-header>
+          <div mat-card-avatar><i class="fas fa-2x fa-align-justify"></i></div>
+          <mat-card-title>Próximas Parcelas</mat-card-title>
+          <mat-card-subtitle>Lista de parcelas a receber</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <table mat-table [dataSource]="parcelas" class="tableContent">
+            <ng-container matColumnDef="ID">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef>
+                Número da Parcela
+              </th>
+              <td class="mousebtn" mat-cell *matCellDef="let element">
+                #{{ element.id }}
+                <a
+                  style="cursor: pointer;"
+                  class="badge badge-warning"
+                  *ngIf="element.id === 12"
+                  (click)="renovaBoleto(element.boleto)"
+                >
+                  Renovar Boleto!
+                </a>
+              </td>
+            </ng-container>
 
-              <table mat-table [dataSource]="parcelas" class="tableContent" >
-                  <ng-container matColumnDef="ID">
-                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Número da Parcela </th>
-                    <td class="mousebtn" mat-cell *matCellDef="let element">
-                      #{{element.id}}
-                      <a style="cursor: pointer;" class="badge badge-warning" *ngIf="element.id === 12" (click)="renovaBoleto(element.boleto)">
-                        Renovar Boleto!
-                      </a>
-                    </td>
-                  </ng-container>
+            <ng-container matColumnDef="Cliente">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef>
+                Cliente
+              </th>
+              <td
+                style="cursor: pointer;"
+                (click)="viewBoleto(element.boleto)"
+                class="mousebtn"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.boleto.cliente.nome }}
+              </td>
+            </ng-container>
 
-                  <ng-container matColumnDef="Cliente">
-                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Cliente </th>
-                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.nome}} </td>
-                  </ng-container>
+            <ng-container matColumnDef="Valor">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef>
+                Valor a Receber
+              </th>
+              <td
+                style="cursor: pointer;"
+                (click)="viewBoleto(element.boleto)"
+                class="mousebtn"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.boleto.cliente.valor | currency: 'BRL' }}
+              </td>
+            </ng-container>
 
-                  <ng-container matColumnDef="Valor">
-                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Valor a Receber </th>
-                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element"> {{element.boleto.cliente.valor | currency:'BRL'}} </td>
-                  </ng-container>
+            <ng-container matColumnDef="Data">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef>
+                Data de Recebimento
+              </th>
+              <td
+                style="cursor: pointer;"
+                (click)="viewBoleto(element.boleto)"
+                class="mousebtn"
+                mat-cell
+                *matCellDef="let element"
+                [style.color]="styleCardDate(element)"
+              >
+                {{ element.data | dateFormat }}
+              </td>
+            </ng-container>
 
-                  <ng-container matColumnDef="Data">
-                    <th style="text-align: center" mat-header-cell *matHeaderCellDef> Data de Recebimento </th>
-                    <td style="cursor: pointer;" (click)="viewBoleto(element.boleto)" class="mousebtn" mat-cell *matCellDef="let element" [style.color]="styleCardDate(element)" > {{element.data | dateFormat}} </td>
-                  </ng-container>
+            <tr mat-header-row *matHeaderRowDef="headElements"></tr>
+            <tr mat-row *matRowDef="let row; columns: headElements"></tr>
+          </table>
 
-                  <tr mat-header-row *matHeaderRowDef="headElements"></tr>
-                  <tr mat-row *matRowDef="let row; columns: headElements;"></tr>
-                </table>
-              <h1>{{ parcelas.length }}</h1>
-            </mat-card-content>
-          </mat-card>
-        </div>
+          <h1>{{ parcelas.length }}</h1>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 
   <div style="display: flex; flex-direction: column;">
@@ -84,14 +128,14 @@
 </div>
 
 <ng-template #loading>
-    <mat-card>
-      <mat-card-header class="titleflexheader">
-        <mat-card-title>DashBoard</mat-card-title>
-      </mat-card-header>
-      <hr>
+  <mat-card>
+    <mat-card-header class="titleflexheader">
+      <mat-card-title>DashBoard</mat-card-title>
+    </mat-card-header>
+    <hr />
 
-      <div class="loading">
-        <span> <mat-spinner></mat-spinner></span>
-      </div>
-    </mat-card>
+    <div class="loading">
+      <span> <mat-spinner></mat-spinner></span>
+    </div>
+  </mat-card>
 </ng-template>

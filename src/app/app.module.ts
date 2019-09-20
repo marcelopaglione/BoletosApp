@@ -4,9 +4,36 @@ import localeBr from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MatBadgeModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppCommonModule } from './app-common/app-common.module';
 import { ButtonModule } from './app-common/button/button.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -77,8 +104,8 @@ registerLocaleData(localeBr);
     BrowserModule,
     FormsModule
   ],
-  entryComponents: [ClienteDetailComponent, BoletoDetailComponent, RenovaBoletoComponent],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
-  bootstrap: [AppComponent]
+  entryComponents: [ ClienteDetailComponent, BoletoDetailComponent, RenovaBoletoComponent ],
+  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' } ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class ConsultaCepService {
       }
 
     }
-    return of ({});
+    return of({});
   }
 
   constructor(

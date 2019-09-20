@@ -1,6 +1,6 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -18,8 +18,8 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound {
@@ -40,8 +40,8 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 252px;
   font-weight: 900;
   margin: 0px;
@@ -81,6 +81,7 @@ body {
   .notfound .notfound-404 {
     height: 200px;
   }
+
   .notfound .notfound-404 h1 {
     font-size: 200px;
   }
@@ -90,11 +91,13 @@ body {
   .notfound .notfound-404 {
     height: 162px;
   }
+
   .notfound .notfound-404 h1 {
     font-size: 162px;
     height: 150px;
     line-height: 162px;
   }
+
   .notfound h2 {
     font-size: 16px;
   }
