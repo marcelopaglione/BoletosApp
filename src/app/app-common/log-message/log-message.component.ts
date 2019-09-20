@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MessageService } from '../../../app/service/message.service';
+import { MessageService } from './message.service';
 
 @Component({
   selector: 'app-log-message',

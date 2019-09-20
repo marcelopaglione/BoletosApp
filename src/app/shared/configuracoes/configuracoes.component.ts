@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ConfigService } from 'src/app/service/config.service';
 
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+
+import { MessageService } from '../../app-common/log-message/message.service';
 import { Config } from '../../entity/Config';
-import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-configuracoes',

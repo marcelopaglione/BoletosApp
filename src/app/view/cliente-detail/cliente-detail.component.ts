@@ -1,9 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+
+import { MessageService } from '../../app-common/log-message/message.service';
 import { Cidade } from '../../entity/Cidade';
 import { Config } from '../../entity/Config';
 import { Estado } from '../../entity/Estado';
@@ -11,7 +13,6 @@ import { ClienteService } from '../../service/cliente.service';
 import { ConfigService } from '../../service/config.service';
 import { ConsultaCepService } from '../../service/consulta-cep.service';
 import { DropdownService } from '../../service/dropdown.service';
-import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-cliente-detail',

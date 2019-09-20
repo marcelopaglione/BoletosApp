@@ -1,13 +1,14 @@
+import numero from 'numero-por-extenso';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import numero from 'numero-por-extenso';
 
+import { MessageService } from '../../app-common/log-message/message.service';
 import { Boleto } from '../../entity/Boleto';
 import { Config } from '../../entity/Config';
 import { BoletoService } from '../../service/boleto.service';
 import { ConfigService } from '../../service/config.service';
-import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-boleto-view',

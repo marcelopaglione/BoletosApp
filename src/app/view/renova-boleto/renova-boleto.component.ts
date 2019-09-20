@@ -1,17 +1,18 @@
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 
+import { MessageService } from '../../app-common/log-message/message.service';
 import { Boleto } from '../../entity/Boleto';
 import { Cliente } from '../../entity/Cliente';
 import { Config } from '../../entity/Config';
 import { Emissor } from '../../entity/Emissor';
 import { BoletoService } from '../../service/boleto.service';
 import { ClienteService } from '../../service/cliente.service';
-import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-renova-boleto',

@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { map } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+
 import { environment } from '../../environments/environment';
-import { MessageService } from './message.service';
+import { MessageService } from '../app-common/log-message/message.service';
 
 @Injectable({
   providedIn: 'root'

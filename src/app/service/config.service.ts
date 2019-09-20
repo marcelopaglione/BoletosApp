@@ -2,9 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
+import { MessageService } from '../app-common/log-message/message.service';
 import { Config } from '../entity/Config';
-import { MessageService } from './message.service';
-
 
 @Injectable({
   providedIn: 'root'

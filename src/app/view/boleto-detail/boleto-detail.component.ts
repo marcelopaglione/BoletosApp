@@ -1,9 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
+import { MessageService } from '../../app-common/log-message/message.service';
 import { Boleto } from '../../entity/Boleto';
 import { Cliente } from '../../entity/Cliente';
 import { Config } from '../../entity/Config';
@@ -12,7 +14,6 @@ import { BoletoService } from '../../service/boleto.service';
 import { ClienteService } from '../../service/cliente.service';
 import { ConfigService } from '../../service/config.service';
 import { EmissorService } from '../../service/emissor.service';
-import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-boleto-detail',
