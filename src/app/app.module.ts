@@ -18,10 +18,11 @@ import { AppCommonModule } from './app-common/app-common.module';
 import { ButtonModule } from './app-common/button/button.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { RenovaBoletoComponent } from './dashboard/renova-boleto/renova-boleto.component';
 import { EmissorModule } from './emissor/emissor.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
-import { DateFormatPipe } from './shared/date.pipe';
 import { NavComponent } from './shared/nav/nav.component';
 import { PhonePipe } from './shared/phone.pipe';
 import { BoletoDetailComponent } from './view/boleto-detail/boleto-detail.component';
@@ -29,8 +30,6 @@ import { BoletoViewComponent } from './view/boleto-view/boleto-view.component';
 import { BoletoComponent } from './view/boleto/boleto.component';
 import { ClienteDetailComponent } from './view/cliente-detail/cliente-detail.component';
 import { ClienteComponent } from './view/cliente/cliente.component';
-import { DashboardComponent } from './view/dashboard/dashboard.component';
-import { RenovaBoletoComponent } from './view/renova-boleto/renova-boleto.component';
 
 registerLocaleData(localeBr);
 
@@ -39,21 +38,22 @@ registerLocaleData(localeBr);
     AppComponent,
     ClienteComponent,
     BoletoComponent,
-    DashboardComponent,
     NavComponent,
     ConfiguracoesComponent,
     PhonePipe,
-    DateFormatPipe,
+
     BoletoDetailComponent,
     ClienteDetailComponent,
     BoletoViewComponent,
     RenovaBoletoComponent
   ],
   imports: [
+
     AppCommonModule,
     EmissorModule,
     ButtonModule,
     NotFoundModule,
+    DashboardModule,
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
     MatDialogModule, MatProgressBarModule, MatTabsModule, MatDatepickerModule,

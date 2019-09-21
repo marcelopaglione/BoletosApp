@@ -1,15 +1,16 @@
+import { Parcela } from 'src/app/entity/Parcela';
+
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { Parcela } from 'src/app/entity/Parcela';
 
-import { RenovaBoletoComponent } from '../renova-boleto/renova-boleto.component';
-import { Boleto } from './../../entity/Boleto';
-import { Cliente } from './../../entity/Cliente';
-import { Dashboard } from './../../entity/Dashboard';
-import { BoletoService } from './../../service/boleto.service';
-import { ClienteService } from './../../service/cliente.service';
+import { Boleto } from '../entity/Boleto';
+import { Cliente } from '../entity/Cliente';
+import { Dashboard } from '../entity/Dashboard';
+import { BoletoService } from '../service/boleto.service';
+import { ClienteService } from '../service/cliente.service';
+import { RenovaBoletoComponent } from './renova-boleto/renova-boleto.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -168,7 +169,6 @@ export class DashboardComponent implements OnInit {
 
     dialogRefDash.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // console.log('The dialog was closed');
     });
   }
 }

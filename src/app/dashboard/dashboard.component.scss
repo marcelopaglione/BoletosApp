@@ -2,7 +2,7 @@
   min-width: 300px;
   display: inline-block;
   margin: 20px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   cursor: pointer;
   background-color: #ffffff;
   color: #212121;
@@ -11,10 +11,9 @@
 }
 
 .example-card:hover {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   transform: scale(1.05);
 }
-
 
 .example-header-image {
   background-image: url('/assets/img/money.png');
