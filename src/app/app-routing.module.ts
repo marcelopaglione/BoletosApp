@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { EmissorComponent } from './emissor/emissor.component';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 import { BoletoViewComponent } from './view/boleto-view/boleto-view.component';
 import { BoletoComponent } from './view/boleto/boleto.component';
 import { ClienteComponent } from './view/cliente/cliente.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
-import { EmissorComponent } from './view/emissor/emissor.component';
 import { NotFoundComponent } from './view/not-found/not-found.component';
 
 const routes: Routes = [

@@ -18,6 +18,7 @@ import { AppCommonModule } from './app-common/app-common.module';
 import { ButtonModule } from './app-common/button/button.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EmissorModule } from './emissor/emissor.module';
 import { ConfiguracoesComponent } from './shared/configuracoes/configuracoes.component';
 import { DateFormatPipe } from './shared/date.pipe';
 import { NavComponent } from './shared/nav/nav.component';
@@ -28,7 +29,6 @@ import { BoletoComponent } from './view/boleto/boleto.component';
 import { ClienteDetailComponent } from './view/cliente-detail/cliente-detail.component';
 import { ClienteComponent } from './view/cliente/cliente.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
-import { EmissorComponent } from './view/emissor/emissor.component';
 import { NotFoundComponent } from './view/not-found/not-found.component';
 import { RenovaBoletoComponent } from './view/renova-boleto/renova-boleto.component';
 
@@ -38,7 +38,6 @@ registerLocaleData(localeBr);
   declarations: [
     AppComponent,
     ClienteComponent,
-    EmissorComponent,
     BoletoComponent,
     NotFoundComponent,
     DashboardComponent,
@@ -53,6 +52,7 @@ registerLocaleData(localeBr);
   ],
   imports: [
     AppCommonModule,
+    EmissorModule,
     ButtonModule,
     BrowserAnimationsModule, MatGridListModule, MatSelectModule, MatExpansionModule, MatSnackBarModule,
     MatCheckboxModule, MatTableModule, MatFormFieldModule, MatInputModule, MatPaginatorModule,
